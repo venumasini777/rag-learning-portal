@@ -1,0 +1,1254 @@
+<html lang="en" class="scroll-smooth"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+    window.__firebase_config = firebaseConfig;
+    window.__initial_auth_token = initialAuthToken;
+    window.__app_id = appId;
+        })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2NmM5YTIxZDM4NGQzZmU0OGMyZjNhYjNiZmE1NjQ0Yzk0ZmY3Y2UiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwMTI5NTYxNjk5Njg0NDg5ODMxMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiI5OGMzYTU3NzEyNTEtaW5kZXguaHRtbC03NzQifSwiZXhwIjoxNzY5MDU5NDc3LCJpYXQiOjE3NjkwNTU4NzcsImFsZyI6IlJTMjU2In0.kwpqvZoF5wmNfHIZg_jcLAtsnGhwhV2paFCQYL0ZfPoc5Zk1ICQtxSKr_DQyvquY5-pBdpR4AbxmxhDhCpAiMxB8uyuYv72wb71OtLIM-2OvuMOHbD1TZ_OuMQkIf4jo3WGGjt599cIKfW4h8_Yja82usxsCZXv7JGuW4tSfT_lJ5PyWuug3jy39zGjKARg1byHtllIdD2HBEoLL8CzRN_7xmBxgwoGhqCT81PsN3FLjdAfFREjc_L04raOx5_Di-JS5n9YAacI5AzZN8iIJRsgORsYmA10TA5qxHKvZCihFp1uA5xYIYeQzpPHZy2vARdjubSq-gN7o5KBjERFRMg","98c3a5771251-index.html-774")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+MIT License
+
+Copyright (c) 2017-2023 W.Y.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+// Ensure this script is executed only once
+if (window.firebaseAuthBridgeScriptLoaded) {
+return;
+}
+window.firebaseAuthBridgeScriptLoaded = true;
+
+let nextTokenPromiseId = 0;
+
+// Stores { resolve, reject } for ongoing token requests
+const pendingTokenPromises = {};
+
+// Listen for messages from the Host Application
+window.addEventListener('message', function(event) {
+
+const messageData = event.data;
+
+if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+  const { success, token, error, promiseId } = messageData ?? {};
+  if (pendingTokenPromises[promiseId]) {
+    if (success) {
+      pendingTokenPromises[promiseId].resolve(token);
+    } else {
+      pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+    }
+    delete pendingTokenPromises[promiseId];
+  }
+}
+});
+
+// Expose a function for the Generated App to request a new Firebase token
+window.requestNewFirebaseToken = function() {
+const currentPromiseId = nextTokenPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingTokenPromises[currentPromiseId] = { resolve, reject };
+});
+if (window.parent && window.parent !== window) {
+  window.parent.postMessage({
+    type: 'REQUEST_NEW_FIREBASE_TOKEN',
+    promiseId: currentPromiseId
+  }, '*');
+} else {
+  pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+  delete pendingTokenPromises[currentPromiseId];
+}
+return promise;
+};
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+try {
+  Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+    get: function() {
+      return undefined; // Or throw an error
+    },
+    configurable: false
+  });
+} catch (error) {
+  console.error("Error defining prototype getter:", error);
+}
+}
+})();
+
+(function() {
+const pendingMediaResolvers = {};
+let nextMediaPromiseId = 0;
+
+function requestMediaPermissions(constraints) {
+const mediaPromiseId = nextMediaPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingMediaResolvers[mediaPromiseId] = (granted) => {
+    delete pendingMediaResolvers[mediaPromiseId];
+    resolve(granted);
+  };
+});
+
+window.parent.postMessage({
+  type: 'requestMediaPermission',
+  constraints: constraints,
+  promiseId: mediaPromiseId,
+}, '*');
+
+return promise;
+}
+
+let originalGetUserMedia = realOriginalGetUserMedia;
+
+function interceptGetUserMedia() {
+if (navigator.mediaDevices) {
+  Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+    value: function(constraints) {
+      return requestMediaPermissions(constraints).then((granted) => {
+        if (granted) {
+          if (originalGetUserMedia) {
+            return originalGetUserMedia(constraints);
+          } else {
+            throw new Error("Original getUserMedia not available.");
+          }
+        } else {
+          throw new DOMException('Permission denied', 'NotAllowedError');
+        }
+      });
+    },
+    writable: false,
+    configurable: false
+  });
+}
+}
+
+interceptGetUserMedia();
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+for (const mutation of mutationsList) {
+  if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'childList' && mutation.addedNodes) {
+    mutation.addedNodes.forEach(node => {
+      if (node === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      }
+    });
+  }
+}
+});
+
+function interceptSpeechRecognition() {
+if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+  return;
+}
+
+const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const SpeechRecognitionWrapper = function(...args) {
+  const recognizer = new OriginalSpeechRecognition(...args);
+  const originalStart = recognizer.start.bind(recognizer);
+
+  recognizer.start = function() {
+    requestMediaPermissions({ audio: true }).then(granted => {
+      if (granted) {
+        originalStart();
+      } else {
+        const errorEvent = new SpeechRecognitionErrorEvent('error');
+        errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+        recognizer.dispatchEvent(errorEvent);
+      }
+    });
+  };
+
+  return recognizer;
+};
+
+SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+if (window.SpeechRecognition) {
+  window.SpeechRecognition = SpeechRecognitionWrapper;
+}
+if (window.webkitSpeechRecognition) {
+  window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+}
+}
+
+interceptSpeechRecognition();
+
+window.addEventListener('message', function(event) {
+if (event.data) {
+  if (event.data.type === 'resolveMediaPermission') {
+    const { promiseId, granted } = event.data;
+    if (pendingMediaResolvers[promiseId]) {
+      pendingMediaResolvers[promiseId](granted);
+    }
+  }
+}
+});
+
+})();</script><script>((function(modelInformation) {
+const originalFetch = window.fetch;
+// TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+let googleLlmBaseApiUrls = [
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+];
+modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+);
+});
+modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+);
+});
+
+const pendingFetchResolvers = {};
+let nextPromiseId = 0;
+
+function handleStringInput(input, optionsArgument) {
+const actualUrl = input;
+const fetchCallArgs = [actualUrl, optionsArgument];
+const effectiveOptions = optionsArgument || {};
+const bodyForApiKeyCheck = effectiveOptions.body;
+const bodyForPostMessage = effectiveOptions.body;
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+function handleRequestInput(input, optionsArgument) {
+const actualUrl = input.url;
+const fetchCallArgs = [input, optionsArgument];
+const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (optionsArgument) {
+  if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+  if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+  if ('body' in optionsArgument) {
+    bodyForApiKeyCheck = optionsArgument.body;
+    bodyForPostMessage = optionsArgument.body;
+  } else {
+    bodyForApiKeyCheck = undefined;
+    bodyForPostMessage = input.body;
+  }
+} else {
+  bodyForApiKeyCheck = undefined;
+  bodyForPostMessage = input.body;
+}
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+window.fetch = function(input, optionsArgument) {
+let actualUrl;
+let fetchCallArgs;
+let effectiveOptions = {};
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (typeof input === 'string') {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+} else if (input instanceof Request) {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+} else {
+  return originalFetch.apply(window, [input, optionsArgument]);
+}
+
+effectiveOptions.method = effectiveOptions.method || 'GET';
+if (!effectiveOptions.headers) {
+  effectiveOptions.headers = new Headers();
+}
+
+
+if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+  let apiKeyIsNull = true;
+
+  const regex = new RegExp("models/([^:]+)");
+  const modelNameMatch = actualUrl.match(regex);
+  const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+  try {
+    const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+    const apiKeyParam = urlObject.searchParams.get('key');
+    if (apiKeyParam) {
+      apiKeyIsNull = false;
+    }
+  } catch (e) {
+    // Continue checks even if URL parsing fails
+  }
+
+  if (apiKeyIsNull && effectiveOptions.headers) {
+    const h = new Headers(effectiveOptions.headers);
+    const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+    if (apiKeyHeaderValue) {
+      apiKeyIsNull = false;
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+  }
+
+  if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+    try {
+      const bodyData = JSON.parse(bodyForApiKeyCheck);
+      if (bodyData && bodyData.apiKey) {
+        apiKeyIsNull = false;
+        return originalFetch.apply(window, fetchCallArgs);
+      }
+    } catch (e) {
+      // Ignore JSON parsing errors
+    }
+  }
+
+  if(apiKeyIsNull) {
+    const promiseId = nextPromiseId++;
+    const promise = new Promise((resolve) => {
+      pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+        delete pendingFetchResolvers[promiseId];
+        resolve(resolvedResponse);
+      };
+    });
+
+    let serializedBodyForPostMessage;
+    if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+        serializedBodyForPostMessage = bodyForPostMessage;
+    } else if (bodyForPostMessage instanceof ReadableStream) {
+        serializedBodyForPostMessage = null;
+    } else {
+        try {
+            serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+        } catch (e) {
+            serializedBodyForPostMessage = null;
+        }
+    }
+
+    const messageOptions = {
+        method: effectiveOptions.method,
+        headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+        body: serializedBodyForPostMessage
+    };
+
+    window.parent.postMessage({
+      type: 'requestFetch',
+      url: actualUrl,
+      modelName: modelName,
+      options: messageOptions,
+      promiseId: promiseId,
+    }, '*');
+
+    return promise;
+  }
+  return originalFetch.apply(window, fetchCallArgs);
+}
+return originalFetch.apply(window, fetchCallArgs);
+};
+
+window.addEventListener('message', function(event) {
+if (event.data && event.data.type === 'resolveFetch') {
+  const { promiseId, response } = event.data;
+  if (pendingFetchResolvers[promiseId]) {
+    try {
+      const reconstructedResponse = new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: new Headers(response.headers),
+      });
+      pendingFetchResolvers[promiseId](reconstructedResponse);
+    } catch (error) {
+      pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+    }
+  }
+}
+});
+
+}))({"textModelName":"gemini-2.5-flash-preview-09-2025","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function() {
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
+/**
+* Normalizes an error event or a promise rejection reason into a structured error object.
+* @param {*} errorEventOrReason The error object or reason.
+* @return {object} Structured error data { message, name, stack }.
+*/
+function getErrorObject(errorEventOrReason) {
+if (errorEventOrReason instanceof Error) {
+  return {
+    message: errorEventOrReason.message,
+    name: errorEventOrReason.name,
+    stack: errorEventOrReason.stack,
+  };
+}
+// Fallback for non-Error objects.
+try {
+  return {
+    message: JSON.stringify(errorEventOrReason),
+    name: 'UnknownErrorType',
+    stack: null,
+  };
+} catch (e) {
+  return {
+    message: String(errorEventOrReason),
+    name: 'UnknownErrorTypeNonStringifiable',
+    stack: null,
+  };
+}
+}
+
+/**
+* Converts an array of arguments (from log/error) into a single string.
+* Handles Error objects specially to include their message and stack.
+* @param {Array<*>} args - Arguments passed to console methods.
+* @return {string} A string representation of the arguments.
+*/
+function stringifyArgs(args) {
+return args
+  .map((arg) => {
+    if (arg instanceof Error) {
+      const {message, stack} = arg;
+      return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+    }
+    if (typeof arg === 'object' && arg !== null) {
+      try {
+        return JSON.stringify(arg);
+      } catch (error) {
+        return '[Circular Object]';
+      }
+    } else {
+      return String(arg);
+    }
+  })
+  .join(' ');
+}
+
+console.log = function(...args) {
+const logString = stringifyArgs(args);
+window.parent.postMessage({ type: 'log', message: logString }, '*');
+originalConsoleLog.apply(console, args);
+};
+
+console.error = function(...args) {
+let errorData;
+if (args.length > 0 && args[0] instanceof Error) {
+  const err = args[0];
+  // If the first arg is an Error, capture its details.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    ...getErrorObject(err),
+    rawArgsString: stringifyArgs(args.slice(1)),
+    timestamp: new Date().toISOString(),
+  };
+} else {
+  // If not an Error object, treat all args as a general error message.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    message: stringifyArgs(args),
+    name: 'ConsoleLoggedError',
+    stack: null,
+    timestamp: new Date().toISOString(),
+  };
+}
+window.parent.postMessage(errorData, '*');
+originalConsoleError.apply(console, args);
+};
+
+// Listen for global unhandled synchronous errors.
+window.addEventListener('error', function(event) {
+const errorDetails = event.error ? getErrorObject(event.error) : {
+  message: event.message,
+  name: 'GlobalError',
+  stack: null,
+  filename: event.filename,
+  lineno: event.lineno,
+  colno: event.colno,
+};
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'global',
+  ...errorDetails,
+  message: errorDetails.message || event.message,
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+// Listen for unhandled promise rejections (asynchronous errors).
+window.addEventListener('unhandledrejection', function(event) {
+const errorDetails = getErrorObject(event.reason);
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'unhandledrejection',
+  ...errorDetails,
+  message: errorDetails.message || 'Unhandled Promise Rejection',
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline Evaluation Metrics | Deep Work Module</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f4f7fb; /* Slate-50/100 Soft Tint */
+        color: #0f172a; /* Slate-950 */
+    }
+    .glass-header {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .progress-container {
+        height: 4px;
+        width: 100%;
+        background: transparent;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    #progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #4f46e5; /* Indigo-600 */
+        transition: width 0.1s ease-out;
+    }
+    .bento-card {
+        background: #ffffff;
+        border-radius: 1.5rem; /* rounded-3xl */
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bento-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        transform: translateY(-4px);
+    }
+    .node-active {
+        border-color: #4f46e5;
+        background-color: #eef2ff;
+        color: #4f46e5;
+        transform: scale(1.05);
+    }
+    .timeline-item {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    }
+    .impact-section {
+        background-color: #0f172a; /* Slate-900 */
+    }
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.-left-32{left:-8rem}.-top-32{top:-8rem}.bottom-10{bottom:2.5rem}.left-0{left:0px}.left-1\/2{left:50%}.top-0{top:0px}.z-10{z-index:10}.z-50{z-index:50}.z-\[100\]{z-index:100}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-24{margin-bottom:6rem}.mb-3{margin-bottom:0.75rem}.mb-48{margin-bottom:12rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-5{margin-left:1.25rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-20{height:5rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-80{height:20rem}.h-full{height:100%}.h-4{height:1rem}.w-1\/3{width:33.333333%}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-20{width:5rem}.w-4\/5{width:80%}.w-6{width:1.5rem}.w-8{width:2rem}.w-80{width:20rem}.w-full{width:100%}.w-4{width:1rem}.w-7{width:1.75rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}.max-w-xl{max-width:36rem}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-20{--tw-translate-y:5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-4{--tw-translate-y:1rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-0{--tw-translate-y:0px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.cursor-not-allowed{cursor:not-allowed}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-20{gap:5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[2rem\]{border-radius:2rem}.rounded-\[3rem\]{border-radius:3rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-t-4{border-top-width:4px}.border-indigo-600{--tw-border-opacity:1;border-color:rgb(79 70 229 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-indigo-400{--tw-bg-opacity:1;background-color:rgb(129 140 248 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-indigo-500\/10{background-color:rgb(99 102 241 / 0.1)}.bg-indigo-500\/20{background-color:rgb(99 102 241 / 0.2)}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-indigo-900\/50{background-color:rgb(49 46 129 / 0.5)}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-emerald-400{--tw-gradient-to:rgb(52 211 153 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #34d399 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.p-10{padding:2.5rem}.p-12{padding:3rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.p-2{padding:0.5rem}.p-5{padding:1.25rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.pb-0{padding-bottom:0px}.pt-32{padding-top:8rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[9px\]{font-size:9px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.text-indigo-100{--tw-text-opacity:1;color:rgb(224 231 255 / var(--tw-text-opacity, 1))}.text-indigo-200{--tw-text-opacity:1;color:rgb(199 210 254 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.opacity-20{opacity:0.2}.opacity-100{opacity:1}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-indigo-100{--tw-shadow-color:#e0e7ff;--tw-shadow:var(--tw-shadow-colored)}.blur-\[120px\]{--tw-blur:blur(120px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.duration-700{transition-duration:700ms}.after\:absolute::after{content:var(--tw-content);position:absolute}.after\:left-\[4px\]::after{content:var(--tw-content);left:4px}.after\:top-\[4px\]::after{content:var(--tw-content);top:4px}.after\:h-5::after{content:var(--tw-content);height:1.25rem}.after\:w-7::after{content:var(--tw-content);width:1.75rem}.after\:rounded-full::after{content:var(--tw-content);border-radius:9999px}.after\:border::after{content:var(--tw-content);border-width:1px}.after\:border-gray-300::after{content:var(--tw-content);--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.after\:bg-white::after{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.after\:transition-all::after{content:var(--tw-content);transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.after\:content-\[\'\'\]::after{--tw-content:'';content:var(--tw-content)}.hover\:border-indigo-300:hover{--tw-border-opacity:1;border-color:rgb(165 180 252 / var(--tw-border-opacity, 1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:text-indigo-600:hover{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:rotate-1{--tw-rotate:1deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:border-indigo-600{--tw-border-opacity:1;border-color:rgb(79 70 229 / var(--tw-border-opacity, 1))}.group:hover .group-hover\:bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.peer:checked ~ .peer-checked\:bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.peer:checked ~ .peer-checked\:after\:translate-x-full::after{content:var(--tw-content);--tw-translate-x:100%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.peer:checked ~ .peer-checked\:after\:border-white::after{content:var(--tw-content);--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.peer:focus ~ .peer-focus\:outline-none{outline:2px solid transparent;outline-offset:2px}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}.md\:p-24{padding:6rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}</style></head>
+<body class="antialiased">
+
+<!-- Sticky Progress Header -->
+<nav class="fixed top-0 w-full z-50 glass-header">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">M</div>
+            <span class="text-slate-900 font-semibold tracking-tight">Offline Evaluation Module</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-500">
+            <a href="#hero" class="hover:text-indigo-600 transition-colors">Flow</a>
+            <a href="#lab" class="hover:text-indigo-600 transition-colors">Simulator</a>
+            <a href="#impact" class="hover:text-indigo-600 transition-colors">Impact</a>
+            <a href="#gatekeeper" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-all">Final Challenge</a>
+        </div>
+    </div>
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+</nav>
+
+<main class="pt-32 pb-0 max-w-6xl mx-auto px-6">
+    
+    <!-- Hero Section: Evaluation Flow -->
+    <section id="hero" class="mb-24 transition-all duration-700 section-observer opacity-100 translate-y-0">
+        <div class="text-center mb-16">
+            <span class="text-indigo-600 font-semibold tracking-widest uppercase text-xs">Validation Framework</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mt-3 mb-6 tracking-tight">Offline Ranking Metrics</h1>
+            <p class="text-slate-500 max-w-3xl mx-auto text-xl leading-relaxed">
+                You can't fix what you can't measure. Prove your re-ranker's quality using mathematical benchmarks before serving the first live user.
+            </p>
+        </div>
+
+        <div class="bento-card p-12 mb-10 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-emerald-400 to-indigo-500"></div>
+            <h3 class="text-sm font-bold text-slate-400 uppercase mb-12 text-center tracking-widest">The Evaluation Journey</h3>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-12 md:space-y-0 relative z-10">
+                <div onclick="updateHeroTooltip(0)" class="hero-node cursor-pointer flex flex-col items-center group">
+                    <div id="node-0" class="w-20 h-20 rounded-3xl bg-white border-2 border-slate-200 flex items-center justify-center transition-all shadow-sm node-active">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    </div>
+                    <span class="mt-4 text-sm font-bold text-slate-700">1. Ground Truth</span>
+                </div>
+
+                <div onclick="updateHeroTooltip(1)" class="hero-node cursor-pointer flex flex-col items-center group">
+                    <div id="node-1" class="w-20 h-20 rounded-3xl bg-white border-2 border-slate-200 flex items-center justify-center transition-all shadow-sm">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="mt-4 text-sm font-bold text-slate-700">2. Scoring</span>
+                </div>
+
+                <div onclick="updateHeroTooltip(2)" class="hero-node cursor-pointer flex flex-col items-center group">
+                    <div id="node-2" class="w-20 h-20 rounded-3xl bg-white border-2 border-slate-200 flex items-center justify-center transition-all shadow-sm">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <span class="mt-4 text-sm font-bold text-slate-700">3. Comparison</span>
+                </div>
+            </div>
+
+            <div id="hero-tooltip" class="mt-16 p-8 bg-slate-50 rounded-[2rem] border border-slate-100 text-center transition-all duration-500">
+                <h4 class="font-bold text-slate-900 text-lg mb-3">Ground Truth (Human Labels)</h4>
+                <p class="text-slate-600 leading-relaxed max-w-2xl mx-auto">We start with a set of queries and "correct" documents, typically labeled by experts as Relevant (1) or Irrelevant (0). This is our gold standard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Bento Lab -->
+    <section id="lab" class="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-8 section-observer opacity-0 translate-y-4">
+        <!-- Left: Knowledge -->
+        <div class="bento-card p-10">
+            <div class="flex items-center space-x-4 mb-10">
+                <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Key Metrics</h2>
+            </div>
+            
+            <ul class="space-y-8">
+                <li class="flex group">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-indigo-600 font-bold group-hover:bg-indigo-600 group-hover:text-white transition-all">01</div>
+                    <div class="ml-5">
+                        <h4 class="font-bold text-slate-900 text-lg">Precision@K</h4>
+                        <p class="text-slate-500 mt-1 leading-relaxed">Percentage of top K results that are relevant. Measures the 'purity' of the top of the list.</p>
+                    </div>
+                </li>
+                <li class="flex group">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-indigo-600 font-bold group-hover:bg-indigo-600 group-hover:text-white transition-all">02</div>
+                    <div class="ml-5">
+                        <h4 class="font-bold text-slate-900 text-lg">MRR (Reciprocal Rank)</h4>
+                        <p class="text-slate-500 mt-1 leading-relaxed">Reciprocal of the rank of the <strong>first</strong> relevant document. If the first hit is at rank 3, MRR is 1/3.</p>
+                    </div>
+                </li>
+                <li class="flex group">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-indigo-600 font-bold group-hover:bg-indigo-600 group-hover:text-white transition-all">03</div>
+                    <div class="ml-5">
+                        <h4 class="font-bold text-slate-900 text-lg">NDCG</h4>
+                        <p class="text-slate-500 mt-1 leading-relaxed">Evaluates the full ranking while giving higher weight to top positions. Supports graded relevance (e.g., Highly Relevant vs. Useful).</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right: The Simulator -->
+        <div class="bento-card p-10 flex flex-col">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-slate-900">Ranking Simulator</h2>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="sim-toggle" class="sr-only peer" onchange="toggleSimulator()">
+                    <div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-7 after:transition-all peer-checked:bg-indigo-600"></div>
+                </label>
+            </div>
+
+            <div class="flex-grow p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col justify-center space-y-6">
+                <div class="space-y-4" id="sim-list"><div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-white shadow-sm timeline-item">
+                <div class="flex items-center space-x-3">
+                    <span class="text-[10px] font-bold text-slate-400 w-4">#1</span>
+                    <span class="text-xs font-medium text-slate-700">Document Chunk</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white bg-slate-200">Irrelevant</span>
+            </div><div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-white shadow-sm timeline-item">
+                <div class="flex items-center space-x-3">
+                    <span class="text-[10px] font-bold text-slate-400 w-4">#2</span>
+                    <span class="text-xs font-medium text-slate-700">Document Chunk</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white bg-slate-200">Irrelevant</span>
+            </div><div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-white shadow-sm timeline-item">
+                <div class="flex items-center space-x-3">
+                    <span class="text-[10px] font-bold text-slate-400 w-4">#3</span>
+                    <span class="text-xs font-medium text-slate-700">Document Chunk</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white bg-indigo-400">Relevant</span>
+            </div><div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-white shadow-sm timeline-item">
+                <div class="flex items-center space-x-3">
+                    <span class="text-[10px] font-bold text-slate-400 w-4">#4</span>
+                    <span class="text-xs font-medium text-slate-700">Document Chunk</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white bg-indigo-400">Relevant</span>
+            </div></div>
+
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="bg-white p-3 rounded-xl shadow-sm text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase">MRR</div>
+                        <div id="mrr-val" class="text-xl font-bold text-slate-900">0.33</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl shadow-sm text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase">NDCG</div>
+                        <div id="ndcg-val" class="text-xl font-bold text-slate-900">0.32</div>
+                    </div>
+                </div>
+            </div>
+
+            <p id="sim-footer" class="mt-6 text-sm text-slate-500 italic text-center">
+                Toggle to compare an unoptimized retriever vs. an optimized re-ranker.
+            </p>
+        </div>
+    </section>
+
+    <!-- High-Contrast Impact Section -->
+    <section id="impact" class="mb-24 impact-section rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden section-observer opacity-0 translate-y-4">
+        <div class="absolute -top-32 -left-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-[120px]"></div>
+        
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs font-bold tracking-widest uppercase mb-6 inline-block">The Blind Launch Risk</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Offline metrics are your shield.</h2>
+                <p class="text-slate-400 text-lg leading-relaxed mb-10">
+                    Deploying a re-ranker based on "vibes" or a few test queries is dangerous. Offline evaluation allows you to catch performance regressions and prove accuracy improvements across thousands of queries before they hit production.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+                        <h4 class="text-indigo-400 font-bold mb-2">Regression Guard</h4>
+                        <p class="text-slate-500 text-sm">Automated metric checks prevent a "better" model from actually hurting your top-rank quality.</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+                        <h4 class="text-indigo-400 font-bold mb-2">Cost Optimization</h4>
+                        <p class="text-slate-500 text-sm">Find the point of diminishing returns—where adding more documents doesn't significantly boost NDCG.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="bg-indigo-600 rounded-[2.5rem] p-10 transform transition-transform group-hover:rotate-1">
+                    <h3 class="text-white font-bold text-xl mb-6">Evaluation Dashboard</h3>
+                    <div class="space-y-6">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-xs text-indigo-200 mb-2 uppercase font-bold tracking-widest">Model A (Bi-Encoder)</div>
+                            <div class="h-1.5 bg-indigo-900/50 rounded-full overflow-hidden">
+                                <div class="w-1/3 h-full bg-indigo-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-xs text-indigo-200 mb-2 uppercase font-bold tracking-widest">Model B (Re-ranker)</div>
+                            <div class="h-1.5 bg-indigo-900/50 rounded-full overflow-hidden">
+                                <div class="w-4/5 h-full bg-emerald-400"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-indigo-100 text-sm italic">"Senior engineers never trust a single score—they align the metric choice with the user's ultimate goal."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recap Footer -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 section-observer opacity-0 translate-y-4">
+        <div class="bento-card p-8 border-t-4 border-indigo-600">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Precision@5</span>
+            <p class="text-3xl font-black text-slate-900 mt-2">Target: 0.8</p>
+            <p class="text-slate-500 text-sm mt-1">At least 4 of your top 5 docs should be relevant.</p>
+        </div>
+        <div class="bento-card p-8 border-t-4 border-indigo-600">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">MRR Baseline</span>
+            <p class="text-3xl font-black text-slate-900 mt-2">Target: 0.5+</p>
+            <p class="text-slate-500 text-sm mt-1">The first relevant document should average in the top 2 slots.</p>
+        </div>
+        <div class="bento-card p-8 border-t-4 border-indigo-600">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">NDCG Sensitivity</span>
+            <p class="text-3xl font-black text-slate-900 mt-2">High</p>
+            <p class="text-slate-500 text-sm mt-1">Excellent for systems where 'order matters' above all else.</p>
+        </div>
+    </section>
+
+    <!-- The Final Gatekeeper -->
+    <section id="gatekeeper" class="mb-48 section-observer opacity-0 translate-y-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-slate-900">Final Gatekeeper</h2>
+            <p class="text-slate-500 mt-3 text-lg">Re-order the steps of a robust Offline Evaluation pipeline.</p>
+        </div>
+
+        <div class="max-w-xl mx-auto bento-card p-10">
+            <div id="shuffle-list" class="space-y-4"><div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors">
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">1</span>
+                    <span class="text-sm font-bold text-slate-700">Average Metrics across Test Set</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(0, -1)" class="p-2 hover:bg-white rounded-xl transition-all opacity-20 cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(0, 1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div><div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors">
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">2</span>
+                    <span class="text-sm font-bold text-slate-700">Compute MRR/NDCG per Query</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(1, -1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(1, 1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div><div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors">
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">3</span>
+                    <span class="text-sm font-bold text-slate-700">Run Model over Candidate Pairs</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(2, -1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(2, 1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div><div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors">
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">4</span>
+                    <span class="text-sm font-bold text-slate-700">Extract Ranked List per Query</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(3, -1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(3, 1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div><div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors">
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">5</span>
+                    <span class="text-sm font-bold text-slate-700">Curate Test Queries &amp; Expert Labels</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(4, -1)" class="p-2 hover:bg-white rounded-xl transition-all ">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(4, 1)" class="p-2 hover:bg-white rounded-xl transition-all opacity-20 cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div></div>
+
+            <div class="mt-12">
+                <button onclick="checkOrder()" class="w-full bg-indigo-600 text-white font-bold py-5 rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100">
+                    Verify Evaluation Pipeline
+                </button>
+                <div id="feedback-msg" class="hidden text-center text-sm font-bold p-4 rounded-2xl mt-6"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Notification Toast -->
+<div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 opacity-0 bg-slate-900 text-white px-10 py-5 rounded-2xl shadow-2xl transition-all duration-700 z-[100] flex items-center space-x-4">
+    <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </div>
+    <div>
+        <p class="font-bold">Logic Validated</p>
+        <p class="text-slate-400 text-xs">Metric mastery confirmed.</p>
+    </div>
+</div>
+
+<script>
+    // Progress Tracker
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+
+    // Intersection Observer for Reveal
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', 'translate-y-4');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-observer').forEach(el => observer.observe(el));
+
+    // Hero Tooltip Data
+    const heroData = [
+        { title: "Ground Truth (Human Labels)", text: "We start with a set of queries and 'correct' documents, typically labeled by experts as Relevant (1) or Irrelevant (0). This is our gold standard." },
+        { title: "Scoring (Model Inference)", text: "We run our candidate documents through the re-ranker. The model assigns a score to each query-document pair, establishing a proposed order." },
+        { title: "Comparison (Metric Calculation)", text: "We compare the model's proposed ranking against our ground truth. Mathematical functions like MRR or NDCG quantify the alignment." }
+    ];
+
+    function updateHeroTooltip(index) {
+        const tooltip = document.getElementById('hero-tooltip');
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            tooltip.innerHTML = `<h4 class="font-bold text-slate-900 text-lg mb-3">${heroData[index].title}</h4><p class="text-slate-600 leading-relaxed max-w-2xl mx-auto">${heroData[index].text}</p>`;
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateY(0)';
+        }, 300);
+        
+        document.querySelectorAll('.hero-node div').forEach((node, i) => {
+            if(i === index) node.classList.add('node-active');
+            else node.classList.remove('node-active');
+        });
+    }
+
+    // Simulator Logic
+    const unoptimizedList = [
+        { label: "Irrelevant", color: "bg-slate-200" },
+        { label: "Irrelevant", color: "bg-slate-200" },
+        { label: "Relevant", color: "bg-indigo-400" },
+        { label: "Relevant", color: "bg-indigo-400" }
+    ];
+
+    const optimizedList = [
+        { label: "Relevant", color: "bg-indigo-600" },
+        { label: "Relevant", color: "bg-indigo-400" },
+        { label: "Irrelevant", color: "bg-slate-200" },
+        { label: "Irrelevant", color: "bg-slate-200" }
+    ];
+
+    function renderSimulatorList(isOptimized) {
+        const list = isOptimized ? optimizedList : unoptimizedList;
+        const container = document.getElementById('sim-list');
+        container.innerHTML = '';
+        list.forEach((item, idx) => {
+            const div = document.createElement('div');
+            div.className = `flex items-center justify-between p-3 rounded-xl border border-slate-100 bg-white shadow-sm timeline-item`;
+            div.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <span class="text-[10px] font-bold text-slate-400 w-4">#${idx+1}</span>
+                    <span class="text-xs font-medium text-slate-700">Document Chunk</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white ${item.color}">${item.label}</span>
+            `;
+            container.appendChild(div);
+        });
+        document.getElementById('mrr-val').innerText = isOptimized ? "1.00" : "0.33";
+        document.getElementById('ndcg-val').innerText = isOptimized ? "0.95" : "0.32";
+    }
+
+    function toggleSimulator() {
+        const active = document.getElementById('sim-toggle').checked;
+        renderSimulatorList(active);
+        const footer = document.getElementById('sim-footer');
+        footer.innerText = active ? "Optimized: Relevant hits at Rank 1 maximize MRR and NDCG." : "Toggle to compare an unoptimized retriever vs. an optimized re-ranker.";
+    }
+
+    // Initial simulator state
+    renderSimulatorList(false);
+
+    // Shuffle Gatekeeper Logic
+    const originalSteps = [
+        { id: 1, text: "Curate Test Queries & Expert Labels" },
+        { id: 2, text: "Run Model over Candidate Pairs" },
+        { id: 3, text: "Extract Ranked List per Query" },
+        { id: 4, text: "Compute MRR/NDCG per Query" },
+        { id: 5, text: "Average Metrics across Test Set" }
+    ];
+
+    let currentOrder = [...originalSteps].sort(() => Math.random() - 0.5);
+
+    function renderShuffle() {
+        const container = document.getElementById('shuffle-list');
+        container.innerHTML = '';
+        currentOrder.forEach((step, index) => {
+            const item = document.createElement('div');
+            item.className = "flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-2xl timeline-item group hover:border-indigo-300 transition-colors";
+            item.innerHTML = `
+                <div class="flex items-center space-x-4">
+                    <span class="w-7 h-7 flex items-center justify-center bg-white border border-slate-200 text-slate-400 text-xs font-bold rounded-full group-hover:text-indigo-600 group-hover:border-indigo-600">${index + 1}</span>
+                    <span class="text-sm font-bold text-slate-700">${step.text}</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button onclick="moveItem(${index}, -1)" class="p-2 hover:bg-white rounded-xl transition-all ${index === 0 ? 'opacity-20 cursor-not-allowed' : ''}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                    <button onclick="moveItem(${index}, 1)" class="p-2 hover:bg-white rounded-xl transition-all ${index === currentOrder.length - 1 ? 'opacity-20 cursor-not-allowed' : ''}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            `;
+            container.appendChild(item);
+        });
+    }
+
+    function moveItem(index, direction) {
+        const newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= currentOrder.length) return;
+        const temp = currentOrder[index];
+        currentOrder[index] = currentOrder[newIndex];
+        currentOrder[newIndex] = temp;
+        renderShuffle();
+    }
+
+    function checkOrder() {
+        const isCorrect = currentOrder.every((step, i) => step.id === i + 1);
+        const msg = document.getElementById('feedback-msg');
+        msg.classList.remove('hidden');
+        
+        if (isCorrect) {
+            msg.innerText = "Evaluation Pipeline Validated!";
+            msg.className = "text-center text-sm font-bold p-4 rounded-2xl bg-emerald-50 text-emerald-700 mt-6";
+            showToast();
+        } else {
+            msg.innerText = "Sequence mismatch. Hint: Expert labeling must happen before model scoring.";
+            msg.className = "text-center text-sm font-bold p-4 rounded-2xl bg-red-50 text-red-700 mt-6";
+        }
+    }
+
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('-translate-y-0', 'opacity-100');
+        setTimeout(() => {
+            toast.classList.add('translate-y-20', 'opacity-0');
+            toast.classList.remove('-translate-y-0', 'opacity-100');
+        }, 5000);
+    }
+
+    // Init
+    renderShuffle();
+</script>
+
+
+<style>
+    section[id], header[id] {
+        scroll-margin-top: 96px;
+    }
+</style>
+
+<!-- Slide audio controller -->
+<div id="slide-audio-controller" class="fixed bottom-4 left-1/2 -translate-x-1/2 transform z-50 bg-slate-800/90 border border-white/10 shadow-[0_0_20px_rgba(6,182,212,0.25)] rounded-2xl px-4 py-3 flex items-center gap-3 text-sm text-slate-200">
+    <button id="audio-prev" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:text-cyan-400" aria-label="Previous slide audio">⏮</button>
+    <button id="audio-play" class="w-10 h-10 rounded-full bg-cyan-500 text-slate-900 font-bold flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)]" aria-label="Play or pause">▶</button>
+    <button id="audio-next" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:text-cyan-400" aria-label="Next slide audio">⏭</button>
+    <div class="flex-1 min-w-[200px]">
+        <div id="audio-label" class="text-xs uppercase tracking-widest text-cyan-400">Slide</div>
+        <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden mt-1">
+            <div id="audio-progress" class="h-full bg-cyan-500" style="width:0%"></div>
+        </div>
+    </div>
+    <label class="flex items-center gap-1 text-[11px] text-slate-400 cursor-pointer select-none">
+        <input id="audio-auto-advance" type="checkbox" class="accent-cyan-500" checked>
+        Auto-advance
+    </label>
+</div>
+
+<script>
+(() => {
+    const sectionEls = Array.from(document.querySelectorAll('section[id], header[id]'));
+    const seen = new Set();
+    const slides = [];
+    sectionEls.forEach((el) => {
+        if (!el.id || seen.has(el.id)) return;
+        seen.add(el.id);
+        const heading = el.querySelector('h1, h2, h3');
+        const label = (el.getAttribute('data-audio-label') || (heading ? heading.textContent : '') || el.id)
+            .replace(/\s+/g, ' ')
+            .trim();
+        slides.push({
+            id: el.id,
+            label: label || el.id,
+            audio: `${el.id}.mp3`,
+            el,
+        });
+    });
+
+    if (!slides.length) return;
+
+    const audio = new Audio();
+    audio.preload = 'auto';
+
+    const playBtn = document.getElementById('audio-play');
+    const prevBtn = document.getElementById('audio-prev');
+    const nextBtn = document.getElementById('audio-next');
+    const label = document.getElementById('audio-label');
+    const progress = document.getElementById('audio-progress');
+    const autoAdvanceToggle = document.getElementById('audio-auto-advance');
+
+    const pageTitle = document.title || 'Slides';
+    const cleanedTitle = pageTitle.replace(/\s*[|\-]\s*Deep Work Module\s*/i, '');
+    label.textContent = cleanedTitle || pageTitle;
+
+    let currentIndex = 0;
+
+    function loadSlide(index) {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+        const slide = slides[currentIndex];
+        audio.src = slide.audio;
+        highlightSlideButton(slide.id);
+    }
+
+    function playCurrent() {
+        audio.play().catch(() => {
+            playBtn.textContent = '▶';
+        });
+        playBtn.textContent = '⏸';
+    }
+
+    function pauseCurrent() {
+        audio.pause();
+        playBtn.textContent = '▶';
+    }
+
+    function goToSlide(index, play = true, scroll = true) {
+        loadSlide(index);
+        if (scroll) {
+            slides[currentIndex].el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (play) {
+            playCurrent();
+        } else {
+            pauseCurrent();
+        }
+    }
+
+    function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+            goToSlide(currentIndex + 1, true);
+        } else {
+            pauseCurrent();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1, true);
+        } else {
+            goToSlide(0, true);
+        }
+    }
+
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            playCurrent();
+        } else {
+            pauseCurrent();
+        }
+    });
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    audio.addEventListener('timeupdate', () => {
+        const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        progress.style.width = `${pct}%`;
+    });
+
+    audio.addEventListener('ended', () => {
+        if (autoAdvanceToggle.checked) {
+            nextSlide();
+        } else {
+            pauseCurrent();
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible && audio.paused) {
+            const idx = slides.findIndex(s => s.id === visible.target.id);
+            if (idx >= 0 && idx !== currentIndex) {
+                loadSlide(idx);
+            }
+        }
+    }, { threshold: [0.3, 0.6, 0.9] });
+    slides.forEach(s => observer.observe(s.el));
+
+    function highlightSlideButton(activeId) {
+        slides.forEach(s => {
+            const btn = document.querySelector(`[data-audio-btn="${s.id}"]`);
+            if (!btn) return;
+            if (s.id === activeId) {
+                btn.classList.add('bg-cyan-500');
+                btn.classList.remove('bg-indigo-500/20');
+            } else {
+                btn.classList.add('bg-indigo-500/20');
+                btn.classList.remove('bg-cyan-500');
+            }
+        });
+    }
+    loadSlide(0);
+})();
+</script>
+</body></html>
