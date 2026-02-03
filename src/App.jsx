@@ -49,57 +49,99 @@ const courseData = {
         {
           id: 'what_is_rerankiing',
           title: 'What is Re-ranking',
+          group: 'concept',
           path: '/rag/re-ranking/what_is_rerankiing/index.html',
         },
         {
           id: 'cross_encoder_re_rankers',
           title: 'Cross Encoder Re-rankers',
+          group: 'concept',
           path: '/rag/re-ranking/cross_encoder_re_rankers/index.html',
         },
         {
           id: 'hybrid_scoring',
           title: 'Hybrid Scoring',
+          group: 'concept',
           path: '/rag/re-ranking/Hybrid_scoring/index.html',
         },
         {
           id: 'llm_based_re_ranking',
           title: 'LLM Based Re-ranking',
+          group: 'concept',
           path: '/rag/re-ranking/llm_based_re_ranking/index.html',
         },
         {
           id: 'multi_hop_reranking',
           title: 'Multi-hop Re-ranking',
+          group: 'concept',
           path: '/rag/re-ranking/Multi_hop_reranking/index.html',
         },
         {
           id: 'query_expansion_re_ranking',
           title: 'Query Expansion Re-ranking',
+          group: 'concept',
           path: '/rag/re-ranking/Query_expansion_re_ranking/index.html',
         },
         {
           id: 'query_ambiguity_handling',
           title: 'Query Ambiguity Handling',
+          group: 'concept',
           path: '/rag/re-ranking/Query_ambiguity_handling/index.html',
         },
         {
           id: 'rule_based_re_ranking',
           title: 'Rule-based Re-ranking',
+          group: 'concept',
           path: '/rag/re-ranking/Rule_based_re_ranking/index.html',
         },
         {
           id: 'latency_optimization_module',
           title: 'Latency Optimization Module',
+          group: 'concept',
           path: '/rag/re-ranking/Latency_optimization_module/index.html',
         },
         {
           id: 'offline_evaluation_metrics',
           title: 'Offline Evaluation Metrics',
+          group: 'concept',
           path: '/rag/re-ranking/Offline_evaluation_metrics/index.html',
         },
         {
           id: 'online_evaluation',
           title: 'Online Evaluation',
+          group: 'concept',
           path: '/rag/re-ranking/Online_evaluation/index.html',
+        },
+        // Code Run Down subtopics
+        {
+          id: 'code-chat_service',
+          title: 'chat_service.py',
+          group: 'code',
+          path: '/rag/re-ranking/code_run_down/chat_service/chat_service.html',
+        },
+        {
+          id: 'code-compound_retriever',
+          title: 'compound_retriever.py',
+          group: 'code',
+          path: '/rag/re-ranking/code_run_down/compound_retriever/compound_retriever.html',
+        },
+        {
+          id: 'code-generate',
+          title: 'generate.py',
+          group: 'code',
+          path: '/rag/re-ranking/code_run_down/generate/generate.html',
+        },
+        {
+          id: 'code-config',
+          title: 'config.py',
+          group: 'code',
+          path: '/rag/re-ranking/code_run_down/config/config.html',
+        },
+        {
+          id: 'code-storage_context_manager',
+          title: 'storage_context_manager.py',
+          group: 'code',
+          path: '/rag/re-ranking/code_run_down/storage_context_manager/storage_context_manager.html',
         },
       ],
     },
@@ -139,6 +181,8 @@ function App() {
   const isTopicDetail = activeTopic && activeTopic !== 're-ranking'
   const currentTopic = courseData.topics.find((topic) => topic.id === activeTopic)
   const reRankingTopic = courseData.topics.find((topic) => topic.id === 're-ranking')
+  const reRankingConcepts = reRankingTopic?.subtopics.filter((s) => s.group !== 'code') ?? []
+  const reRankingCode = reRankingTopic?.subtopics.filter((s) => s.group === 'code') ?? []
   const isLessonView = Boolean(activeLesson?.path)
 
   useEffect(() => {
@@ -293,11 +337,36 @@ function App() {
               <h2>{reRankingTopic?.title}</h2>
               <p className="sidebar-meta">Re-ranking Track</p>
               <nav className="topic-list">
-                {reRankingTopic && (
+                {reRankingConcepts.length > 0 && (
                   <div className="topic-block">
-                    <h3>{reRankingTopic.title}</h3>
+                    <h3>Concepts</h3>
                     <ul>
-                      {reRankingTopic.subtopics.map((subtopic) => {
+                      {reRankingConcepts.map((subtopic) => {
+                        const isActive = activeLesson?.id === subtopic.id
+                        return (
+                          <li key={subtopic.id}>
+                            <button
+                              className={`subtopic-link ${
+                                subtopic.path ? '' : 'disabled'
+                              } ${isActive ? 'active' : ''}`}
+                              onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
+                            >
+                              <span className="subtopic-icon">
+                                {subtopic.path ? '▶' : '🔒'}
+                              </span>
+                              <span>{subtopic.title}</span>
+                            </button>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                )}
+                {reRankingCode.length > 0 && (
+                  <div className="topic-block" style={{ marginTop: '1.75rem' }}>
+                    <h3>Code Run Down</h3>
+                    <ul>
+                      {reRankingCode.map((subtopic) => {
                         const isActive = activeLesson?.id === subtopic.id
                         return (
                           <li key={subtopic.id}>

@@ -1,0 +1,1301 @@
+<html lang="en"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+    window.__firebase_config = firebaseConfig;
+    window.__initial_auth_token = initialAuthToken;
+    window.__app_id = appId;
+        })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6ImIxZjQyNzYzZjkzNGExOTQwMWNkOTFhNjdjY2FhNzdiNjIwNWU2N2EiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwMTI5NTYxNjk5Njg0NDg5ODMxMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJiY2U0YjIyMTllNGEtd2Fsa3Rocm91Z2guaHRtbC0zOTQifSwiZXhwIjoxNzcwMTI5MDY4LCJpYXQiOjE3NzAxMjU0NjgsImFsZyI6IlJTMjU2In0.UgJx_QYFuK00EEx9md3XNQ-ImKMZ0zs4hGBaEM8uFOM2heP4I2156-ax3Px1f9zUWY3xQdtrGVrLuP3eEB9ADnlWaODaAlIpXVVrYu3l6kbYR0Ka0RN8NGwWrBJ2NfPntYlfl9Rb5QNJrwPT7zeDjyIhzG7lGWu6xobNwXkLy1ONu31CZTJkeGpI4MN57pjGql4u00bWxaAgEQzPwmYEWaT3EJVBVCgKv5RLjA0ziek5_juQKJ8qYKCvSHllk4fIYYJ0Rx5RyrXUDGbFLziK3MrPbkPLCeJ_2DDk2dnsAww5cHdRR46dM8zObvbCjjdIMs5PzsHOvb87V3UqLvKAtw","bce4b2219e4a-walkthrough.html-394")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+MIT License
+
+Copyright (c) 2017-2023 W.Y.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+// Ensure this script is executed only once
+if (window.firebaseAuthBridgeScriptLoaded) {
+return;
+}
+window.firebaseAuthBridgeScriptLoaded = true;
+
+let nextTokenPromiseId = 0;
+
+// Stores { resolve, reject } for ongoing token requests
+const pendingTokenPromises = {};
+
+// Listen for messages from the Host Application
+window.addEventListener('message', function(event) {
+
+const messageData = event.data;
+
+if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+  const { success, token, error, promiseId } = messageData ?? {};
+  if (pendingTokenPromises[promiseId]) {
+    if (success) {
+      pendingTokenPromises[promiseId].resolve(token);
+    } else {
+      pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+    }
+    delete pendingTokenPromises[promiseId];
+  }
+}
+});
+
+// Expose a function for the Generated App to request a new Firebase token
+window.requestNewFirebaseToken = function() {
+const currentPromiseId = nextTokenPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingTokenPromises[currentPromiseId] = { resolve, reject };
+});
+if (window.parent && window.parent !== window) {
+  window.parent.postMessage({
+    type: 'REQUEST_NEW_FIREBASE_TOKEN',
+    promiseId: currentPromiseId
+  }, '*');
+} else {
+  pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+  delete pendingTokenPromises[currentPromiseId];
+}
+return promise;
+};
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+try {
+  Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+    get: function() {
+      return undefined; // Or throw an error
+    },
+    configurable: false
+  });
+} catch (error) {
+  console.error("Error defining prototype getter:", error);
+}
+}
+})();
+
+(function() {
+const pendingMediaResolvers = {};
+let nextMediaPromiseId = 0;
+
+function requestMediaPermissions(constraints) {
+const mediaPromiseId = nextMediaPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingMediaResolvers[mediaPromiseId] = (granted) => {
+    delete pendingMediaResolvers[mediaPromiseId];
+    resolve(granted);
+  };
+});
+
+window.parent.postMessage({
+  type: 'requestMediaPermission',
+  constraints: constraints,
+  promiseId: mediaPromiseId,
+}, '*');
+
+return promise;
+}
+
+let originalGetUserMedia = realOriginalGetUserMedia;
+
+function interceptGetUserMedia() {
+if (navigator.mediaDevices) {
+  Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+    value: function(constraints) {
+      return requestMediaPermissions(constraints).then((granted) => {
+        if (granted) {
+          if (originalGetUserMedia) {
+            return originalGetUserMedia(constraints);
+          } else {
+            throw new Error("Original getUserMedia not available.");
+          }
+        } else {
+          throw new DOMException('Permission denied', 'NotAllowedError');
+        }
+      });
+    },
+    writable: false,
+    configurable: false
+  });
+}
+}
+
+interceptGetUserMedia();
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+for (const mutation of mutationsList) {
+  if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'childList' && mutation.addedNodes) {
+    mutation.addedNodes.forEach(node => {
+      if (node === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      }
+    });
+  }
+}
+});
+
+function interceptSpeechRecognition() {
+if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+  return;
+}
+
+const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const SpeechRecognitionWrapper = function(...args) {
+  const recognizer = new OriginalSpeechRecognition(...args);
+  const originalStart = recognizer.start.bind(recognizer);
+
+  recognizer.start = function() {
+    requestMediaPermissions({ audio: true }).then(granted => {
+      if (granted) {
+        originalStart();
+      } else {
+        const errorEvent = new SpeechRecognitionErrorEvent('error');
+        errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+        recognizer.dispatchEvent(errorEvent);
+      }
+    });
+  };
+
+  return recognizer;
+};
+
+SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+if (window.SpeechRecognition) {
+  window.SpeechRecognition = SpeechRecognitionWrapper;
+}
+if (window.webkitSpeechRecognition) {
+  window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+}
+}
+
+interceptSpeechRecognition();
+
+window.addEventListener('message', function(event) {
+if (event.data) {
+  if (event.data.type === 'resolveMediaPermission') {
+    const { promiseId, granted } = event.data;
+    if (pendingMediaResolvers[promiseId]) {
+      pendingMediaResolvers[promiseId](granted);
+    }
+  }
+}
+});
+
+})();</script><script>((function(modelInformation) {
+const originalFetch = window.fetch;
+// TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+let googleLlmBaseApiUrls = [
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+];
+modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+);
+});
+modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+);
+});
+
+const pendingFetchResolvers = {};
+let nextPromiseId = 0;
+
+function handleStringInput(input, optionsArgument) {
+const actualUrl = input;
+const fetchCallArgs = [actualUrl, optionsArgument];
+const effectiveOptions = optionsArgument || {};
+const bodyForApiKeyCheck = effectiveOptions.body;
+const bodyForPostMessage = effectiveOptions.body;
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+function handleRequestInput(input, optionsArgument) {
+const actualUrl = input.url;
+const fetchCallArgs = [input, optionsArgument];
+const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (optionsArgument) {
+  if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+  if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+  if ('body' in optionsArgument) {
+    bodyForApiKeyCheck = optionsArgument.body;
+    bodyForPostMessage = optionsArgument.body;
+  } else {
+    bodyForApiKeyCheck = undefined;
+    bodyForPostMessage = input.body;
+  }
+} else {
+  bodyForApiKeyCheck = undefined;
+  bodyForPostMessage = input.body;
+}
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+window.fetch = function(input, optionsArgument) {
+let actualUrl;
+let fetchCallArgs;
+let effectiveOptions = {};
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (typeof input === 'string') {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+} else if (input instanceof Request) {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+} else {
+  return originalFetch.apply(window, [input, optionsArgument]);
+}
+
+effectiveOptions.method = effectiveOptions.method || 'GET';
+if (!effectiveOptions.headers) {
+  effectiveOptions.headers = new Headers();
+}
+
+
+if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+  let apiKeyIsNull = true;
+
+  const regex = new RegExp("models/([^:]+)");
+  const modelNameMatch = actualUrl.match(regex);
+  const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+  try {
+    const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+    const apiKeyParam = urlObject.searchParams.get('key');
+    if (apiKeyParam) {
+      apiKeyIsNull = false;
+    }
+  } catch (e) {
+    // Continue checks even if URL parsing fails
+  }
+
+  if (apiKeyIsNull && effectiveOptions.headers) {
+    const h = new Headers(effectiveOptions.headers);
+    const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+    if (apiKeyHeaderValue) {
+      apiKeyIsNull = false;
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+  }
+
+  if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+    try {
+      const bodyData = JSON.parse(bodyForApiKeyCheck);
+      if (bodyData && bodyData.apiKey) {
+        apiKeyIsNull = false;
+        return originalFetch.apply(window, fetchCallArgs);
+      }
+    } catch (e) {
+      // Ignore JSON parsing errors
+    }
+  }
+
+  if(apiKeyIsNull) {
+    const promiseId = nextPromiseId++;
+    const promise = new Promise((resolve) => {
+      pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+        delete pendingFetchResolvers[promiseId];
+        resolve(resolvedResponse);
+      };
+    });
+
+    let serializedBodyForPostMessage;
+    if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+        serializedBodyForPostMessage = bodyForPostMessage;
+    } else if (bodyForPostMessage instanceof ReadableStream) {
+        serializedBodyForPostMessage = null;
+    } else {
+        try {
+            serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+        } catch (e) {
+            serializedBodyForPostMessage = null;
+        }
+    }
+
+    const messageOptions = {
+        method: effectiveOptions.method,
+        headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+        body: serializedBodyForPostMessage
+    };
+
+    window.parent.postMessage({
+      type: 'requestFetch',
+      url: actualUrl,
+      modelName: modelName,
+      options: messageOptions,
+      promiseId: promiseId,
+    }, '*');
+
+    return promise;
+  }
+  return originalFetch.apply(window, fetchCallArgs);
+}
+return originalFetch.apply(window, fetchCallArgs);
+};
+
+window.addEventListener('message', function(event) {
+if (event.data && event.data.type === 'resolveFetch') {
+  const { promiseId, response } = event.data;
+  if (pendingFetchResolvers[promiseId]) {
+    try {
+      const reconstructedResponse = new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: new Headers(response.headers),
+      });
+      pendingFetchResolvers[promiseId](reconstructedResponse);
+    } catch (error) {
+      pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+    }
+  }
+}
+});
+
+}))({"textModelName":"gemini-2.5-flash-preview-09-2025","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function() {
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
+/**
+* Normalizes an error event or a promise rejection reason into a structured error object.
+* @param {*} errorEventOrReason The error object or reason.
+* @return {object} Structured error data { message, name, stack }.
+*/
+function getErrorObject(errorEventOrReason) {
+if (errorEventOrReason instanceof Error) {
+  return {
+    message: errorEventOrReason.message,
+    name: errorEventOrReason.name,
+    stack: errorEventOrReason.stack,
+  };
+}
+// Fallback for non-Error objects.
+try {
+  return {
+    message: JSON.stringify(errorEventOrReason),
+    name: 'UnknownErrorType',
+    stack: null,
+  };
+} catch (e) {
+  return {
+    message: String(errorEventOrReason),
+    name: 'UnknownErrorTypeNonStringifiable',
+    stack: null,
+  };
+}
+}
+
+/**
+* Converts an array of arguments (from log/error) into a single string.
+* Handles Error objects specially to include their message and stack.
+* @param {Array<*>} args - Arguments passed to console methods.
+* @return {string} A string representation of the arguments.
+*/
+function stringifyArgs(args) {
+return args
+  .map((arg) => {
+    if (arg instanceof Error) {
+      const {message, stack} = arg;
+      return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+    }
+    if (typeof arg === 'object' && arg !== null) {
+      try {
+        return JSON.stringify(arg);
+      } catch (error) {
+        return '[Circular Object]';
+      }
+    } else {
+      return String(arg);
+    }
+  })
+  .join(' ');
+}
+
+console.log = function(...args) {
+const logString = stringifyArgs(args);
+window.parent.postMessage({ type: 'log', message: logString }, '*');
+originalConsoleLog.apply(console, args);
+};
+
+console.error = function(...args) {
+let errorData;
+if (args.length > 0 && args[0] instanceof Error) {
+  const err = args[0];
+  // If the first arg is an Error, capture its details.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    ...getErrorObject(err),
+    rawArgsString: stringifyArgs(args.slice(1)),
+    timestamp: new Date().toISOString(),
+  };
+} else {
+  // If not an Error object, treat all args as a general error message.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    message: stringifyArgs(args),
+    name: 'ConsoleLoggedError',
+    stack: null,
+    timestamp: new Date().toISOString(),
+  };
+}
+window.parent.postMessage(errorData, '*');
+originalConsoleError.apply(console, args);
+};
+
+// Listen for global unhandled synchronous errors.
+window.addEventListener('error', function(event) {
+const errorDetails = event.error ? getErrorObject(event.error) : {
+  message: event.message,
+  name: 'GlobalError',
+  stack: null,
+  filename: event.filename,
+  lineno: event.lineno,
+  colno: event.colno,
+};
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'global',
+  ...errorDetails,
+  message: errorDetails.message || event.message,
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+// Listen for unhandled promise rejections (asynchronous errors).
+window.addEventListener('unhandledrejection', function(event) {
+const errorDetails = getErrorObject(event.reason);
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'unhandledrejection',
+  ...errorDetails,
+  message: errorDetails.message || 'Unhandled Promise Rejection',
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Lens: RAG Implementation Walkthrough</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Prism.js for Syntax Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" crossorigin="anonymous"></script>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    mono: ['Fira Code', 'monospace'],
+                },
+                colors: {
+                    indigo: {
+                        600: '#6366f1',
+                    }
+                },
+                borderRadius: {
+                    '3xl': '1.5rem',
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    /* Base Styling */
+    body {
+        background-color: #f4f7fb;
+        color: #1a1c21;
+        scroll-behavior: smooth;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+    }
+
+    /* Glassmorphism Header */
+    .glass-header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Code Pane Styling (GitHub Dark) */
+    .code-pane {
+        background-color: #0d1117;
+    }
+
+    pre[class*="language-"] {
+        margin: 0 !important;
+        padding: 2rem !important;
+        background: transparent !important;
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Custom Prism GitHub Dark Tones */
+    .token.keyword { color: #ff7b72; }
+    .token.string { color: #a5d6ff; }
+    .token.function { color: #d2a8ff; }
+    .token.comment { color: #8b949e; }
+    .token.class-name { color: #ffa657; }
+    .token.operator { color: #79c0ff; }
+
+    /* Lens Effect logic */
+    .code-line {
+        transition: opacity 0.3s ease, border-color 0.3s ease;
+        display: block;
+        border-left: 3px solid transparent;
+        padding-left: 0.5rem;
+        white-space: pre;
+    }
+
+    .code-line.dimmed {
+        opacity: 0.25;
+    }
+
+    .code-line.active {
+        opacity: 1;
+        border-left-color: #6366f1;
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Traffic Lights */
+    .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #ff5f56; }
+    .dot-amber { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .explanation-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+    }
+
+    .explanation-card.active {
+        border-color: #6366f1;
+        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1);
+        transform: translateY(-2px);
+    }
+
+    #progress-bar {
+        transition: width 0.4s ease;
+    }
+
+    .snippet-window {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:Fira Code, monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-0{bottom:0px}.left-0{left:0px}.top-0{top:0px}.z-20{z-index:20}.z-50{z-index:50}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.ml-4{margin-left:1rem}.ml-auto{margin-left:auto}.mb-3{margin-bottom:0.75rem}.flex{display:flex}.hidden{display:none}.h-16{height:4rem}.h-5{height:1.25rem}.h-\[2px\]{height:2px}.h-full{height:100%}.max-h-\[60vh\]{max-height:60vh}.max-h-\[calc\(100vh-4rem\)\]{max-height:calc(100vh - 4rem)}.min-h-\[calc\(100vh-4rem\)\]{min-height:calc(100vh - 4rem)}.w-0{width:0px}.w-5{width:1.25rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-6{gap:1.5rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-3xl{border-radius:1.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-2{border-width:2px}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.bg-\[\#0d1117\]{--tw-bg-opacity:1;background-color:rgb(13 17 23 / var(--tw-bg-opacity, 1))}.bg-\[\#161b22\]{--tw-bg-opacity:1;background-color:rgb(22 27 34 / var(--tw-bg-opacity, 1))}.bg-\[\#f4f7fb\]{--tw-bg-opacity:1;background-color:rgb(244 247 251 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-0{padding:0px}.p-2{padding:0.5rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.pb-20{padding-bottom:5rem}.font-sans{font-family:Inter, sans-serif}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.tracking-wider{letter-spacing:0.05em}.text-indigo-600{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}}@media (min-width: 1024px){.lg\:w-2\/5{width:40%}.lg\:w-3\/5{width:60%}.lg\:flex-row{flex-direction:row}.lg\:p-10{padding:2.5rem}}</style></head>
+<body class="font-sans">
+
+<!-- Sticky Header -->
+<header class="glass-header sticky top-0 z-50 w-full h-16 flex items-center px-8">
+    <div class="flex items-center gap-3">
+        <div class="bg-indigo-600 p-2 rounded-lg">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+        </div>
+        <h1 class="font-bold text-lg tracking-tight">CodeLens <span class="text-slate-400 font-normal">/ RAG pipeline</span></h1>
+    </div>
+    
+    <div class="ml-auto flex items-center gap-6">
+        <div class="hidden md:flex flex-col items-end">
+            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Progress</span>
+            <span id="progress-text" class="text-sm font-semibold text-indigo-600">33% Complete</span>
+        </div>
+        <button id="view-toggle" class="bg-slate-900 text-white px-5 py-2 rounded-xl text-sm font-medium hover:bg-slate-800 transition-colors">
+            Explore Full File
+        </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="absolute bottom-0 left-0 w-full h-[2px] bg-slate-100">
+        <div id="progress-bar" class="h-full bg-indigo-600 w-0" style="width: 33.3333%;"></div>
+    </div>
+</header>
+
+<main class="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
+    
+    <!-- Left Panel: Explanations -->
+    <section class="lg:w-2/5 p-6 lg:p-10 overflow-y-auto max-h-[calc(100vh-4rem)] space-y-6 bg-[#f4f7fb]">
+        <div class="mb-10">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Architectural Walkthrough</h2>
+            <p class="text-slate-500 leading-relaxed">Deep dive into the LlamaIndex-based RAG response generation class. Click cards to sync code views.</p>
+        </div>
+
+        <div id="explanation-container" class="space-y-4 pb-20">
+            <!-- Cards injected here by renderExplanations() -->
+        </div>
+    </section>
+
+    <!-- Right Panel: Code Pane -->
+    <section id="code-panel" class="lg:w-3/5 code-pane relative overflow-hidden flex flex-col">
+        
+        <!-- Focused Mode Container -->
+        <div id="snippet-container" class="absolute inset-0 flex items-center justify-center p-8 z-20">
+            <div class="snippet-window bg-[#0d1117] w-full max-w-2xl rounded-2xl overflow-hidden border border-slate-800">
+                <div class="bg-[#161b22] px-4 py-3 flex items-center gap-2 border-bottom border-slate-800">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-amber"></span>
+                    <span class="dot dot-green"></span>
+                    <span id="snippet-label" class="ml-4 text-[10px] uppercase font-bold text-slate-500 tracking-widest">Candidate Retrieval</span>
+                </div>
+                <div class="p-0 overflow-auto max-h-[60vh]">
+                    <pre id="snippet-pre" class="language-python" tabindex="0"><code class="language-python">    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">_retrieve_documents</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Initial Retrieval Producing Candidates for Re-ranking."""</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Retrieving relevant documents..."</span><span class="token punctuation">)</span>
+    retrieved_docs <span class="token operator">=</span> <span class="token keyword">await</span> self<span class="token punctuation">.</span>query_engine<span class="token punctuation">.</span>aretrieve<span class="token punctuation">(</span>QueryBundle<span class="token punctuation">(</span>query_str<span class="token operator">=</span>self<span class="token punctuation">.</span>_refined_query<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Score of retrieved docs: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">[</span>doc<span class="token punctuation">.</span>score <span class="token keyword">for</span> doc <span class="token keyword">in</span> retrieved_docs<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> retrieved_docs
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">_retrieve_documents_report</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Code Mode Container (Hidden by default) -->
+        <div id="full-code-container" class="hidden absolute inset-0 overflow-y-auto p-0 scroll-smooth">
+            <pre id="full-code-pre" class="line-numbers language-python" tabindex="0"><code id="full-code-content" class="language-python"><span class="code-line" id="line-1"><span class="token keyword">import</span> logging</span>
+<span class="code-line" id="line-2"><span class="token keyword">import</span> json</span>
+<span class="code-line" id="line-3"><span class="token keyword">import</span> tiktoken  <span class="token comment"># For token counting</span></span>
+<span class="code-line" id="line-4"><span class="token keyword">import</span> uuid</span>
+<span class="code-line" id="line-5"><span class="token keyword">import</span> time</span>
+<span class="code-line" id="line-6"><span class="token keyword">import</span> warnings</span>
+<span class="code-line" id="line-7"><span class="token keyword">import</span> re</span>
+<span class="code-line" id="line-8"><span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path</span>
+<span class="code-line" id="line-9"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Optional<span class="token punctuation">,</span> Dict<span class="token punctuation">,</span> Generator<span class="token punctuation">,</span> List<span class="token punctuation">,</span> Any<span class="token punctuation">,</span> Union<span class="token punctuation">,</span> Tuple<span class="token punctuation">,</span> Callable<span class="token punctuation">,</span> AsyncGenerator</span>
+<span class="code-line" id="line-10"><span class="token keyword">from</span> pydantic <span class="token keyword">import</span> BaseModel</span>
+<span class="code-line" id="line-11"><span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> quote</span>
+<span class="code-line" id="line-12"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime</span>
+<span class="code-line" id="line-13"> </span>
+<span class="code-line" id="line-14"><span class="token keyword">import</span> qdrant_client</span>
+<span class="code-line" id="line-15"><span class="token keyword">import</span> asyncio</span>
+<span class="code-line" id="line-16"><span class="token keyword">import</span> nest_asyncio</span>
+<span class="code-line" id="line-17"><span class="token keyword">from</span> tavily <span class="token keyword">import</span> TavilyClient</span>
+<span class="code-line" id="line-18"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core <span class="token keyword">import</span> StorageContext<span class="token punctuation">,</span> Settings<span class="token punctuation">,</span> load_index_from_storage<span class="token punctuation">,</span>PromptHelper<span class="token punctuation">,</span>VectorStoreIndex</span>
+<span class="code-line" id="line-19"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>schema <span class="token keyword">import</span> QueryBundle<span class="token punctuation">,</span> Node</span>
+<span class="code-line" id="line-20"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>query_engine <span class="token keyword">import</span> CitationQueryEngine</span>
+<span class="code-line" id="line-21"> </span>
+<span class="code-line" id="line-22"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>tools <span class="token keyword">import</span> QueryEngineTool<span class="token punctuation">,</span> ToolMetadata</span>
+<span class="code-line" id="line-23"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>query_engine <span class="token keyword">import</span> SubQuestionQueryEngine</span>
+<span class="code-line" id="line-24"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>callbacks <span class="token keyword">import</span> CallbackManager<span class="token punctuation">,</span> LlamaDebugHandler</span>
+<span class="code-line" id="line-25"> </span>
+<span class="code-line" id="line-26"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core <span class="token keyword">import</span> Settings</span>
+<span class="code-line" id="line-27"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>vector_stores<span class="token punctuation">.</span>qdrant <span class="token keyword">import</span> QdrantVectorStore</span>
+<span class="code-line" id="line-28"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>postprocessor<span class="token punctuation">.</span>cohere_rerank <span class="token keyword">import</span> CohereRerank</span>
+<span class="code-line" id="line-29"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>postprocessor <span class="token keyword">import</span> SimilarityPostprocessor</span>
+<span class="code-line" id="line-30"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>vector_stores <span class="token keyword">import</span> MetadataFilters<span class="token punctuation">,</span> MetadataFilter</span>
+<span class="code-line" id="line-31"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> PromptTemplate</span>
+<span class="code-line" id="line-32"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>llms <span class="token keyword">import</span> ChatMessage<span class="token punctuation">,</span> MessageRole</span>
+<span class="code-line" id="line-33"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>response_synthesizers <span class="token keyword">import</span> get_response_synthesizer</span>
+<span class="code-line" id="line-34"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>schema <span class="token keyword">import</span> TextNode<span class="token punctuation">,</span>NodeWithScore</span>
+<span class="code-line" id="line-35"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core<span class="token punctuation">.</span>postprocessor <span class="token keyword">import</span> LLMRerank</span>
+<span class="code-line" id="line-36"> </span>
+<span class="code-line" id="line-37"><span class="token keyword">from</span> <span class="token punctuation">.</span>managers<span class="token punctuation">.</span>storage_manager <span class="token keyword">import</span> StorageManager</span>
+<span class="code-line" id="line-38"><span class="token keyword">from</span> <span class="token punctuation">.</span>managers<span class="token punctuation">.</span>llm_manager <span class="token keyword">import</span> LLMManager</span>
+<span class="code-line" id="line-39"><span class="token keyword">from</span> <span class="token punctuation">.</span>managers<span class="token punctuation">.</span>prompt_manager <span class="token keyword">import</span> PromptManager</span>
+<span class="code-line" id="line-40"><span class="token keyword">from</span> <span class="token punctuation">.</span>retrievers<span class="token punctuation">.</span>compound_retriever <span class="token keyword">import</span> CompoundQueryRetriever</span>
+<span class="code-line" id="line-41"> </span>
+<span class="code-line" id="line-42">warnings<span class="token punctuation">.</span>filterwarnings<span class="token punctuation">(</span><span class="token string">"ignore"</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-43"> </span>
+<span class="code-line" id="line-44">nest_asyncio<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-45">logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></span>
+<span class="code-line" id="line-46"> </span>
+<span class="code-line" id="line-47"><span class="token keyword">class</span> <span class="token class-name">Generate</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-48">    <span class="token triple-quoted-string string">"""Class for generating responses using RAG."""</span></span>
+<span class="code-line" id="line-49"> </span>
+<span class="code-line" id="line-50">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">,</span> secret<span class="token punctuation">,</span> chat_id<span class="token punctuation">,</span> query<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-51">        self<span class="token punctuation">.</span>_cohere_api_key <span class="token operator">=</span> self<span class="token punctuation">.</span>_secret<span class="token punctuation">(</span><span class="token string">"COHERE_API_KEY"</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-52">        <span class="token comment"># ... initialization logic ...</span></span>
+<span class="code-line" id="line-53"> </span>
+<span class="code-line" id="line-54">    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">_retrieve_documents</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-55">        <span class="token triple-quoted-string string">"""Initial Retrieval Producing Candidates for Re-ranking."""</span></span>
+<span class="code-line" id="line-56">        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Retrieving relevant documents..."</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-57">        retrieved_docs <span class="token operator">=</span> <span class="token keyword">await</span> self<span class="token punctuation">.</span>query_engine<span class="token punctuation">.</span>aretrieve<span class="token punctuation">(</span>QueryBundle<span class="token punctuation">(</span>query_str<span class="token operator">=</span>self<span class="token punctuation">.</span>_refined_query<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-58">        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Score of retrieved docs: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">[</span>doc<span class="token punctuation">.</span>score <span class="token keyword">for</span> doc <span class="token keyword">in</span> retrieved_docs<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-59">        <span class="token keyword">return</span> retrieved_docs</span>
+<span class="code-line" id="line-60"> </span>
+<span class="code-line" id="line-61">    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">_retrieve_documents_report</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-62">        <span class="token triple-quoted-string string">"""Report-Specific Retrieval Path for Re-ranking."""</span></span>
+<span class="code-line" id="line-63">        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Retrieving relevant documents..."</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-64">        retrieved_docs <span class="token operator">=</span> <span class="token keyword">await</span> self<span class="token punctuation">.</span>query_engine<span class="token punctuation">.</span>_aretrieve_report<span class="token punctuation">(</span>QueryBundle<span class="token punctuation">(</span>query_str<span class="token operator">=</span>self<span class="token punctuation">.</span>_refined_query<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-65">        <span class="token keyword">return</span> retrieved_docs</span>
+<span class="code-line" id="line-66"> </span>
+<span class="code-line" id="line-67">    <span class="token keyword">def</span> <span class="token function">_has_valid_docs</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> docs<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-68">        <span class="token triple-quoted-string string">"""Similarity Threshold as a Pre-Re-ranking Gate."""</span></span>
+<span class="code-line" id="line-69">        <span class="token keyword">if</span> docs <span class="token keyword">and</span> <span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">[</span>doc<span class="token punctuation">.</span>score <span class="token keyword">for</span> doc <span class="token keyword">in</span> docs<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> self<span class="token punctuation">.</span>_config<span class="token punctuation">(</span><span class="token string">"RAG_SIMILARITY_CUTOFF"</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-70">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="code-line" id="line-71">        <span class="token keyword">return</span> <span class="token boolean">False</span></span>
+<span class="code-line" id="line-72"> </span>
+<span class="code-line" id="line-73">    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">generate_answer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> AsyncGenerator<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-74">        <span class="token triple-quoted-string string">"""Propagation of Re-ranked Nodes into Response Synthesis."""</span></span>
+<span class="code-line" id="line-75">        <span class="token keyword">try</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-76">            <span class="token comment"># ... greeting checks ...</span></span>
+<span class="code-line" id="line-77">            retrieved_docs <span class="token operator">=</span> <span class="token keyword">await</span> self<span class="token punctuation">.</span>_retrieve_documents<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-78">            </span>
+<span class="code-line" id="line-79">            <span class="token comment"># Synthesis call - where re-ranking effects are applied</span></span>
+<span class="code-line" id="line-80">            response <span class="token operator">=</span> <span class="token keyword">await</span> self<span class="token punctuation">.</span>query_engine<span class="token punctuation">.</span>asynthesize<span class="token punctuation">(</span></span>
+<span class="code-line" id="line-81">                query_bundle<span class="token operator">=</span>QueryBundle<span class="token punctuation">(</span>query_str<span class="token operator">=</span>self<span class="token punctuation">.</span>_refined_query<span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="code-line" id="line-82">                nodes<span class="token operator">=</span>retrieved_docs<span class="token punctuation">,</span></span>
+<span class="code-line" id="line-83">            <span class="token punctuation">)</span></span>
+<span class="code-line" id="line-84">            </span>
+<span class="code-line" id="line-85">            <span class="token keyword">async</span> <span class="token keyword">for</span> text <span class="token keyword">in</span> response<span class="token punctuation">.</span>response_gen<span class="token punctuation">:</span></span>
+<span class="code-line" id="line-86">                <span class="token keyword">yield</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"text"</span><span class="token punctuation">:</span> text<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-87"> </span>
+<span class="code-line" id="line-88">        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span></span>
+<span class="code-line" id="line-89">            logger<span class="token punctuation">.</span>critical<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Error generating answer: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-90"> </span>
+<span class="code-line" id="line-91">    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">_process_contexts</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> answer<span class="token punctuation">,</span> source_nodes<span class="token punctuation">,</span> retrieved_docs<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-92">        <span class="token triple-quoted-string string">"""Re-ranking Effects Reflected in Citation Processing."""</span></span>
+<span class="code-line" id="line-93">        <span class="token keyword">try</span><span class="token punctuation">:</span></span>
+<span class="code-line" id="line-94">            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Processing context information..."</span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-95">            extract_pattern <span class="token operator">=</span> <span class="token string">r"^Source d+:s*\n"</span></span>
+<span class="code-line" id="line-96">            cited_nums <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r"[(d+)]"</span><span class="token punctuation">,</span> answer<span class="token punctuation">)</span></span>
+<span class="code-line" id="line-97">            <span class="token comment"># Logic to remap order based on ranking</span></span>
+<span class="code-line" id="line-98">            <span class="token keyword">return</span> contexts<span class="token punctuation">,</span> answer</span>
+<span class="code-line" id="line-99">        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span></span>
+<span class="code-line" id="line-100">            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Error processing contexts: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></span>
+<span class="code-line" id="line-101">            <span class="token keyword">raise</span> e</span></code></pre>
+        </div>
+
+    </section>
+</main>
+
+<script>
+    const CODE_FILE = `import logging
+import json
+import tiktoken  # For token counting
+import uuid
+import time
+import warnings
+import re
+from pathlib import Path
+from typing import Optional, Dict, Generator, List, Any, Union, Tuple, Callable, AsyncGenerator
+from pydantic import BaseModel
+from urllib.parse import quote
+from datetime import datetime
+
+import qdrant_client
+import asyncio
+import nest_asyncio
+from tavily import TavilyClient
+from llama_index.core import StorageContext, Settings, load_index_from_storage,PromptHelper,VectorStoreIndex
+from llama_index.core.schema import QueryBundle, Node
+from llama_index.core.query_engine import CitationQueryEngine
+
+from llama_index.core.tools import QueryEngineTool, ToolMetadata
+from llama_index.core.query_engine import SubQuestionQueryEngine
+from llama_index.core.callbacks import CallbackManager, LlamaDebugHandler
+
+from llama_index.core import Settings
+from llama_index.vector_stores.qdrant import QdrantVectorStore
+from llama_index.postprocessor.cohere_rerank import CohereRerank
+from llama_index.core.postprocessor import SimilarityPostprocessor
+from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
+from llama_index.core.prompts import PromptTemplate
+from llama_index.core.llms import ChatMessage, MessageRole
+from llama_index.core.response_synthesizers import get_response_synthesizer
+from llama_index.core.schema import TextNode,NodeWithScore
+from llama_index.core.postprocessor import LLMRerank
+
+from .managers.storage_manager import StorageManager
+from .managers.llm_manager import LLMManager
+from .managers.prompt_manager import PromptManager
+from .retrievers.compound_retriever import CompoundQueryRetriever
+
+warnings.filterwarnings("ignore")
+
+nest_asyncio.apply()
+logger = logging.getLogger(__name__)
+
+class Generate:
+"""Class for generating responses using RAG."""
+
+def __init__(self, config, secret, chat_id, query, **kwargs):
+    self._cohere_api_key = self._secret("COHERE_API_KEY")
+    # ... initialization logic ...
+
+async def _retrieve_documents(self):
+    """Initial Retrieval Producing Candidates for Re-ranking."""
+    logger.info("Retrieving relevant documents...")
+    retrieved_docs = await self.query_engine.aretrieve(QueryBundle(query_str=self._refined_query))
+    logger.info(f"Score of retrieved docs: {[doc.score for doc in retrieved_docs]}")
+    return retrieved_docs
+
+async def _retrieve_documents_report(self):
+    """Report-Specific Retrieval Path for Re-ranking."""
+    logger.info("Retrieving relevant documents...")
+    retrieved_docs = await self.query_engine._aretrieve_report(QueryBundle(query_str=self._refined_query))
+    return retrieved_docs
+
+def _has_valid_docs(self, docs):
+    """Similarity Threshold as a Pre-Re-ranking Gate."""
+    if docs and max([doc.score for doc in docs]) > self._config("RAG_SIMILARITY_CUTOFF"):
+        return True
+    return False
+
+async def generate_answer(self) -> AsyncGenerator[str, None]:
+    """Propagation of Re-ranked Nodes into Response Synthesis."""
+    try:
+        # ... greeting checks ...
+        retrieved_docs = await self._retrieve_documents()
+        
+        # Synthesis call - where re-ranking effects are applied
+        response = await self.query_engine.asynthesize(
+            query_bundle=QueryBundle(query_str=self._refined_query),
+            nodes=retrieved_docs,
+        )
+        
+        async for text in response.response_gen:
+            yield json.dumps({"text": text})
+
+    except Exception as e:
+        logger.critical(f"Error generating answer: {e}")
+
+async def _process_contexts(self, answer, source_nodes, retrieved_docs):
+    """Re-ranking Effects Reflected in Citation Processing."""
+    try:
+        logger.info("Processing context information...")
+        extract_pattern = r"^Source \d+:\s*\\n"
+        cited_nums = re.findall(r"\[(\d+)\]", answer)
+        # Logic to remap order based on ranking
+        return contexts, answer
+    except Exception as e:
+        logger.error(f"Error processing contexts: {e}")
+        raise e`;
+
+    const WALKTHROUGH_JSON = [
+        {
+            "id": 1,
+            "title": "Re-ranking Dependencies",
+            "description": "This section brings in re-ranking capabilities via LlamaIndex postprocessors. Imports for CohereRerank, LLMRerank, and SimilarityPostprocessor define strategies applied after retrieval to improve semantic precision.",
+            "marker": "from llama_index.postprocessor.cohere_rerank import CohereRerank",
+            "label": "Re-ranking Strategy Enablement"
+        },
+        {
+            "id": 2,
+            "title": "Initial Retrieval Stage",
+            "description": "Performs first-stage retrieval using the query engine's aretrieve method. These nodes form the candidate set that re-ranking logic refines using cross-encoders or LLM-based scoring.",
+            "marker": "async def _retrieve_documents(self):",
+            "label": "Candidate Retrieval"
+        },
+        {
+            "id": 3,
+            "title": "Report-Specific Retrieval",
+            "description": "A specialized path for report generation. Report-style outputs often require stronger relevance guarantees, making this a hook for more aggressive re-ranking strategies.",
+            "marker": "async def _retrieve_documents_report(self):",
+            "label": "Candidate Retrieval (Report Mode)"
+        },
+        {
+            "id": 4,
+            "title": "The Pre-Re-ranking Gate",
+            "description": "Enforces a similarity cutoff. It acts as a guardrail to determine if results are trustworthy enough to even bother re-ranking or synthesizing, preventing hallucinations.",
+            "marker": "def _has_valid_docs(self, docs):",
+            "label": "Candidate Filtering"
+        },
+        {
+            "id": 5,
+            "title": "Response Synthesis",
+            "description": "Retrieved (and re-ranked) nodes are passed here. The order directly affects which evidence the LLM conditions on, improving citations and grounding.",
+            "marker": "response = await self.query_engine.asynthesize(",
+            "label": "Re-ranked Context Consumption"
+        },
+        {
+            "id": 6,
+            "title": "Citation Processing",
+            "description": "Processes source_nodes. Since these are already ordered by the ranking pipeline, higher-ranked nodes are more likely to survive into final user-facing citations.",
+            "marker": "async def _process_contexts(self, answer, source_nodes, retrieved_docs):",
+            "label": "Post-Re-ranking Attribution"
+        }
+    ];
+
+    // --- State Management ---
+    let currentStep = 1;
+    let viewMode = 'focused'; // 'focused' or 'full'
+
+    // Calculate Line Ranges based on markers
+    const lines = CODE_FILE.split('\n');
+    WALKTHROUGH_JSON.forEach(step => {
+        const index = lines.findIndex(line => line.includes(step.marker));
+        if (index !== -1) {
+            // Approximate a range for visual effect
+            step.lineRange = [index + 1, index + 6]; 
+        } else {
+            step.lineRange = [1, 5];
+        }
+    });
+
+    // --- Initialization ---
+    function init() {
+        renderExplanations();
+        renderFullCode();
+        updateStep(1);
+        setupScrollSync();
+
+        document.getElementById('view-toggle').addEventListener('click', toggleViewMode);
+    }
+
+    function renderExplanations() {
+        const container = document.getElementById('explanation-container');
+        WALKTHROUGH_JSON.forEach(step => {
+            const card = document.createElement('div');
+            card.className = `explanation-card bg-white p-6 rounded-3xl shadow-sm cursor-pointer border-2 border-transparent`;
+            card.id = `card-${step.id}`;
+            card.innerHTML = `
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase tracking-wider">${step.label}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">${step.title}</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">${step.description}</p>
+            `;
+            card.onclick = () => updateStep(step.id, true);
+            container.appendChild(card);
+        });
+    }
+
+    function renderFullCode() {
+        const codeContent = document.getElementById('full-code-content');
+        
+        // Fix: Use Prism.highlight to get HTML first, then wrap lines to preserve line IDs
+        // Prism.highlightElement overwrites custom innerHTML, which was causing targetLine to be null
+        const highlightedCode = Prism.highlight(CODE_FILE, Prism.languages.python, 'python');
+        const highlightedLines = highlightedCode.split('\n');
+        
+        codeContent.innerHTML = highlightedLines.map((line, i) => 
+            `<span class="code-line" id="line-${i + 1}">${line || ' '}</span>`
+        ).join('\n');
+    }
+
+    function updateStep(stepId, forceScroll = false) {
+        currentStep = stepId;
+        const step = WALKTHROUGH_JSON.find(s => s.id === stepId);
+
+        // Update UI - Explanations
+        document.querySelectorAll('.explanation-card').forEach(c => c.classList.remove('active'));
+        const activeCard = document.getElementById(`card-${stepId}`);
+        if (activeCard) activeCard.classList.add('active');
+
+        // Update Progress
+        const progress = (stepId / WALKTHROUGH_JSON.length) * 100;
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-text').innerText = `${Math.round(progress)}% Complete`;
+
+        // Update Code Pane
+        if (viewMode === 'focused') {
+            updateSnippet(step);
+        } else {
+            highlightFullCodeRange(step.lineRange, forceScroll);
+        }
+    }
+
+    function updateSnippet(step) {
+        const snippetPre = document.querySelector('#snippet-pre code');
+        document.getElementById('snippet-label').innerText = step.label;
+        
+        // Extract snippet context
+        const start = Math.max(0, step.lineRange[0] - 1);
+        const end = Math.min(lines.length, step.lineRange[1] + 2);
+        snippetPre.textContent = lines.slice(start, end).join('\n');
+        Prism.highlightElement(snippetPre);
+    }
+
+    function highlightFullCodeRange(range, forceScroll) {
+        document.querySelectorAll('.code-line').forEach(line => {
+            const lineNum = parseInt(line.id.split('-')[1]);
+            line.classList.remove('active', 'dimmed');
+            if (lineNum >= range[0] && lineNum <= range[1]) {
+                line.classList.add('active');
+            } else {
+                line.classList.add('dimmed');
+            }
+        });
+
+        if (forceScroll) {
+            const targetLine = document.getElementById(`line-${range[0]}`);
+            // Fix: Added null check to prevent TypeError: Cannot read properties of null (reading 'scrollIntoView')
+            if (targetLine) {
+                targetLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+
+    function toggleViewMode() {
+        const btn = document.getElementById('view-toggle');
+        const snippetCont = document.getElementById('snippet-container');
+        const fullCont = document.getElementById('full-code-container');
+
+        if (viewMode === 'focused') {
+            viewMode = 'full';
+            btn.innerText = 'Back to Snippets';
+            snippetCont.classList.add('hidden');
+            fullCont.classList.remove('hidden');
+            updateStep(currentStep, true);
+        } else {
+            viewMode = 'focused';
+            btn.innerText = 'Explore Full File';
+            snippetCont.classList.remove('hidden');
+            fullCont.classList.add('hidden');
+            updateStep(currentStep);
+        }
+    }
+
+    function setupScrollSync() {
+        const fullCodeContainer = document.getElementById('full-code-container');
+        
+        fullCodeContainer.addEventListener('scroll', () => {
+            if (viewMode !== 'full') return;
+
+            // Simple debounced/throttled check for which step is in view
+            const containerRect = fullCodeContainer.getBoundingClientRect();
+            const containerCenter = containerRect.top + containerRect.height / 2;
+
+            let closestStep = currentStep;
+            let minDistance = Infinity;
+
+            WALKTHROUGH_JSON.forEach(step => {
+                const el = document.getElementById(`line-${step.lineRange[0]}`);
+                if (!el) return;
+                const rect = el.getBoundingClientRect();
+                const distance = Math.abs(rect.top - containerCenter);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestStep = step.id;
+                }
+            });
+
+            if (closestStep !== currentStep) {
+                updateStep(closestStep);
+            }
+        });
+    }
+
+    window.onload = init;
+</script>
+
+<!-- Audio-guided walkthrough controller -->
+<script>
+    (function () {
+        if (!window.WALKTHROUGH_JSON || typeof window.updateStep !== 'function') return;
+
+        const steps = window.WALKTHROUGH_JSON;
+        const audio = new Audio();
+        audio.preload = 'auto';
+
+        let currentIndex = 0;
+        let isUserPaused = true;
+
+        function audioSrcFor(index) {
+            // card-1.mp3 … card-6.mp3
+            return `card-${index + 1}.mp3`;
+        }
+
+        function loadTrack(index, play = false) {
+            currentIndex = Math.max(0, Math.min(steps.length - 1, index));
+            audio.src = audioSrcFor(currentIndex);
+            try {
+                window.updateStep(steps[currentIndex].id);
+            } catch (e) {}
+            if (play) {
+                playCurrent();
+            } else {
+                isUserPaused = true;
+                updatePlayIcon();
+            }
+        }
+
+        function playCurrent() {
+            isUserPaused = false;
+            audio.play().catch(function () {
+                isUserPaused = true;
+                updatePlayIcon();
+            });
+            updatePlayIcon();
+        }
+
+        function pauseCurrent() {
+            isUserPaused = true;
+            audio.pause();
+            updatePlayIcon();
+        }
+
+        function nextTrack() {
+            if (currentIndex < steps.length - 1) {
+                loadTrack(currentIndex + 1, !isUserPaused);
+            } else {
+                pauseCurrent();
+            }
+        }
+
+        function prevTrack() {
+            if (currentIndex > 0) {
+                loadTrack(currentIndex - 1, !isUserPaused);
+            } else {
+                loadTrack(0, !isUserPaused);
+            }
+        }
+
+        const bar = document.createElement('div');
+        bar.id = 'code-audio-controller';
+        bar.style.position = 'fixed';
+        bar.style.left = '50%';
+        bar.style.transform = 'translateX(-50%)';
+        bar.style.bottom = '18px';
+        bar.style.zIndex = '40';
+        bar.style.background = '#0f172a';
+        bar.style.color = '#e5e7eb';
+        bar.style.borderRadius = '999px';
+        bar.style.padding = '8px 18px';
+        bar.style.display = 'flex';
+        bar.style.alignItems = 'center';
+        bar.style.gap = '10px';
+        bar.style.boxShadow = '0 12px 30px rgba(15,23,42,0.55)';
+        bar.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+        bar.innerHTML = `
+            <button id="code-audio-prev" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏮</button>
+            <button id="code-audio-play" style="width:32px;height:32px;border-radius:999px;border:none;background:#22c55e;color:#022c22;font-weight:900;cursor:pointer;">▶</button>
+            <button id="code-audio-next" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏭</button>
+            <div style="min-width:180px;">
+                <div id="code-audio-label" style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:#a5b4fc;">Step 1</div>
+                <div style="width:100%;height:4px;border-radius:999px;background:#1e293b;overflow:hidden;margin-top:4px;">
+                    <div id="code-audio-progress" style="height:100%;width:0%;background:#22c55e;"></div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(bar);
+
+        const playBtn = document.getElementById('code-audio-play');
+        const prevBtn = document.getElementById('code-audio-prev');
+        const nextBtn = document.getElementById('code-audio-next');
+        const label = document.getElementById('code-audio-label');
+        const progress = document.getElementById('code-audio-progress');
+
+        function updatePlayIcon() {
+            playBtn.textContent = isUserPaused ? '▶' : '⏸';
+        }
+
+        function updateLabel() {
+            const step = steps[currentIndex];
+            label.textContent = `${step.label || step.title || 'Step'} • ${currentIndex + 1}/${steps.length}`;
+        }
+
+        playBtn.addEventListener('click', function () {
+            if (isUserPaused) {
+                playCurrent();
+            } else {
+                pauseCurrent();
+            }
+        });
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+
+        audio.addEventListener('timeupdate', function () {
+            if (!audio.duration) return;
+            const pct = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = pct + '%';
+        });
+
+        audio.addEventListener('ended', function () {
+            nextTrack();
+        });
+
+        loadTrack(0, false);
+        updateLabel();
+    })();
+</script>
+
+</body></html>

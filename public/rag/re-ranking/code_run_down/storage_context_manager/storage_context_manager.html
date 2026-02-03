@@ -1,0 +1,1268 @@
+<html lang="en" class="scroll-smooth"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+    window.__firebase_config = firebaseConfig;
+    window.__initial_auth_token = initialAuthToken;
+    window.__app_id = appId;
+        })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6ImIxZjQyNzYzZjkzNGExOTQwMWNkOTFhNjdjY2FhNzdiNjIwNWU2N2EiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwMTI5NTYxNjk5Njg0NDg5ODMxMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJmMzVmZmI3MmQ2MGEtY29kZV9sZW5zX3dhbGt0aHJvdWdoLmh0bWwtMzAyIn0sImV4cCI6MTc3MDA0MDM1MSwiaWF0IjoxNzcwMDM2NzUxLCJhbGciOiJSUzI1NiJ9.NTuVhg2hxAboCZgCW4TFQTZwsJyHbIO2FY2P-JnAEurjaR44he0KPFJInvle8xtses4fXSy8BQbNGcYoagtDVBuCPzRRatb_NlVYIMO_LKROwGaT0SDtwoDTDQwlbq1EUipZ-N4HzcZDh-kgQE-qXhVyXrfIimpAAW0ifi8gMXQE0OzXZv9VMOI_0k5Y4gK0Z2b-lCs2otFWEeiXbiEiv5xtGP0D_DRqpwCshyPvKJ5ykJS4ittt4po84iOhqhcNiLvEUrvxi0poEsrF9HlFkFrefN78qkICZasjS8Rq1N49VXQY_1OlRrBrfhAR2mFMd1v224st3B3AX72EXg41Xw","f35ffb72d60a-code_lens_walkthrough.html-302")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+MIT License
+
+Copyright (c) 2017-2023 W.Y.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+// Ensure this script is executed only once
+if (window.firebaseAuthBridgeScriptLoaded) {
+return;
+}
+window.firebaseAuthBridgeScriptLoaded = true;
+
+let nextTokenPromiseId = 0;
+
+// Stores { resolve, reject } for ongoing token requests
+const pendingTokenPromises = {};
+
+// Listen for messages from the Host Application
+window.addEventListener('message', function(event) {
+
+const messageData = event.data;
+
+if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+  const { success, token, error, promiseId } = messageData ?? {};
+  if (pendingTokenPromises[promiseId]) {
+    if (success) {
+      pendingTokenPromises[promiseId].resolve(token);
+    } else {
+      pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+    }
+    delete pendingTokenPromises[promiseId];
+  }
+}
+});
+
+// Expose a function for the Generated App to request a new Firebase token
+window.requestNewFirebaseToken = function() {
+const currentPromiseId = nextTokenPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingTokenPromises[currentPromiseId] = { resolve, reject };
+});
+if (window.parent && window.parent !== window) {
+  window.parent.postMessage({
+    type: 'REQUEST_NEW_FIREBASE_TOKEN',
+    promiseId: currentPromiseId
+  }, '*');
+} else {
+  pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+  delete pendingTokenPromises[currentPromiseId];
+}
+return promise;
+};
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+try {
+  Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+    get: function() {
+      return undefined; // Or throw an error
+    },
+    configurable: false
+  });
+} catch (error) {
+  console.error("Error defining prototype getter:", error);
+}
+}
+})();
+
+(function() {
+const pendingMediaResolvers = {};
+let nextMediaPromiseId = 0;
+
+function requestMediaPermissions(constraints) {
+const mediaPromiseId = nextMediaPromiseId++;
+const promise = new Promise((resolve, reject) => {
+  pendingMediaResolvers[mediaPromiseId] = (granted) => {
+    delete pendingMediaResolvers[mediaPromiseId];
+    resolve(granted);
+  };
+});
+
+window.parent.postMessage({
+  type: 'requestMediaPermission',
+  constraints: constraints,
+  promiseId: mediaPromiseId,
+}, '*');
+
+return promise;
+}
+
+let originalGetUserMedia = realOriginalGetUserMedia;
+
+function interceptGetUserMedia() {
+if (navigator.mediaDevices) {
+  Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+    value: function(constraints) {
+      return requestMediaPermissions(constraints).then((granted) => {
+        if (granted) {
+          if (originalGetUserMedia) {
+            return originalGetUserMedia(constraints);
+          } else {
+            throw new Error("Original getUserMedia not available.");
+          }
+        } else {
+          throw new DOMException('Permission denied', 'NotAllowedError');
+        }
+      });
+    },
+    writable: false,
+    configurable: false
+  });
+}
+}
+
+interceptGetUserMedia();
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+for (const mutation of mutationsList) {
+  if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+    interceptGetUserMedia();
+  } else if (mutation.type === 'childList' && mutation.addedNodes) {
+    mutation.addedNodes.forEach(node => {
+      if (node === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      }
+    });
+  }
+}
+});
+
+function interceptSpeechRecognition() {
+if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+  return;
+}
+
+const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const SpeechRecognitionWrapper = function(...args) {
+  const recognizer = new OriginalSpeechRecognition(...args);
+  const originalStart = recognizer.start.bind(recognizer);
+
+  recognizer.start = function() {
+    requestMediaPermissions({ audio: true }).then(granted => {
+      if (granted) {
+        originalStart();
+      } else {
+        const errorEvent = new SpeechRecognitionErrorEvent('error');
+        errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+        recognizer.dispatchEvent(errorEvent);
+      }
+    });
+  };
+
+  return recognizer;
+};
+
+SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+if (window.SpeechRecognition) {
+  window.SpeechRecognition = SpeechRecognitionWrapper;
+}
+if (window.webkitSpeechRecognition) {
+  window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+}
+}
+
+interceptSpeechRecognition();
+
+window.addEventListener('message', function(event) {
+if (event.data) {
+  if (event.data.type === 'resolveMediaPermission') {
+    const { promiseId, granted } = event.data;
+    if (pendingMediaResolvers[promiseId]) {
+      pendingMediaResolvers[promiseId](granted);
+    }
+  }
+}
+});
+
+})();</script><script>((function(modelInformation) {
+const originalFetch = window.fetch;
+// TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+let googleLlmBaseApiUrls = [
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+];
+modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+);
+});
+modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+googleLlmBaseApiUrls.push(
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+  'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+);
+});
+
+const pendingFetchResolvers = {};
+let nextPromiseId = 0;
+
+function handleStringInput(input, optionsArgument) {
+const actualUrl = input;
+const fetchCallArgs = [actualUrl, optionsArgument];
+const effectiveOptions = optionsArgument || {};
+const bodyForApiKeyCheck = effectiveOptions.body;
+const bodyForPostMessage = effectiveOptions.body;
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+function handleRequestInput(input, optionsArgument) {
+const actualUrl = input.url;
+const fetchCallArgs = [input, optionsArgument];
+const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (optionsArgument) {
+  if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+  if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+  if ('body' in optionsArgument) {
+    bodyForApiKeyCheck = optionsArgument.body;
+    bodyForPostMessage = optionsArgument.body;
+  } else {
+    bodyForApiKeyCheck = undefined;
+    bodyForPostMessage = input.body;
+  }
+} else {
+  bodyForApiKeyCheck = undefined;
+  bodyForPostMessage = input.body;
+}
+return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+}
+
+window.fetch = function(input, optionsArgument) {
+let actualUrl;
+let fetchCallArgs;
+let effectiveOptions = {};
+let bodyForApiKeyCheck;
+let bodyForPostMessage;
+
+if (typeof input === 'string') {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+} else if (input instanceof Request) {
+  ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+} else {
+  return originalFetch.apply(window, [input, optionsArgument]);
+}
+
+effectiveOptions.method = effectiveOptions.method || 'GET';
+if (!effectiveOptions.headers) {
+  effectiveOptions.headers = new Headers();
+}
+
+
+if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+  let apiKeyIsNull = true;
+
+  const regex = new RegExp("models/([^:]+)");
+  const modelNameMatch = actualUrl.match(regex);
+  const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+  try {
+    const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+    const apiKeyParam = urlObject.searchParams.get('key');
+    if (apiKeyParam) {
+      apiKeyIsNull = false;
+    }
+  } catch (e) {
+    // Continue checks even if URL parsing fails
+  }
+
+  if (apiKeyIsNull && effectiveOptions.headers) {
+    const h = new Headers(effectiveOptions.headers);
+    const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+    if (apiKeyHeaderValue) {
+      apiKeyIsNull = false;
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+  }
+
+  if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+    try {
+      const bodyData = JSON.parse(bodyForApiKeyCheck);
+      if (bodyData && bodyData.apiKey) {
+        apiKeyIsNull = false;
+        return originalFetch.apply(window, fetchCallArgs);
+      }
+    } catch (e) {
+      // Ignore JSON parsing errors
+    }
+  }
+
+  if(apiKeyIsNull) {
+    const promiseId = nextPromiseId++;
+    const promise = new Promise((resolve) => {
+      pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+        delete pendingFetchResolvers[promiseId];
+        resolve(resolvedResponse);
+      };
+    });
+
+    let serializedBodyForPostMessage;
+    if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+        serializedBodyForPostMessage = bodyForPostMessage;
+    } else if (bodyForPostMessage instanceof ReadableStream) {
+        serializedBodyForPostMessage = null;
+    } else {
+        try {
+            serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+        } catch (e) {
+            serializedBodyForPostMessage = null;
+        }
+    }
+
+    const messageOptions = {
+        method: effectiveOptions.method,
+        headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+        body: serializedBodyForPostMessage
+    };
+
+    window.parent.postMessage({
+      type: 'requestFetch',
+      url: actualUrl,
+      modelName: modelName,
+      options: messageOptions,
+      promiseId: promiseId,
+    }, '*');
+
+    return promise;
+  }
+  return originalFetch.apply(window, fetchCallArgs);
+}
+return originalFetch.apply(window, fetchCallArgs);
+};
+
+window.addEventListener('message', function(event) {
+if (event.data && event.data.type === 'resolveFetch') {
+  const { promiseId, response } = event.data;
+  if (pendingFetchResolvers[promiseId]) {
+    try {
+      const reconstructedResponse = new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: new Headers(response.headers),
+      });
+      pendingFetchResolvers[promiseId](reconstructedResponse);
+    } catch (error) {
+      pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+    }
+  }
+}
+});
+
+}))({"textModelName":"gemini-2.5-flash-preview-09-2025","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function() {
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
+/**
+* Normalizes an error event or a promise rejection reason into a structured error object.
+* @param {*} errorEventOrReason The error object or reason.
+* @return {object} Structured error data { message, name, stack }.
+*/
+function getErrorObject(errorEventOrReason) {
+if (errorEventOrReason instanceof Error) {
+  return {
+    message: errorEventOrReason.message,
+    name: errorEventOrReason.name,
+    stack: errorEventOrReason.stack,
+  };
+}
+// Fallback for non-Error objects.
+try {
+  return {
+    message: JSON.stringify(errorEventOrReason),
+    name: 'UnknownErrorType',
+    stack: null,
+  };
+} catch (e) {
+  return {
+    message: String(errorEventOrReason),
+    name: 'UnknownErrorTypeNonStringifiable',
+    stack: null,
+  };
+}
+}
+
+/**
+* Converts an array of arguments (from log/error) into a single string.
+* Handles Error objects specially to include their message and stack.
+* @param {Array<*>} args - Arguments passed to console methods.
+* @return {string} A string representation of the arguments.
+*/
+function stringifyArgs(args) {
+return args
+  .map((arg) => {
+    if (arg instanceof Error) {
+      const {message, stack} = arg;
+      return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+    }
+    if (typeof arg === 'object' && arg !== null) {
+      try {
+        return JSON.stringify(arg);
+      } catch (error) {
+        return '[Circular Object]';
+      }
+    } else {
+      return String(arg);
+    }
+  })
+  .join(' ');
+}
+
+console.log = function(...args) {
+const logString = stringifyArgs(args);
+window.parent.postMessage({ type: 'log', message: logString }, '*');
+originalConsoleLog.apply(console, args);
+};
+
+console.error = function(...args) {
+let errorData;
+if (args.length > 0 && args[0] instanceof Error) {
+  const err = args[0];
+  // If the first arg is an Error, capture its details.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    ...getErrorObject(err),
+    rawArgsString: stringifyArgs(args.slice(1)),
+    timestamp: new Date().toISOString(),
+  };
+} else {
+  // If not an Error object, treat all args as a general error message.
+  errorData = {
+    type: 'error',
+    source: 'CONSOLE_ERROR',
+    message: stringifyArgs(args),
+    name: 'ConsoleLoggedError',
+    stack: null,
+    timestamp: new Date().toISOString(),
+  };
+}
+window.parent.postMessage(errorData, '*');
+originalConsoleError.apply(console, args);
+};
+
+// Listen for global unhandled synchronous errors.
+window.addEventListener('error', function(event) {
+const errorDetails = event.error ? getErrorObject(event.error) : {
+  message: event.message,
+  name: 'GlobalError',
+  stack: null,
+  filename: event.filename,
+  lineno: event.lineno,
+  colno: event.colno,
+};
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'global',
+  ...errorDetails,
+  message: errorDetails.message || event.message,
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+// Listen for unhandled promise rejections (asynchronous errors).
+window.addEventListener('unhandledrejection', function(event) {
+const errorDetails = getErrorObject(event.reason);
+
+window.parent.postMessage({
+  type: 'error',
+  source: 'unhandledrejection',
+  ...errorDetails,
+  message: errorDetails.message || 'Unhandled Promise Rejection',
+  timestamp: new Date().toISOString(),
+}, '*');
+});
+
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Lens Walkthrough</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Prism.js for Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" crossorigin="anonymous"></script>
+
+<style>
+    :root {
+        --slate-50: #f4f7fb;
+        --indigo-600: #6366f1;
+        --gh-dark: #0d1117;
+        --gh-dark-light: #161b22;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--slate-50);
+        color: #1e293b;
+    }
+
+    .code-font {
+        font-family: 'Fira Code', monospace;
+    }
+
+    /* Prism Overrides for GitHub Dark Palette */
+    pre[class*="language-"] {
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .token.keyword { color: #ff7b72 !important; }
+    .token.string { color: #a5d6ff !important; }
+    .token.function { color: #d2a8ff !important; }
+    .token.comment { color: #8b949e !important; }
+    .token.operator { color: #79c0ff !important; }
+    .token.class-name { color: #ffa657 !important; }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+    }
+
+    /* Code Lens Effect */
+    .line-wrapper {
+        transition: opacity 0.3s ease, background 0.3s ease;
+        display: block;
+        border-left: 3px solid transparent;
+    }
+    .line-wrapper.dimmed {
+        opacity: 0.25;
+    }
+    .line-wrapper.active {
+        opacity: 1;
+        background: rgba(99, 102, 241, 0.1);
+        border-left-color: var(--indigo-600);
+    }
+
+    .snippet-window {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .explanation-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .explanation-card.active {
+        ring: 2px solid var(--indigo-600);
+        transform: translateX(8px);
+        background: white;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mt-1{margin-top:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mr-6{margin-right:1.5rem}.inline-block{display:inline-block}.flex{display:flex}.hidden{display:none}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-24{height:6rem}.h-3{height:0.75rem}.h-6{height:1.5rem}.h-full{height:100%}.h-screen{height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-3{width:0.75rem}.w-48{width:12rem}.w-6{width:1.5rem}.w-\[40\%\]{width:40%}.w-\[60\%\]{width:60%}.w-full{width:100%}.w-8{width:2rem}.max-w-4xl{max-width:56rem}.max-w-lg{max-width:32rem}.flex-1{flex:1 1 0%}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.rounded-3xl{border-radius:1.5rem}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.bg-\[\#0d1117\]{--tw-bg-opacity:1;background-color:rgb(13 17 23 / var(--tw-bg-opacity, 1))}.bg-\[\#161b22\]{--tw-bg-opacity:1;background-color:rgb(22 27 34 / var(--tw-bg-opacity, 1))}.bg-\[\#1c2128\]{--tw-bg-opacity:1;background-color:rgb(28 33 40 / var(--tw-bg-opacity, 1))}.bg-amber-500\/80{background-color:rgb(245 158 11 / 0.8)}.bg-green-500\/80{background-color:rgb(34 197 94 / 0.8)}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-red-500\/80{background-color:rgb(239 68 68 / 0.8)}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-white\/50{background-color:rgb(255 255 255 / 0.5)}.p-12{padding:3rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.opacity-100{opacity:1}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.duration-300{transition-duration:300ms}.ease-out{transition-timing-function:cubic-bezier(0, 0, 0.2, 1)}.hover\:border-indigo-200:hover{--tw-border-opacity:1;border-color:rgb(199 210 254 / var(--tw-border-opacity, 1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}}</style></head>
+<body class="h-screen overflow-hidden flex flex-col">
+
+<!-- Sticky Header -->
+<header class="glass-header sticky top-0 z-50 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+        </div>
+        <div>
+            <h1 class="text-xl font-bold tracking-tight text-slate-900">Code Lens</h1>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Interactive Walkthrough</p>
+        </div>
+    </div>
+
+    <div class="flex items-center space-x-6">
+        <div class="hidden md:flex flex-col items-end">
+            <span id="progress-text" class="text-sm font-semibold text-indigo-600">Step 1 of 2</span>
+            <div class="w-48 h-1.5 bg-slate-200 rounded-full mt-1 overflow-hidden">
+                <div id="progress-bar" class="h-full bg-indigo-600 transition-all duration-500 ease-out" style="width: 50%"></div>
+            </div>
+        </div>
+        <button id="toggle-view" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center space-x-2">
+            <span id="toggle-text">Full File Mode</span>
+        </button>
+    </div>
+</header>
+
+<!-- Main Container -->
+<main class="flex-1 flex overflow-hidden">
+    
+    <!-- Left Panel: Explanations -->
+    <div class="w-[40%] h-full overflow-y-auto custom-scrollbar p-8 space-y-6">
+        <div id="explanation-list" class="space-y-6 max-w-lg mx-auto">
+            <div id="card-0" onclick="setActiveStep(0)" class="explanation-card group cursor-pointer p-6 rounded-3xl bg-white/50 border border-slate-200 hover:border-indigo-200 transition-all duration-300 active">
+                <div class="flex items-center space-x-3 mb-3">
+                    <span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 rounded-lg">Step 01</span>
+                    <span class="text-xs text-slate-400 font-mono">Pre-Re-ranking Candidate Retrieval</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-indigo-600 transition-colors">Hybrid Retrieval Setup as Precursor to Re-ranking</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">This block initializes the QdrantVectorStore with hybrid search enabled, combining dense and sparse retrieval signals. While no re-ranking model is executed here, this step directly shapes the candidate set that any downstream re-ranker will operate on. Enabling hybrid retrieval increases recall and diversity, which is critical for effective re-ranking, since re-rankers assume a strong but noisy initial candidate pool.</p>
+            </div>
+        
+            <div id="card-1" onclick="setActiveStep(1)" class="explanation-card group cursor-pointer p-6 rounded-3xl bg-white/50 border border-slate-200 hover:border-indigo-200 transition-all duration-300">
+                <div class="flex items-center space-x-3 mb-3">
+                    <span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 rounded-lg">Step 02</span>
+                    <span class="text-xs text-slate-400 font-mono">Re-ranker Input Index</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-indigo-600 transition-colors">VectorStoreIndex Creation for Re-ranker Input Flow</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">This step wraps the vector store into a VectorStoreIndex, which is the abstraction used by LlamaIndex retrieval pipelines. From a re-ranking perspective, this index defines how top-k candidates are fetched before re-ranking is applied. The quality, size, and structure of this index directly affect re-ranker latency, scoring accuracy, and overall pipeline behavior.</p>
+            </div>
+        </div>
+        <div class="h-24"></div> <!-- Spacer -->
+    </div>
+
+    <!-- Right Panel: Code Pane -->
+    <div id="code-panel" class="w-[60%] h-full bg-[#0d1117] flex items-center justify-center p-8 relative overflow-hidden transition-all duration-500">
+        
+        <!-- Logic Blocks View (Window Style) -->
+        <div id="snippet-container" class="w-full max-w-4xl opacity-100 transform transition-all duration-500">
+            <div class="snippet-window rounded-2xl overflow-hidden bg-[#161b22] border border-white/10">
+                <div class="px-4 py-3 bg-[#1c2128] flex items-center justify-between border-bottom border-white/5">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div id="snippet-label" class="text-xs font-mono text-gray-400 font-medium">Pre-Re-ranking Candidate Retrieval.py</div>
+                    <div class="w-12"></div>
+                </div>
+                <div class="p-6 overflow-x-auto custom-scrollbar">
+                    <pre class="language-python" tabindex="0"><code id="snippet-code" class="code-font language-python">            vector_store <span class="token operator">=</span> QdrantVectorStore<span class="token punctuation">(</span>
+            client<span class="token operator">=</span>client<span class="token punctuation">,</span>
+            aclient<span class="token operator">=</span>aclient<span class="token punctuation">,</span>
+            collection_name<span class="token operator">=</span>collection_name<span class="token punctuation">,</span>
+            enable_hybrid<span class="token operator">=</span>self<span class="token punctuation">.</span>_config<span class="token punctuation">(</span><span class="token string">"QDRANT_ENABLE_HYBRID"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            fastembed_sparse_model<span class="token operator">=</span>self<span class="token punctuation">.</span>_config<span class="token punctuation">(</span><span class="token string">"FASTEMBED_SPARSE_MODEL"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            prefer_grpc<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Code View (Scrollable Overlay) -->
+        <div id="full-code-container" class="absolute inset-0 opacity-0 pointer-events-none transition-all duration-500 flex flex-col">
+            <div id="full-code-scroller" class="flex-1 overflow-y-auto custom-scrollbar p-12">
+                <pre class="h-full language-python" tabindex="0"><code id="full-code-content" class="code-font language-python"><div id="line-wrap-1" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">1</span>
+                <span class="line-text"><span class="token keyword">import</span> qdrant_client</span>
+            </div><div id="line-wrap-2" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">2</span>
+                <span class="line-text"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>vector_stores<span class="token punctuation">.</span>qdrant <span class="token keyword">import</span> QdrantVectorStore</span>
+            </div><div id="line-wrap-3" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">3</span>
+                <span class="line-text"><span class="token keyword">from</span> llama_index<span class="token punctuation">.</span>core <span class="token keyword">import</span> VectorStoreIndex</span>
+            </div><div id="line-wrap-4" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">4</span>
+                <span class="line-text"><span class="token keyword">import</span> logging</span>
+            </div><div id="line-wrap-5" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">5</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-6" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">6</span>
+                <span class="line-text">logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-7" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">7</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-8" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">8</span>
+                <span class="line-text"><span class="token keyword">class</span> <span class="token class-name">StorageContextManager</span><span class="token punctuation">:</span></span>
+            </div><div id="line-wrap-9" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">9</span>
+                <span class="line-text">    <span class="token triple-quoted-string string">"""Handles setup of Qdrant vector store and index creation."""</span></span>
+            </div><div id="line-wrap-10" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">10</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-11" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">11</span>
+                <span class="line-text">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">,</span> secret<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+            </div><div id="line-wrap-12" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">12</span>
+                <span class="line-text">        <span class="token string">""</span>"</span>
+            </div><div id="line-wrap-13" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">13</span>
+                <span class="line-text">        <span class="token punctuation">:</span>param config<span class="token punctuation">:</span> Callable <span class="token keyword">or</span> <span class="token builtin">dict</span> <span class="token keyword">for</span> configuration values</span>
+            </div><div id="line-wrap-14" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">14</span>
+                <span class="line-text">        <span class="token punctuation">:</span>param secret<span class="token punctuation">:</span> Callable <span class="token keyword">for</span> fetching secrets</span>
+            </div><div id="line-wrap-15" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">15</span>
+                <span class="line-text">        <span class="token string">""</span>"</span>
+            </div><div id="line-wrap-16" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">16</span>
+                <span class="line-text">        self<span class="token punctuation">.</span>_config <span class="token operator">=</span> config</span>
+            </div><div id="line-wrap-17" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">17</span>
+                <span class="line-text">        self<span class="token punctuation">.</span>_secret <span class="token operator">=</span> secret</span>
+            </div><div id="line-wrap-18" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">18</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-19" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">19</span>
+                <span class="line-text">    <span class="token keyword">def</span> <span class="token function">setup_storage_context</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> collection_name<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> VectorStoreIndex<span class="token punctuation">:</span></span>
+            </div><div id="line-wrap-20" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">20</span>
+                <span class="line-text">        <span class="token triple-quoted-string string">"""Setup storage context with Qdrant vector store."""</span></span>
+            </div><div id="line-wrap-21" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">21</span>
+                <span class="line-text">        <span class="token keyword">try</span><span class="token punctuation">:</span></span>
+            </div><div id="line-wrap-22" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">22</span>
+                <span class="line-text">            client <span class="token operator">=</span> qdrant_client<span class="token punctuation">.</span>QdrantClient<span class="token punctuation">(</span></span>
+            </div><div id="line-wrap-23" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">23</span>
+                <span class="line-text">                url<span class="token operator">=</span>self<span class="token punctuation">.</span>_secret<span class="token punctuation">(</span><span class="token string">"QDRANT_URL"</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-24" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">24</span>
+                <span class="line-text">                api_key<span class="token operator">=</span>self<span class="token punctuation">.</span>_secret<span class="token punctuation">(</span><span class="token string">"QDRANT_API_KEY"</span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-25" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">25</span>
+                <span class="line-text">            <span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-26" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">26</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-27" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">27</span>
+                <span class="line-text">            aclient <span class="token operator">=</span> qdrant_client<span class="token punctuation">.</span>AsyncQdrantClient<span class="token punctuation">(</span></span>
+            </div><div id="line-wrap-28" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">28</span>
+                <span class="line-text">                url<span class="token operator">=</span>self<span class="token punctuation">.</span>_secret<span class="token punctuation">(</span><span class="token string">"QDRANT_URL"</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-29" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">29</span>
+                <span class="line-text">                api_key<span class="token operator">=</span>self<span class="token punctuation">.</span>_secret<span class="token punctuation">(</span><span class="token string">"QDRANT_API_KEY"</span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-30" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">30</span>
+                <span class="line-text">            <span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-31" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">31</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-32" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">32</span>
+                <span class="line-text">            vector_store <span class="token operator">=</span> QdrantVectorStore<span class="token punctuation">(</span></span>
+            </div><div id="line-wrap-33" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">33</span>
+                <span class="line-text">                client<span class="token operator">=</span>client<span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-34" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">34</span>
+                <span class="line-text">                aclient<span class="token operator">=</span>aclient<span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-35" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">35</span>
+                <span class="line-text">                collection_name<span class="token operator">=</span>collection_name<span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-36" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">36</span>
+                <span class="line-text">                enable_hybrid<span class="token operator">=</span>self<span class="token punctuation">.</span>_config<span class="token punctuation">(</span><span class="token string">"QDRANT_ENABLE_HYBRID"</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-37" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">37</span>
+                <span class="line-text">                fastembed_sparse_model<span class="token operator">=</span>self<span class="token punctuation">.</span>_config<span class="token punctuation">(</span><span class="token string">"FASTEMBED_SPARSE_MODEL"</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-38" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">38</span>
+                <span class="line-text">                prefer_grpc<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span></span>
+            </div><div id="line-wrap-39" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">39</span>
+                <span class="line-text">            <span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-40" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">40</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-41" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">41</span>
+                <span class="line-text">            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Qdrant clients and vector store created successfully."</span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-42" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">42</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-43" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">43</span>
+                <span class="line-text">            collections <span class="token operator">=</span> client<span class="token punctuation">.</span>get_collections<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-44" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">44</span>
+                <span class="line-text">            logger<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Collections in Vector DB: </span><span class="token interpolation"><span class="token punctuation">{</span>collections<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-45" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">45</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-46" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">46</span>
+                <span class="line-text">            index <span class="token operator">=</span> VectorStoreIndex<span class="token punctuation">.</span>from_vector_store<span class="token punctuation">(</span>vector_store<span class="token operator">=</span>vector_store<span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-47" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">47</span>
+                <span class="line-text">            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"VectorStoreIndex created."</span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-48" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">48</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-49" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">49</span>
+                <span class="line-text">            <span class="token keyword">return</span> index</span>
+            </div><div id="line-wrap-50" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">50</span>
+                <span class="line-text"></span>
+            </div><div id="line-wrap-51" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">51</span>
+                <span class="line-text">        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span></span>
+            </div><div id="line-wrap-52" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">52</span>
+                <span class="line-text">            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Error setting up storage context: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></span>
+            </div><div id="line-wrap-53" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">53</span>
+                <span class="line-text">            <span class="token keyword">raise</span></span>
+            </div></code></pre>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+    const CODE_FILE = `import qdrant_client
+from llama_index.vector_stores.qdrant import QdrantVectorStore
+from llama_index.core import VectorStoreIndex
+import logging
+
+logger = logging.getLogger(__name__)
+
+class StorageContextManager:
+"""Handles setup of Qdrant vector store and index creation."""
+
+def __init__(self, config, secret):
+    """
+    :param config: Callable or dict for configuration values
+    :param secret: Callable for fetching secrets
+    """
+    self._config = config
+    self._secret = secret
+
+def setup_storage_context(self, collection_name: str) -> VectorStoreIndex:
+    """Setup storage context with Qdrant vector store."""
+    try:
+        client = qdrant_client.QdrantClient(
+            url=self._secret("QDRANT_URL"),
+            api_key=self._secret("QDRANT_API_KEY")
+        )
+
+        aclient = qdrant_client.AsyncQdrantClient(
+            url=self._secret("QDRANT_URL"),
+            api_key=self._secret("QDRANT_API_KEY")
+        )
+
+        vector_store = QdrantVectorStore(
+            client=client,
+            aclient=aclient,
+            collection_name=collection_name,
+            enable_hybrid=self._config("QDRANT_ENABLE_HYBRID"),
+            fastembed_sparse_model=self._config("FASTEMBED_SPARSE_MODEL"),
+            prefer_grpc=False,
+        )
+
+        logger.info("Qdrant clients and vector store created successfully.")
+
+        collections = client.get_collections()
+        logger.debug(f"Collections in Vector DB: {collections}")
+
+        index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+        logger.info("VectorStoreIndex created.")
+
+        return index
+
+    except Exception as e:
+        logger.error(f"Error setting up storage context: {e}")
+        raise`;
+
+    const WALKTHROUGH_JSON = [
+        {
+            id: 1,
+            title: "Hybrid Retrieval Setup as Precursor to Re-ranking",
+            description: "This block initializes the QdrantVectorStore with hybrid search enabled, combining dense and sparse retrieval signals. While no re-ranking model is executed here, this step directly shapes the candidate set that any downstream re-ranker will operate on. Enabling hybrid retrieval increases recall and diversity, which is critical for effective re-ranking, since re-rankers assume a strong but noisy initial candidate pool.",
+            lineRange: [32, 39],
+            label: "Pre-Re-ranking Candidate Retrieval"
+        },
+        {
+            id: 2,
+            title: "VectorStoreIndex Creation for Re-ranker Input Flow",
+            description: "This step wraps the vector store into a VectorStoreIndex, which is the abstraction used by LlamaIndex retrieval pipelines. From a re-ranking perspective, this index defines how top-k candidates are fetched before re-ranking is applied. The quality, size, and structure of this index directly affect re-ranker latency, scoring accuracy, and overall pipeline behavior.",
+            lineRange: [46, 46],
+            label: "Re-ranker Input Index"
+        }
+    ];
+
+    let activeIndex = 0;
+    let isFullMode = false;
+
+    // Elements
+    const explanationList = document.getElementById('explanation-list');
+    const snippetCode = document.getElementById('snippet-code');
+    const snippetLabel = document.getElementById('snippet-label');
+    const fullCodeContent = document.getElementById('full-code-content');
+    const fullCodeScroller = document.getElementById('full-code-scroller');
+    const toggleBtn = document.getElementById('toggle-view');
+    const toggleText = document.getElementById('toggle-text');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    // Initialize App
+    function init() {
+        renderExplanations();
+        renderFullCode();
+        updateUI();
+        
+        toggleBtn.addEventListener('click', toggleViewMode);
+        
+        // Scroll sync logic
+        fullCodeScroller.addEventListener('scroll', throttle(() => {
+            if (!isFullMode) return;
+            detectActiveRange();
+        }, 100));
+    }
+
+    function renderExplanations() {
+        explanationList.innerHTML = WALKTHROUGH_JSON.map((item, idx) => `
+            <div id="card-${idx}" 
+                 onclick="setActiveStep(${idx})"
+                 class="explanation-card group cursor-pointer p-6 rounded-3xl bg-white/50 border border-slate-200 hover:border-indigo-200 transition-all duration-300">
+                <div class="flex items-center space-x-3 mb-3">
+                    <span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 rounded-lg">Step 0${item.id}</span>
+                    <span class="text-xs text-slate-400 font-mono">${item.label}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-indigo-600 transition-colors">${item.title}</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">${item.description}</p>
+            </div>
+        `).join('');
+    }
+
+    function renderFullCode() {
+        const lines = CODE_FILE.split('\n');
+        fullCodeContent.innerHTML = lines.map((line, idx) => {
+            const lineNum = idx + 1;
+            return `<div id="line-wrap-${lineNum}" class="line-wrapper px-4">
+                <span class="inline-block w-8 text-right mr-6 text-slate-600 select-none text-xs font-mono">${lineNum}</span>
+                <span class="line-text">${Prism.highlight(line, Prism.languages.python, 'python')}</span>
+            </div>`;
+        }).join('');
+    }
+
+    function setActiveStep(idx) {
+        activeIndex = idx;
+        updateUI();
+        
+        if (isFullMode) {
+            const step = WALKTHROUGH_JSON[activeIndex];
+            const targetLine = document.getElementById(`line-wrap-${step.lineRange[0]}`);
+            if (targetLine) {
+                targetLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+
+    function updateUI() {
+        const step = WALKTHROUGH_JSON[activeIndex];
+
+        // Update Progress
+        const progress = ((activeIndex + 1) / WALKTHROUGH_JSON.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        progressText.innerText = `Step ${activeIndex + 1} of ${WALKTHROUGH_JSON.length}`;
+
+        // Update Explanations
+        document.querySelectorAll('.explanation-card').forEach((card, i) => {
+            card.classList.toggle('active', i === activeIndex);
+        });
+
+        // Update Snippet (Logic Mode)
+        const lines = CODE_FILE.split('\n');
+        const snippet = lines.slice(step.lineRange[0] - 1, step.lineRange[1]).join('\n');
+        snippetCode.innerHTML = Prism.highlight(snippet, Prism.languages.python, 'python');
+        snippetLabel.innerText = step.label + '.py';
+
+        // Update Full Code (Lens Effect)
+        if (isFullMode) {
+            document.querySelectorAll('.line-wrapper').forEach(el => el.classList.add('dimmed'));
+            document.querySelectorAll('.line-wrapper').forEach(el => el.classList.remove('active'));
+
+            for (let i = step.lineRange[0]; i <= step.lineRange[1]; i++) {
+                const el = document.getElementById(`line-wrap-${i}`);
+                if (el) {
+                    el.classList.remove('dimmed');
+                    el.classList.add('active');
+                }
+            }
+        }
+    }
+
+    function toggleViewMode() {
+        isFullMode = !isFullMode;
+        const snippetCont = document.getElementById('snippet-container');
+        const fullCont = document.getElementById('full-code-container');
+
+        if (isFullMode) {
+            snippetCont.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            fullCont.classList.remove('opacity-0', 'pointer-events-none');
+            fullCont.classList.add('opacity-100');
+            toggleText.innerText = 'Logic Blocks Mode';
+        } else {
+            snippetCont.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            fullCont.classList.add('opacity-0', 'pointer-events-none');
+            toggleText.innerText = 'Full File Mode';
+        }
+        updateUI();
+    }
+
+    function detectActiveRange() {
+        const containerBox = fullCodeScroller.getBoundingClientRect();
+        const centerY = containerBox.top + (containerBox.height / 2);
+
+        let closestIdx = activeIndex;
+        let minDistance = Infinity;
+
+        WALKTHROUGH_JSON.forEach((step, idx) => {
+            const startEl = document.getElementById(`line-wrap-${step.lineRange[0]}`);
+            if (!startEl) return;
+            
+            const box = startEl.getBoundingClientRect();
+            const dist = Math.abs(box.top - centerY);
+            
+            if (dist < minDistance) {
+                minDistance = dist;
+                closestIdx = idx;
+            }
+        });
+
+        if (closestIdx !== activeIndex) {
+            activeIndex = closestIdx;
+            updateUI();
+        }
+    }
+
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+
+    window.onload = init;
+</script>
+
+<!-- Audio-guided walkthrough controller -->
+<script>
+    (function () {
+        if (!window.WALKTHROUGH_JSON || !window.setActiveStep) return;
+
+        const steps = window.WALKTHROUGH_JSON;
+        const audio = new Audio();
+        audio.preload = 'auto';
+
+        let currentIndex = 0;
+        let isUserPaused = true;
+
+        function audioSrcFor(index) {
+            // card-0.mp3 … card-N.mp3 (matches card IDs)
+            return `card-${index}.mp3`;
+        }
+
+        function loadTrack(index, play = false) {
+            currentIndex = Math.max(0, Math.min(steps.length - 1, index));
+            audio.src = audioSrcFor(currentIndex);
+            try {
+                window.setActiveStep(currentIndex);
+            } catch (e) {
+                // ignore if setActiveStep not ready yet
+            }
+            if (play) {
+                playCurrent();
+            } else {
+                isUserPaused = true;
+                updatePlayIcon();
+            }
+        }
+
+        function playCurrent() {
+            isUserPaused = false;
+            audio.play().catch(function () {
+                isUserPaused = true;
+                updatePlayIcon();
+            });
+            updatePlayIcon();
+        }
+
+        function pauseCurrent() {
+            isUserPaused = true;
+            audio.pause();
+            updatePlayIcon();
+        }
+
+        function nextTrack() {
+            if (currentIndex < steps.length - 1) {
+                loadTrack(currentIndex + 1, !isUserPaused);
+            } else {
+                pauseCurrent();
+            }
+        }
+
+        function prevTrack() {
+            if (currentIndex > 0) {
+                loadTrack(currentIndex - 1, !isUserPaused);
+            } else {
+                loadTrack(0, !isUserPaused);
+            }
+        }
+
+        // UI
+        const bar = document.createElement('div');
+        bar.id = 'code-audio-controller';
+        bar.style.position = 'fixed';
+        bar.style.left = '50%';
+        bar.style.transform = 'translateX(-50%)';
+        bar.style.bottom = '18px';
+        bar.style.zIndex = '40';
+        bar.style.background = '#0f172a';
+        bar.style.color = '#e5e7eb';
+        bar.style.borderRadius = '999px';
+        bar.style.padding = '8px 18px';
+        bar.style.display = 'flex';
+        bar.style.alignItems = 'center';
+        bar.style.gap = '10px';
+        bar.style.boxShadow = '0 12px 30px rgba(15,23,42,0.55)';
+        bar.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+        bar.innerHTML = `
+            <button id="code-audio-prev" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏮</button>
+            <button id="code-audio-play" style="width:32px;height:32px;border-radius:999px;border:none;background:#22c55e;color:#022c22;font-weight:900;cursor:pointer;">▶</button>
+            <button id="code-audio-next" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏭</button>
+            <div style="min-width:180px;">
+                <div id="code-audio-label" style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:#a5b4fc;">Step 1</div>
+                <div style="width:100%;height:4px;border-radius:999px;background:#1e293b;overflow:hidden;margin-top:4px;">
+                    <div id="code-audio-progress" style="height:100%;width:0%;background:#22c55e;"></div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(bar);
+
+        const playBtn = document.getElementById('code-audio-play');
+        const prevBtn = document.getElementById('code-audio-prev');
+        const nextBtn = document.getElementById('code-audio-next');
+        const label = document.getElementById('code-audio-label');
+        const progress = document.getElementById('code-audio-progress');
+
+        function updatePlayIcon() {
+            playBtn.textContent = isUserPaused ? '▶' : '⏸';
+        }
+
+        function updateLabel() {
+            const step = steps[currentIndex];
+            label.textContent = `${step.label || step.title || 'Step'} • ${currentIndex + 1}/${steps.length}`;
+        }
+
+        playBtn.addEventListener('click', function () {
+            if (isUserPaused) {
+                playCurrent();
+            } else {
+                pauseCurrent();
+            }
+        });
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+
+        audio.addEventListener('timeupdate', function () {
+            if (!audio.duration) return;
+            const pct = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = pct + '%';
+        });
+
+        audio.addEventListener('ended', function () {
+            nextTrack();
+        });
+
+        // Initialize first step without autoplay
+        loadTrack(0, false);
+        updateLabel();
+    })();
+</script>
+
+</body></html>
