@@ -951,7 +951,7 @@ def setup_storage_context(self, collection_name: str) -> VectorStoreIndex:
         logger.error(f"Error setting up storage context: {e}")
         raise`;
 
-    const WALKTHROUGH_JSON = [
+    window.WALKTHROUGH_JSON = [
         {
             id: 1,
             title: "Hybrid Retrieval Setup as Precursor to Re-ranking",
@@ -1023,10 +1023,10 @@ def setup_storage_context(self, collection_name: str) -> VectorStoreIndex:
         }).join('');
     }
 
-    function setActiveStep(idx) {
+    window.setActiveStep = function setActiveStep(idx) {
         activeIndex = idx;
         updateUI();
-        
+
         if (isFullMode) {
             const step = WALKTHROUGH_JSON[activeIndex];
             const targetLine = document.getElementById(`line-wrap-${step.lineRange[0]}`);
@@ -1152,6 +1152,11 @@ def setup_storage_context(self, collection_name: str) -> VectorStoreIndex:
             audio.src = audioSrcFor(currentIndex);
             try {
                 window.setActiveStep(currentIndex);
+                // Scroll the active card into view, centered in viewport
+                const activeCard = document.getElementById(`card-${currentIndex}`);
+                if (activeCard) {
+                    activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             } catch (e) {
                 // ignore if setActiveStep not ready yet
             }

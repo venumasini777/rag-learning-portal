@@ -959,7 +959,7 @@ async def _process_contexts(self, answer, source_nodes, retrieved_docs):
         logger.error(f"Error processing contexts: {e}")
         raise e`;
 
-    const WALKTHROUGH_JSON = [
+    window.WALKTHROUGH_JSON = [
         {
             "id": 1,
             "title": "Re-ranking Dependencies",
@@ -1061,7 +1061,7 @@ async def _process_contexts(self, answer, source_nodes, retrieved_docs):
         ).join('\n');
     }
 
-    function updateStep(stepId, forceScroll = false) {
+    window.updateStep = function updateStep(stepId, forceScroll = false) {
         currentStep = stepId;
         const step = WALKTHROUGH_JSON.find(s => s.id === stepId);
 
@@ -1189,6 +1189,11 @@ async def _process_contexts(self, answer, source_nodes, retrieved_docs):
             audio.src = audioSrcFor(currentIndex);
             try {
                 window.updateStep(steps[currentIndex].id);
+                // Scroll the active card into view, centered in viewport
+                const activeCard = document.getElementById(`card-${steps[currentIndex].id}`);
+                if (activeCard) {
+                    activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             } catch (e) {}
             if (play) {
                 playCurrent();

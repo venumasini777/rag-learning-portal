@@ -799,7 +799,7 @@ def build(self, index, metadata_filters: Optional[List[MetadataFilter]] = None) 
     return query_engine
 `;
 
-    const WALKTHROUGH_JSON = [
+    window.WALKTHROUGH_JSON = [
         {
             "id": 1,
             "title": "Re-ranker Initialization and Configuration",
@@ -876,9 +876,9 @@ def build(self, index, metadata_filters: Optional[List[MetadataFilter]] = None) 
         ).join('');
     }
 
-    function updateWalkthrough(index) {
+    window.updateWalkthrough = function updateWalkthrough(index) {
         currentStep = index;
-        
+
         // UI Updates
         const cards = document.querySelectorAll('.explanation-card');
         cards.forEach((c, i) => i === index ? c.classList.add('active') : c.classList.remove('active'));
@@ -1027,6 +1027,11 @@ def build(self, index, metadata_filters: Optional[List[MetadataFilter]] = None) 
             audio.src = audioSrcFor(currentIndex);
             try {
                 window.updateWalkthrough(currentIndex);
+                // Scroll the active card into view, centered in viewport
+                const activeCard = document.getElementById(`card-${currentIndex}`);
+                if (activeCard) {
+                    activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             } catch (e) {}
             if (play) {
                 playCurrent();
