@@ -143,6 +143,19 @@ const courseData = {
           group: 'code',
           path: '/rag/re-ranking/code_run_down/storage_context_manager/storage_context_manager.html',
         },
+        // Pull Requests
+        {
+          id: 'pr-36',
+          title: 'PR #36: Chat Compound Query Response',
+          group: 'pr',
+          path: '/rag/re-ranking/PR/36/index.html',
+        },
+        {
+          id: 'pr-43',
+          title: 'PR #43: Fast Inference',
+          group: 'pr',
+          path: '/rag/re-ranking/PR/43/index.html',
+        },
       ],
     },
     {
@@ -181,8 +194,9 @@ function App() {
   const isTopicDetail = activeTopic && activeTopic !== 're-ranking'
   const currentTopic = courseData.topics.find((topic) => topic.id === activeTopic)
   const reRankingTopic = courseData.topics.find((topic) => topic.id === 're-ranking')
-  const reRankingConcepts = reRankingTopic?.subtopics.filter((s) => s.group !== 'code') ?? []
+  const reRankingConcepts = reRankingTopic?.subtopics.filter((s) => s.group === 'concept') ?? []
   const reRankingCode = reRankingTopic?.subtopics.filter((s) => s.group === 'code') ?? []
+  const reRankingPR = reRankingTopic?.subtopics.filter((s) => s.group === 'pr') ?? []
   const isLessonView = Boolean(activeLesson?.path)
 
   useEffect(() => {
@@ -367,6 +381,31 @@ function App() {
                     <h3>Code Run Down</h3>
                     <ul>
                       {reRankingCode.map((subtopic) => {
+                        const isActive = activeLesson?.id === subtopic.id
+                        return (
+                          <li key={subtopic.id}>
+                            <button
+                              className={`subtopic-link ${
+                                subtopic.path ? '' : 'disabled'
+                              } ${isActive ? 'active' : ''}`}
+                              onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
+                            >
+                              <span className="subtopic-icon">
+                                {subtopic.path ? '▶' : '🔒'}
+                              </span>
+                              <span>{subtopic.title}</span>
+                            </button>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                )}
+                {reRankingPR.length > 0 && (
+                  <div className="topic-block" style={{ marginTop: '1.75rem' }}>
+                    <h3>Pull Requests</h3>
+                    <ul>
+                      {reRankingPR.map((subtopic) => {
                         const isActive = activeLesson?.id === subtopic.id
                         return (
                           <li key={subtopic.id}>

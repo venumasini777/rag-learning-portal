@@ -1,0 +1,1476 @@
+<html lang="en"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","","073f20926f69-PR_Walkthrough_FastInference.html-734")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Diff Lens: Fast Inference &amp; Unified Query</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* Design Tokens & Custom Overrides */
+        :root {
+            --bg-page: #f4f7fb;
+            --bg-diff: #0d1117;
+            --diff-add-bg: #2ea04326;
+            --diff-add-text: #3fb950;
+            --diff-del-bg: #f8514926;
+            --diff-del-text: #f85149;
+            --diff-meta: #8b949e;
+            --accent: #6366f1; /* Indigo 600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: #1f2937;
+            overflow: hidden; /* Main scroll handled by panels */
+            height: 100vh;
+        }
+
+        /* The Diff Font */
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+            font-variant-ligatures: none;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        #diff-panel::-webkit-scrollbar-thumb {
+            background: #30363d;
+        }
+
+        /* Diff Lens Effect */
+        .diff-file-section {
+            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+            opacity: 0.25; /* Default dimmed state */
+            filter: grayscale(80%) blur(0.5px);
+        }
+        
+        .diff-file-section.active-focus {
+            opacity: 1;
+            filter: grayscale(0%) blur(0);
+            transform: scale(1.002); /* Subtle pop */
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            border: 1px solid #30363d;
+        }
+
+        /* Step Card Active State */
+        .step-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid transparent;
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+        }
+        .step-card.active-card {
+            background-color: white;
+            border-left-color: var(--accent);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateX(4px);
+        }
+        .step-card.active-card .step-number {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Progress Bar Transition */
+        #progress-bar {
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Line Styling */
+        .diff-line {
+            padding: 0 1rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            line-height: 1.5;
+            font-size: 0.85rem;
+            display: block;
+            width: 100%;
+            border-left: 3px solid transparent; /* Marker for deep linking */
+        }
+        
+        .diff-line-add {
+            background-color: var(--diff-add-bg);
+            color: var(--diff-add-text);
+        }
+        
+        .diff-line-del {
+            background-color: var(--diff-del-bg);
+            color: var(--diff-del-text);
+        }
+        
+        .diff-line-meta {
+            color: var(--diff-meta);
+            background-color: #161b22;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            font-weight: 500;
+            border-top: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Highlight for the specific line being discussed */
+        .line-highlight {
+            background: rgba(99, 102, 241, 0.15) !important;
+            border-left-color: var(--accent) !important;
+        }
+
+        .diff-header {
+            background: linear-gradient(to right, #161b22, #0d1117);
+            border-bottom: 1px solid #30363d;
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #e6edf3;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.relative{position:relative}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.col-span-5{grid-column:span 5 / span 5}.col-span-7{grid-column:span 7 / span 7}.mb-2{margin-bottom:0.5rem}.mb-12{margin-bottom:3rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mr-2{margin-right:0.5rem}.flex{display:flex}.grid{display:grid}.h-1{height:0.25rem}.h-16{height:4rem}.h-5{height:1.25rem}.h-full{height:100%}.h-screen{height:100vh}.h-3{height:0.75rem}.min-h-full{min-height:100%}.w-0{width:0px}.w-5{width:1.25rem}.w-full{width:100%}.w-3{width:0.75rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-lg{border-radius:0.5rem}.rounded{border-radius:0.25rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-\[\#30363d\]{--tw-border-opacity:1;border-color:rgb(48 54 61 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.bg-\[\#0d1117\]{--tw-bg-opacity:1;background-color:rgb(13 17 23 / var(--tw-bg-opacity, 1))}.bg-\[\#f4f7fb\]{--tw-bg-opacity:1;background-color:rgb(244 247 251 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-indigo-100{--tw-bg-opacity:1;background-color:rgb(224 231 255 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.bg-\[\#7ce38b\]{--tw-bg-opacity:1;background-color:rgb(124 227 139 / var(--tw-bg-opacity, 1))}.bg-\[\#fa7970\]{--tw-bg-opacity:1;background-color:rgb(250 121 112 / var(--tw-bg-opacity, 1))}.bg-\[\#faa356\]{--tw-bg-opacity:1;background-color:rgb(250 163 86 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-6{padding:1.5rem}.p-5{padding:1.25rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-32{padding-bottom:8rem}.pt-16{padding-top:4rem}.pt-6{padding-top:1.5rem}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-tight{letter-spacing:-0.025em}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-indigo-700{--tw-text-opacity:1;color:rgb(67 56 202 / var(--tw-text-opacity, 1))}.text-\[\#8b949e\]{--tw-text-opacity:1;color:rgb(139 148 158 / var(--tw-text-opacity, 1))}.text-\[\#c9d1d9\]{--tw-text-opacity:1;color:rgb(201 209 217 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.opacity-50{opacity:0.5}.opacity-70{opacity:0.7}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}@media (min-width: 768px){.md\:px-8{padding-left:2rem;padding-right:2rem}}@media (min-width: 1024px){.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-8{grid-column:span 8 / span 8}}</style></head>
+<body class="flex flex-col h-screen">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 h-16 z-50 backdrop-blur-md bg-white/70 border-b border-gray-200 flex flex-col justify-end">
+        <div class="flex items-center justify-between px-8 py-3 h-full">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-100 text-indigo-700 p-2 rounded-lg">
+                    <!-- Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-gray-800 text-lg leading-tight">PR Walkthrough</h1>
+                    <p class="text-xs text-gray-500 font-medium tracking-wide uppercase">Fast inference and unified single &amp; compound query</p>
+                </div>
+            </div>
+            <div class="text-sm font-semibold text-gray-600">
+                <span id="current-step-display">1</span> / <span id="total-steps-display">7</span>
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="w-full h-1 bg-gray-200">
+            <div id="progress-bar" class="h-full bg-indigo-600 w-0" style="width: 14.2857%;"></div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="flex-1 grid grid-cols-12 h-full pt-16">
+        
+        <!-- Left Panel: The Context -->
+        <div id="context-panel" class="col-span-5 lg:col-span-4 bg-[#f4f7fb] overflow-y-auto p-6 pb-32 space-y-6">
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 px-1">Change Timeline</div>
+            <!-- Cards will be injected here -->
+        
+                <div id="step-0" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100 active-card" onclick="activateStep(0)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 1</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-green-600 bg-green-50">Logic Fix (Performance Optimization)</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Removal of Query Refinement Step</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Removes the _refine_query method and its invocation in _prepare_query. Previously, every query triggered an LLM call to rewrite/refine the text before retrieval. Removing this significantly reduces latency, directly addressing the 'Fast inference' objective by cutting out an expensive synchronous LLM round-trip.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">Generate.init / _refine_query</span>
+                    </div>
+                </div>
+                
+                <div id="step-1" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(1)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 2</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-blue-600 bg-blue-50">Refactor (Architecture)</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Integration of CompoundQueryRetriever</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Initializes the new CompoundQueryRetriever and injects it into the CitationQueryEngine. Instead of using a standard retriever, this custom retriever (configured with reciprocal_rerank) encapsulates the logic for decomposing complex queries into sub-queries and fusing results. This enables the system to handle both simple and complex queries via a single engine configuration.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">Generate._init_query_engine</span>
+                    </div>
+                </div>
+                
+                <div id="step-2" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(2)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 3</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-green-600 bg-green-50">Logic Fix (Unification)</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Unified Execution Path</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Comments out the explicit branching logic that previously separated _handle_compound_query from standard retrieval. By relying on the CompoundQueryRetriever injected earlier, the pipeline now uses a single, unified execution flow (generate_answer) for all query types, simplifying the control flow and reducing code duplication.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">Generate.generate_answer</span>
+                    </div>
+                </div>
+                
+                <div id="step-3" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(3)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 4</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-blue-600 bg-blue-50">Refactor</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Simplified Compound Query Detection</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Refactors _is_compound_query to use a stored prompt string (self._prompts.is_compound_prompt) rather than defining a large string literal inline. This improves maintainability and separation of concerns regarding prompt management.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">Generate._is_compound_query</span>
+                    </div>
+                </div>
+                
+                <div id="step-4" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(4)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 5</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-purple-600 bg-purple-50">New Feature</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">New Compound Query Retriever Implementation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Introduces a new class inheriting from LlamaIndex's QueryFusionRetriever. This class encapsulates the logic for detecting compound queries, decomposing them using an LLM, executing sub-queries, and fusing the results. This moves complexity out of the main Generate class and into a specialized component.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">CompoundQueryRetriever (New Class)</span>
+                    </div>
+                </div>
+                
+                <div id="step-5" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(5)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 6</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-green-600 bg-green-50">Performance Optimization</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Optimization of Chat Service</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Removes the explicit self._storage.load_chat_history(request.chat_id) call from the request processing loop. This reduces database I/O overhead per request, contributing to the 'Fast inference' objective.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">ChatService.process_rag_chat</span>
+                    </div>
+                </div>
+                
+                <div id="step-6" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(6)">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step 7</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full text-amber-600 bg-amber-50">Prompt Engineering</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">Output Formatting Constraint</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Adds a specific instruction to the QA prompt to prevent Document Titles from appearing in the generated answer. This ensures cleaner, more professional output during the inference phase.</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">Prompt Template</span>
+                    </div>
+                </div>
+                </div>
+
+        <!-- Right Panel: The Diff -->
+        <div id="diff-panel" class="col-span-7 lg:col-span-8 bg-[#0d1117] overflow-y-auto relative scroll-smooth">
+            <div id="diff-content" class="min-h-full pb-32 pt-6 px-4 md:px-8 space-y-12"><div data-filepath="core/retrieval_api/generate.py" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117] active-focus">
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">core/retrieval_api/generate.py</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    <span class="diff-line diff-line-meta">index 2721a69..e081e56 100644</span><span class="diff-line diff-line-meta">--- a/core/retrieval_api/generate.py</span><span class="diff-line diff-line-meta">+++ b/core/retrieval_api/generate.py</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -17,7 +17,7 @@</span><span class="diff-line text-[#c9d1d9]"> from tavily import TavilyClient</span><span class="diff-line text-[#c9d1d9]"> from llama_index.core import StorageContext, Settings, load_index_from_storage,PromptHelper,VectorStoreIndex</span><span class="diff-line text-[#c9d1d9]"> from llama_index.core.schema import QueryBundle, Node</span><span class="diff-line diff-line-del">-from llama_index.core.query_engine import CitationQueryEngine </span><span class="diff-line diff-line-add">+from llama_index.core.query_engine import CitationQueryEngine</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]"> from llama_index.core.tools import QueryEngineTool, ToolMetadata</span><span class="diff-line text-[#c9d1d9]"> from llama_index.core.query_engine import SubQuestionQueryEngine</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -40,6 +40,7 @@</span><span class="diff-line text-[#c9d1d9]"> from .managers.storage_manager import StorageManager</span><span class="diff-line text-[#c9d1d9]"> from .managers.llm_manager import LLMManager</span><span class="diff-line text-[#c9d1d9]"> from .managers.prompt_manager import PromptManager</span><span class="diff-line diff-line-add">+from .retrievers.compound_retriever import CompoundQueryRetriever</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]"> warnings.filterwarnings("ignore")</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -87,12 +88,8 @@ def __init__(</span><span class="diff-line text-[#c9d1d9]">         self._cohere_api_key = self._secret("COHERE_API_KEY")</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">         logger.info(f"Initializing Generate for category: {category_name}")</span><span class="diff-line diff-line-del">-</span><span class="diff-line text-[#c9d1d9]">         self._prompts = PromptManager.load_prompts(self._config)</span><span class="diff-line diff-line-del">-</span><span class="diff-line text-[#c9d1d9]">         self._model_manager = self._llm_manager</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-        # llm_manager = LLMManager(settings_manager)</span><span class="diff-line text-[#c9d1d9]">         </span><span class="diff-line text-[#c9d1d9]">         # Configure LlamaIndex settings</span><span class="diff-line text-[#c9d1d9]">         Settings._prompt_helper = PromptHelper(context_window=20000)</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -113,33 +110,12 @@ def __init__(</span><span class="diff-line text-[#c9d1d9]">         self._refined_query = self._prepare_query()</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">         # Setup query engine</span><span class="diff-line diff-line-del">-        # self._persist = self._storage_manager.load_persist_dir(persist_dir, collection_name)</span><span class="diff-line text-[#c9d1d9]">         index = self._setup_storage_context(collection_name)</span><span class="diff-line text-[#c9d1d9]">         metadata_filters = self._prepare_metadata_filters(metadata)</span><span class="diff-line text-[#c9d1d9]">         self._init_query_engine(index, metadata_filters)</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line diff-line-del line-highlight">-    def _refine_query(self, query: str) -&gt; str:</span><span class="diff-line diff-line-del">-        # prompt = (</span><span class="diff-line diff-line-del">-        #     "Rewrite the following vague or poorly worded query to be clearer and more specific for document retrieval.\n\n"</span><span class="diff-line diff-line-del">-        #     f"Original Query: {query}\n\nRefined Query:"</span><span class="diff-line diff-line-del">-        # )</span><span class="diff-line diff-line-del">-        prompt = (</span><span class="diff-line diff-line-del">-        "You are assisting in improving user queries for an enterprise document retrieval system "</span><span class="diff-line diff-line-del">-        "in the oil and gas domain. The queries may be vague, incomplete, or poorly worded.\n\n"</span><span class="diff-line diff-line-del">-        "Your task is to rewrite the query to make it clearer and more specific, "</span><span class="diff-line diff-line-del">-        "while strictly preserving all domain-specific terminology, acronyms, and names (e.g. like 'IBDP').\n\n"</span><span class="diff-line diff-line-del">-        "Do NOT expand acronyms unless their expanded form is clearly known in the oil &amp; gas context.\n"</span><span class="diff-line diff-line-del">-        "Do NOT hallucinate or assume meanings outside the domain.\n\n"</span><span class="diff-line diff-line-del">-        f"Original Query: {query}\n\n"</span><span class="diff-line diff-line-del">-        "Refined Query:"</span><span class="diff-line diff-line-del">-        )</span><span class="diff-line diff-line-del">-        refined = self._model_manager.llm.complete(prompt)</span><span class="diff-line diff-line-del">-        logger.debug(f"refined_query, {refined}")</span><span class="diff-line diff-line-del">-        return refined.text.strip()</span><span class="diff-line diff-line-del">-</span><span class="diff-line text-[#c9d1d9]">     def _prepare_query(self) -&gt; str:</span><span class="diff-line text-[#c9d1d9]">         """Prepare the refined query with chat history."""</span><span class="diff-line diff-line-del">-        # self._query = self._refine_query(self._query)</span><span class="diff-line text-[#c9d1d9]">         if self._storage_manager.chat_hist is not None:</span><span class="diff-line text-[#c9d1d9]">             return f"&lt;|CHAT HISTORY|&gt;: {self._storage_manager.chat_hist}\n\n&lt;|QUERY|&gt;: {self._query}"</span><span class="diff-line text-[#c9d1d9]">         return f"&lt;|QUERY|&gt;: {self._query}"</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -169,17 +145,6 @@ def _setup_storage_context(self, collection_name: str) -&gt; StorageContext:</span><span class="diff-line text-[#c9d1d9]">             collections = client.get_collections()</span><span class="diff-line text-[#c9d1d9]">             logger.debug(f"collections in vector db: {collections}")</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line diff-line-del">-            # storage_context = StorageContext.from_defaults(</span><span class="diff-line diff-line-del">-            #     persist_dir=self._persist, vector_store=vector_store</span><span class="diff-line diff-line-del">-            # )</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            # storage_context = StorageContext.from_defaults(</span><span class="diff-line diff-line-del">-            #     vector_store=vector_store</span><span class="diff-line diff-line-del">-            # )</span><span class="diff-line diff-line-del">-            # index = load_index_from_storage(storage_context)</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            # logger.info("storage context created")</span><span class="diff-line diff-line-del">-</span><span class="diff-line text-[#c9d1d9]">             index = VectorStoreIndex.from_vector_store(vector_store=vector_store)</span><span class="diff-line text-[#c9d1d9]">             logger.info("index created")</span><span class="diff-line text-[#c9d1d9]">             </span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -203,24 +168,7 @@ def _init_query_engine(self, index, metadata_filters: Optional[List[MetadataFilt</span><span class="diff-line text-[#c9d1d9]">                 similarity_cutoff=self._config("RAG_SIMILARITY_CUTOFF")</span><span class="diff-line text-[#c9d1d9]">             )</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line diff-line-del">-            prompt_template = PromptTemplate(</span><span class="diff-line diff-line-del">-                """You are given a query and a list of document snippets.</span><span class="diff-line diff-line-del">-            Your job is to identify which snippets are the most relevant to the query.</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            Query: {query_str}</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            Snippets:</span><span class="diff-line diff-line-del">-            {context_str}</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            Instructions:</span><span class="diff-line diff-line-del">-            Return your answers in this numbered format:</span><span class="diff-line diff-line-del">-            1: Relevant</span><span class="diff-line diff-line-del">-            2: Not Relevant</span><span class="diff-line diff-line-del">-            ...</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            Only respond in this format. Do not add any explanations."""</span><span class="diff-line diff-line-del">-            )</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-add">+            ## TODO: to enable this functionality, checkout 4428f82a5292f4f7d1600864b91a476116fddfc6</span><span class="diff-line text-[#c9d1d9]">             # rerank = LLMRerank(</span><span class="diff-line text-[#c9d1d9]">             #     top_n=self._config("RAG_RERANKED_TOP_N"),</span><span class="diff-line text-[#c9d1d9]">             #     llm=self._model_manager.llm,</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -239,9 +187,23 @@ def _init_query_engine(self, index, metadata_filters: Optional[List[MetadataFilt</span><span class="diff-line text-[#c9d1d9]">             citation_refine_template=PromptTemplate(</span><span class="diff-line text-[#c9d1d9]">                     self._prompts.citation_template + self._prompts.refine_template</span><span class="diff-line text-[#c9d1d9]">                 )</span><span class="diff-line diff-line-add">+            </span><span class="diff-line diff-line-add">+            base_retriever = index.as_retriever(</span><span class="diff-line diff-line-add">+                similarity_top_k=self._config("RAG_SIMILARITY_TOP_K")</span><span class="diff-line diff-line-add">+            )</span><span class="diff-line diff-line-add">+            retriever = CompoundQueryRetriever(</span><span class="diff-line diff-line-add">+                compound_query_classify_prompt=self._prompts.is_compound_prompt,</span><span class="diff-line diff-line-add">+                query_gen_prompt=self._prompts.chat_subquery,</span><span class="diff-line diff-line-add">+                retrievers=[base_retriever],</span><span class="diff-line diff-line-add">+                llm=self._model_manager.llm,</span><span class="diff-line diff-line-add">+                num_queries=4,  # Generate up to 4 sub-queries</span><span class="diff-line diff-line-add">+                similarity_top_k=self._config("RAG_SIMILARITY_TOP_K"),</span><span class="diff-line diff-line-add">+                mode="reciprocal_rerank", # Re-rank results from all sub-queries</span><span class="diff-line diff-line-add">+            )</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">             self.query_engine = CitationQueryEngine.from_args(</span><span class="diff-line text-[#c9d1d9]">                 index,</span><span class="diff-line diff-line-add">+                retriever=retriever,</span><span class="diff-line text-[#c9d1d9]">                 embed_model=self._model_manager.embed_model,</span><span class="diff-line text-[#c9d1d9]">                 chat_mode="context",</span><span class="diff-line text-[#c9d1d9]">                 citation_chunk_size=self._config("RAG_CITATION_CHUNK_SIZE"),</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -325,30 +287,32 @@ def generate_answer(self) -&gt; Generator[str, None, None]:</span><span class="diff-line text-[#c9d1d9]">                 yield from self._handle_greeting()</span><span class="diff-line text-[#c9d1d9]">                 return</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line diff-line-del">-            elif self._is_compound_query(self._refined_query):</span><span class="diff-line diff-line-del">-                updated_subq_answers, sources_text,ordered_docs, ordered_nodes = self._handle_compound_query_v2()</span><span class="diff-line diff-line-del">-                response = self._chat_synthesize_subanswers_v2(self._refined_query, updated_subq_answers, sources_text)</span><span class="diff-line diff-line-del">-                answer = ""</span><span class="diff-line diff-line-del">-                if response:</span><span class="diff-line diff-line-del">-                    for chunk_json in self.response_generator(response.text):</span><span class="diff-line diff-line-del">-                            chunk = json.loads(chunk_json)["text"]</span><span class="diff-line diff-line-del">-                            if chunk != "Empty Response":</span><span class="diff-line diff-line-del">-                                answer += chunk</span><span class="diff-line diff-line-del">-                            yield chunk_json</span><span class="diff-line diff-line-del">-                else:</span><span class="diff-line diff-line-del">-                    logger.warning("No sub queries/response found")</span><span class="diff-line diff-line-del">-                    if self._is_web_search != "True":</span><span class="diff-line diff-line-del">-                        yield json.dumps({</span><span class="diff-line diff-line-del">-                            "response_id": str(uuid.uuid4()),</span><span class="diff-line diff-line-del">-                            "type": "answer",</span><span class="diff-line diff-line-del">-                            "text": "No relevant contexts retrieved",</span><span class="diff-line diff-line-del">-                        })</span><span class="diff-line diff-line-del">-                contexts, answer = self._process_contexts(answer, ordered_nodes, ordered_docs)</span><span class="diff-line diff-line-del">-                yield from self._yield_context_answer(contexts,answer)</span><span class="diff-line diff-line-add">+            # elif self._is_compound_query(self._refined_query):</span><span class="diff-line diff-line-add">+            #     updated_subq_answers, sources_text,ordered_docs, ordered_nodes = self._handle_compound_query_v2()</span><span class="diff-line diff-line-add">+            #     response = self._chat_synthesize_subanswers_v2(self._refined_query, updated_subq_answers, sources_text)</span><span class="diff-line diff-line-add">+            #     answer = ""</span><span class="diff-line diff-line-add">+            #     if response:</span><span class="diff-line diff-line-add">+            #         for chunk_json in self.response_generator(response.text):</span><span class="diff-line diff-line-add">+            #                 chunk = json.loads(chunk_json)["text"]</span><span class="diff-line diff-line-add">+            #                 if chunk != "Empty Response":</span><span class="diff-line diff-line-add">+            #                     answer += chunk</span><span class="diff-line diff-line-add">+            #                 yield chunk_json</span><span class="diff-line diff-line-add">+            #     else:</span><span class="diff-line diff-line-add">+            #         logger.warning("No sub queries/response found")</span><span class="diff-line diff-line-add">+            #         if self._is_web_search != "True":</span><span class="diff-line diff-line-add">+            #             yield json.dumps({</span><span class="diff-line diff-line-add">+            #                 "response_id": str(uuid.uuid4()),</span><span class="diff-line diff-line-add">+            #                 "type": "answer",</span><span class="diff-line diff-line-add">+            #                 "text": "No relevant contexts retrieved",</span><span class="diff-line diff-line-add">+            #             })</span><span class="diff-line diff-line-add">+            #     contexts, answer = self._process_contexts(answer, ordered_nodes, ordered_docs)</span><span class="diff-line diff-line-add">+            #     yield from self._yield_context_answer(contexts,answer)</span><span class="diff-line text-[#c9d1d9]">                 </span><span class="diff-line text-[#c9d1d9]">             else:</span><span class="diff-line text-[#c9d1d9]">                 # Retrieving docs</span><span class="diff-line diff-line-add">+                start_time = time.perf_counter()</span><span class="diff-line text-[#c9d1d9]">                 retrieved_docs = self._retrieve_documents()</span><span class="diff-line diff-line-add">+                logger.info(f"Time taken for document retrieval: {time.perf_counter() - start_time}")</span><span class="diff-line text-[#c9d1d9]">                 #logger.info(f"has_valid_docs, {self._has_valid_docs(retrieved_docs)}")</span><span class="diff-line text-[#c9d1d9]">                 if not self._has_valid_docs(retrieved_docs):</span><span class="diff-line text-[#c9d1d9]">                     if self._is_web_search:</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -360,14 +324,15 @@ def generate_answer(self) -&gt; Generator[str, None, None]:</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">                 # Generate response</span><span class="diff-line text-[#c9d1d9]">                 logger.info("Generating response...")</span><span class="diff-line diff-line-del">-                response = self.query_engine.query(self._refined_query)</span><span class="diff-line diff-line-add">+                # response = self.query_engine.query(self._refined_query)</span><span class="diff-line diff-line-add">+                response = self.query_engine.synthesize(</span><span class="diff-line diff-line-add">+                    query_bundle = QueryBundle(query_str=self._refined_query),</span><span class="diff-line diff-line-add">+                    nodes = retrieved_docs,</span><span class="diff-line diff-line-add">+                )</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">                 # yield generated response</span><span class="diff-line text-[#c9d1d9]">                 answer = ""</span><span class="diff-line text-[#c9d1d9]">                 if response:</span><span class="diff-line diff-line-del">-                    # logger.info("XXXXX yielding from response gen")</span><span class="diff-line diff-line-del">-                    # answer = self._get_answer_from_response(response)</span><span class="diff-line diff-line-del">-                    # yield from self._yield_response_gen(response)</span><span class="diff-line text-[#c9d1d9]">                     for text in response.response_gen:</span><span class="diff-line text-[#c9d1d9]">                         if text != "Empty Response":</span><span class="diff-line text-[#c9d1d9]">                             answer += text</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -1017,23 +982,7 @@ def response_generator(self, response_str, chunk_size=50):</span><span class="diff-line text-[#c9d1d9]">             })</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]">     def _is_compound_query(self, query: str) -&gt; bool:</span><span class="diff-line diff-line-del">-        # prompt = (</span><span class="diff-line diff-line-del">-        #     "Does the following query contain multiple questions or sub-intents? "</span><span class="diff-line diff-line-del">-        #     "Answer with a single word: 'Yes' or 'No'.\n\nQuery: "</span><span class="diff-line diff-line-del">-        #     + query</span><span class="diff-line diff-line-del">-        # )</span><span class="diff-line diff-line-del">-        prompt = (</span><span class="diff-line diff-line-del">-            "You are an expert at understanding natural language queries.\n"</span><span class="diff-line diff-line-del">-            "Your task is to determine whether the following query is **compound**"</span><span class="diff-line diff-line-del">-            "if it Asks for more than one distinct piece of information.\n"</span><span class="diff-line diff-line-del">-            "Contains multiple sub-intents or investigative directions\n"</span><span class="diff-line diff-line-del">-            "Requires multiple reasoning or action steps to answer\n"</span><span class="diff-line diff-line-del">-            "if asks about multiple time frames or entities\n"</span><span class="diff-line diff-line-del">-            "Respond with a **single word** only: `'Yes'` if the query contains multiple questions or sub-intents, "</span><span class="diff-line diff-line-del">-            "or `'No'` if it is a single, focused question.\n\n"</span><span class="diff-line diff-line-del">-            f"Query: {query}\n\nAnswer:"</span><span class="diff-line diff-line-del">-        )</span><span class="diff-line diff-line-del">-        is_compound_prompt = self._prompts.is_compound_prompt.format(query =query)</span><span class="diff-line diff-line-add">+        is_compound_prompt = self._prompts.is_compound_prompt.format(query=query)</span><span class="diff-line text-[#c9d1d9]">         resp = self._model_manager.llm.complete(is_compound_prompt)</span><span class="diff-line text-[#c9d1d9]">         return "yes" in resp.text.lower()</span><span class="diff-line text-[#c9d1d9]">     </span></div></div><div data-filepath="core/retrieval_api/prompts/qa_template.prompt" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117]">
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">core/retrieval_api/prompts/qa_template.prompt</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    <span class="diff-line diff-line-meta">index 2f8ba96..f228e6b 100644</span><span class="diff-line diff-line-meta">--- a/core/retrieval_api/prompts/qa_template.prompt</span><span class="diff-line diff-line-meta">+++ b/core/retrieval_api/prompts/qa_template.prompt</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -9,6 +9,7 @@ Follow these guidelines to incorporate markdown formatting wherever applicable:</span><span class="diff-line text-[#c9d1d9]"> 7. Convert any table into markdown table format using | for columns and - for the header row separator</span><span class="diff-line text-[#c9d1d9]"> 8. Add horizontal rules where appropriate. Preserve line breaks and paragraphs</span><span class="diff-line text-[#c9d1d9]"> 9. Do not convert citations or references such as [1] into footnotes in markdown format i.e. [^1]</span><span class="diff-line diff-line-add">+10. Do not mention Document Title information in the answer</span><span class="diff-line text-[#c9d1d9]"> </span><span class="diff-line text-[#c9d1d9]"> Ensure that the answer is generated in MLA 9th edition style format.</span><span class="diff-line text-[#c9d1d9]"> Now it's your turn. Below are several numbered sources of information:</span></div></div><div data-filepath="core/retrieval_api/retrievers/__init__.py" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117]">
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">core/retrieval_api/retrievers/__init__.py</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    <span class="diff-line text-[#c9d1d9]">new file mode 100644</span><span class="diff-line diff-line-meta">index 0000000..e69de29</span></div></div><div data-filepath="core/retrieval_api/retrievers/compound_retriever.py" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117]">
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">core/retrieval_api/retrievers/compound_retriever.py</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    <span class="diff-line text-[#c9d1d9]">new file mode 100644</span><span class="diff-line diff-line-meta">index 0000000..cb37678</span><span class="diff-line diff-line-meta">--- /dev/null</span><span class="diff-line diff-line-meta">+++ b/core/retrieval_api/retrievers/compound_retriever.py</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -0,0 +1,78 @@</span><span class="diff-line diff-line-add">+import logging</span><span class="diff-line diff-line-add">+from enum import Enum</span><span class="diff-line diff-line-add">+import json</span><span class="diff-line diff-line-add">+from typing import Dict, List, Optional, Tuple, cast</span><span class="diff-line diff-line-add">+from llama_index.core.retrievers import QueryFusionRetriever</span><span class="diff-line diff-line-add">+from llama_index.core.schema import QueryBundle, NodeWithScore</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+logger = logging.getLogger(__name__)</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+# class FUSION_MODES(str, Enum):</span><span class="diff-line diff-line-add">+#     """Enum for different fusion modes."""</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+#     RECIPROCAL_RANK = "reciprocal_rerank"  # apply reciprocal rank fusion</span><span class="diff-line diff-line-add">+#     RELATIVE_SCORE = "relative_score"  # apply relative score fusion</span><span class="diff-line diff-line-add">+#     DIST_BASED_SCORE = "dist_based_score"  # apply distance-based score fusion</span><span class="diff-line diff-line-add">+#     SIMPLE = "simple"  # simple re-ordering of results based on original scores</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+class CompoundQueryRetriever(QueryFusionRetriever):</span><span class="diff-line diff-line-add">+    def __init__(self, compound_query_classify_prompt: str, *args, **kwargs):</span><span class="diff-line diff-line-add">+        super().__init__(*args, **kwargs)</span><span class="diff-line diff-line-add">+        self.compound_query_classify_prompt = compound_query_classify_prompt</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    def _is_compound_query(self, query: str) -&gt; bool:</span><span class="diff-line diff-line-add">+        is_compound_prompt = self.compound_query_classify_prompt.format(query=query)</span><span class="diff-line diff-line-add">+        resp = self._llm.complete(is_compound_prompt)</span><span class="diff-line diff-line-add">+        return "yes" in resp.text.lower()</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    def _parse_subqueries(self, llm_output: str) -&gt; list[str]:</span><span class="diff-line diff-line-add">+        try:</span><span class="diff-line diff-line-add">+            return json.loads(llm_output)</span><span class="diff-line diff-line-add">+        except json.JSONDecodeError:</span><span class="diff-line diff-line-add">+            raise ValueError(f"Subquery output is not valid JSON:\n{llm_output}")</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    def _decompose_query(self, query: str) -&gt; List[str]:</span><span class="diff-line diff-line-add">+        try:</span><span class="diff-line diff-line-add">+            sub_query_gen_prompt = self.query_gen_prompt.format(query =query)</span><span class="diff-line diff-line-add">+            response = self._llm.complete(sub_query_gen_prompt)</span><span class="diff-line diff-line-add">+            subqueries = self._parse_subqueries(response.text)</span><span class="diff-line diff-line-add">+            if isinstance(subqueries, list) and all(isinstance(q, str) for q in subqueries):</span><span class="diff-line diff-line-add">+                return subqueries</span><span class="diff-line diff-line-add">+            else:</span><span class="diff-line diff-line-add">+                raise ValueError("Invalid format: not a list of strings")</span><span class="diff-line diff-line-add">+        except json.JSONDecodeError as e:</span><span class="diff-line diff-line-add">+            raise ValueError(f"Subquery response not valid JSON: {e}")</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    def _get_queries(self, original_query: str) -&gt; List[QueryBundle]:</span><span class="diff-line diff-line-add">+        # Check if the query is compound</span><span class="diff-line diff-line-add">+        subqueries = []</span><span class="diff-line diff-line-add">+        if self._is_compound_query(original_query):</span><span class="diff-line diff-line-add">+            subqueries = self._decompose_query(original_query)</span><span class="diff-line diff-line-add">+        # The LLM often returns more queries than we asked for, so trim the list.</span><span class="diff-line diff-line-add">+        logger.info(f"Subqueries: {subqueries}")</span><span class="diff-line diff-line-add">+        return [QueryBundle(q) for q in subqueries[: self.num_queries - 1]]</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    # def _retrieve(self, query_bundle: QueryBundle) -&gt; List[NodeWithScore]:</span><span class="diff-line diff-line-add">+    #     queries: List[QueryBundle] = [query_bundle]</span><span class="diff-line diff-line-add">+    #     if self.num_queries &gt; 1:</span><span class="diff-line diff-line-add">+    #         queries.extend(self._get_queries(query_bundle.query_str))</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    #     if self.use_async:</span><span class="diff-line diff-line-add">+    #         results = self._run_nested_async_queries(queries)</span><span class="diff-line diff-line-add">+    #     else:</span><span class="diff-line diff-line-add">+    #         results = self._run_sync_queries(queries)</span><span class="diff-line diff-line-add">+</span><span class="diff-line diff-line-add">+    #     if self.mode == FUSION_MODES.RECIPROCAL_RANK:</span><span class="diff-line diff-line-add">+    #         return self._reciprocal_rerank_fusion(results)[: self.similarity_top_k]</span><span class="diff-line diff-line-add">+    #     elif self.mode == FUSION_MODES.RELATIVE_SCORE:</span><span class="diff-line diff-line-add">+    #         return self._relative_score_fusion(results)[: self.similarity_top_k]</span><span class="diff-line diff-line-add">+    #     elif self.mode == FUSION_MODES.DIST_BASED_SCORE:</span><span class="diff-line diff-line-add">+    #         return self._relative_score_fusion(results, dist_based=True)[</span><span class="diff-line diff-line-add">+    #             : self.similarity_top_k</span><span class="diff-line diff-line-add">+    #         ]</span><span class="diff-line diff-line-add">+    #     elif self.mode == FUSION_MODES.SIMPLE:</span><span class="diff-line diff-line-add">+    #         return self._simple_fusion(results)[: self.similarity_top_k]</span><span class="diff-line diff-line-add">+    #     else:</span><span class="diff-line diff-line-add">+    #         raise ValueError(f"Invalid fusion mode: {self.mode}")</span><span class="diff-line diff-line-add">+ No newline at end of file</span></div></div><div data-filepath="core/retrieval_api/services/chat_service.py" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117]">
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">core/retrieval_api/services/chat_service.py</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    <span class="diff-line diff-line-meta">index 9f5ccc7..dad918c 100644</span><span class="diff-line diff-line-meta">--- a/core/retrieval_api/services/chat_service.py</span><span class="diff-line diff-line-meta">+++ b/core/retrieval_api/services/chat_service.py</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -50,10 +50,6 @@ async def process_rag_chat(self, request: ChatRequest) -&gt; StreamingResponse:</span><span class="diff-line text-[#c9d1d9]">             start_time = time.perf_counter()</span><span class="diff-line text-[#c9d1d9]">             logger.info(f"Processing RAG chat request for chat_id: {request.chat_id}")</span><span class="diff-line text-[#c9d1d9]">             </span><span class="diff-line diff-line-del">-            # Load chat history</span><span class="diff-line diff-line-del">-            self._storage.load_chat_history(request.chat_id)</span><span class="diff-line diff-line-del">-</span><span class="diff-line diff-line-del">-            </span><span class="diff-line text-[#c9d1d9]">             # Create Generate instance</span><span class="diff-line text-[#c9d1d9]">             generate = Generate(</span><span class="diff-line text-[#c9d1d9]">                 config=self._settings.get_setting,</span><span class="diff-line diff-line-meta text-[#8b949e]">@@ -91,6 +87,7 @@ async def process_rag_chat(self, request: ChatRequest) -&gt; StreamingResponse:</span><span class="diff-line text-[#c9d1d9]">                 }</span><span class="diff-line text-[#c9d1d9]">                 yield json.dumps(chunk_data)  # Yield the modified JSON chunk</span><span class="diff-line text-[#c9d1d9]">                 # yield chunk</span><span class="diff-line diff-line-add">+            logger.info(f"Time taken for response generation: {time.perf_counter() - start_time}")</span><span class="diff-line text-[#c9d1d9]">             </span><span class="diff-line text-[#c9d1d9]">         except Exception as e:</span><span class="diff-line text-[#c9d1d9]">             logger.error(f"Error processing RAG chat request: {e}")</span></div></div></div>
+        </div>
+    </main>
+
+    <!-- Data Injection -->
+    <script>
+        const PR_RAW_DIFF = `diff --git a/core/retrieval_api/generate.py b/core/retrieval_api/generate.py
+index 2721a69..e081e56 100644
+--- a/core/retrieval_api/generate.py
++++ b/core/retrieval_api/generate.py
+@@ -17,7 +17,7 @@
+ from tavily import TavilyClient
+ from llama_index.core import StorageContext, Settings, load_index_from_storage,PromptHelper,VectorStoreIndex
+ from llama_index.core.schema import QueryBundle, Node
+-from llama_index.core.query_engine import CitationQueryEngine 
++from llama_index.core.query_engine import CitationQueryEngine
+ 
+ from llama_index.core.tools import QueryEngineTool, ToolMetadata
+ from llama_index.core.query_engine import SubQuestionQueryEngine
+@@ -40,6 +40,7 @@
+ from .managers.storage_manager import StorageManager
+ from .managers.llm_manager import LLMManager
+ from .managers.prompt_manager import PromptManager
++from .retrievers.compound_retriever import CompoundQueryRetriever
+ 
+ warnings.filterwarnings("ignore")
+ 
+@@ -87,12 +88,8 @@ def __init__(
+         self._cohere_api_key = self._secret("COHERE_API_KEY")
+ 
+         logger.info(f"Initializing Generate for category: {category_name}")
+-
+         self._prompts = PromptManager.load_prompts(self._config)
+-
+         self._model_manager = self._llm_manager
+-
+-        # llm_manager = LLMManager(settings_manager)
+         
+         # Configure LlamaIndex settings
+         Settings._prompt_helper = PromptHelper(context_window=20000)
+@@ -113,33 +110,12 @@ def __init__(
+         self._refined_query = self._prepare_query()
+ 
+         # Setup query engine
+-        # self._persist = self._storage_manager.load_persist_dir(persist_dir, collection_name)
+         index = self._setup_storage_context(collection_name)
+         metadata_filters = self._prepare_metadata_filters(metadata)
+         self._init_query_engine(index, metadata_filters)
+ 
+-    def _refine_query(self, query: str) -> str:
+-        # prompt = (
+-        #     "Rewrite the following vague or poorly worded query to be clearer and more specific for document retrieval.\\n\\n"
+-        #     f"Original Query: {query}\\n\\nRefined Query:"
+-        # )
+-        prompt = (
+-        "You are assisting in improving user queries for an enterprise document retrieval system "
+-        "in the oil and gas domain. The queries may be vague, incomplete, or poorly worded.\\n\\n"
+-        "Your task is to rewrite the query to make it clearer and more specific, "
+-        "while strictly preserving all domain-specific terminology, acronyms, and names (e.g. like 'IBDP').\\n\\n"
+-        "Do NOT expand acronyms unless their expanded form is clearly known in the oil & gas context.\\n"
+-        "Do NOT hallucinate or assume meanings outside the domain.\\n\\n"
+-        f"Original Query: {query}\\n\\n"
+-        "Refined Query:"
+-        )
+-        refined = self._model_manager.llm.complete(prompt)
+-        logger.debug(f"refined_query, {refined}")
+-        return refined.text.strip()
+-
+     def _prepare_query(self) -> str:
+         """Prepare the refined query with chat history."""
+-        # self._query = self._refine_query(self._query)
+         if self._storage_manager.chat_hist is not None:
+             return f"<|CHAT HISTORY|>: {self._storage_manager.chat_hist}\\n\\n<|QUERY|>: {self._query}"
+         return f"<|QUERY|>: {self._query}"
+@@ -169,17 +145,6 @@ def _setup_storage_context(self, collection_name: str) -> StorageContext:
+             collections = client.get_collections()
+             logger.debug(f"collections in vector db: {collections}")
+ 
+-            # storage_context = StorageContext.from_defaults(
+-            #     persist_dir=self._persist, vector_store=vector_store
+-            # )
+-
+-            # storage_context = StorageContext.from_defaults(
+-            #     vector_store=vector_store
+-            # )
+-            # index = load_index_from_storage(storage_context)
+-
+-            # logger.info("storage context created")
+-
+             index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+             logger.info("index created")
+             
+@@ -203,24 +168,7 @@ def _init_query_engine(self, index, metadata_filters: Optional[List[MetadataFilt
+                 similarity_cutoff=self._config("RAG_SIMILARITY_CUTOFF")
+             )
+ 
+-            prompt_template = PromptTemplate(
+-                """You are given a query and a list of document snippets.
+-            Your job is to identify which snippets are the most relevant to the query.
+-
+-            Query: {query_str}
+-
+-            Snippets:
+-            {context_str}
+-
+-            Instructions:
+-            Return your answers in this numbered format:
+-            1: Relevant
+-            2: Not Relevant
+-            ...
+-
+-            Only respond in this format. Do not add any explanations."""
+-            )
+-
++            ## TODO: to enable this functionality, checkout 4428f82a5292f4f7d1600864b91a476116fddfc6
+             # rerank = LLMRerank(
+             #     top_n=self._config("RAG_RERANKED_TOP_N"),
+             #     llm=self._model_manager.llm,
+@@ -239,9 +187,23 @@ def _init_query_engine(self, index, metadata_filters: Optional[List[MetadataFilt
+             citation_refine_template=PromptTemplate(
+                     self._prompts.citation_template + self._prompts.refine_template
+                 )
++            
++            base_retriever = index.as_retriever(
++                similarity_top_k=self._config("RAG_SIMILARITY_TOP_K")
++            )
++            retriever = CompoundQueryRetriever(
++                compound_query_classify_prompt=self._prompts.is_compound_prompt,
++                query_gen_prompt=self._prompts.chat_subquery,
++                retrievers=[base_retriever],
++                llm=self._model_manager.llm,
++                num_queries=4,  # Generate up to 4 sub-queries
++                similarity_top_k=self._config("RAG_SIMILARITY_TOP_K"),
++                mode="reciprocal_rerank", # Re-rank results from all sub-queries
++            )
+ 
+             self.query_engine = CitationQueryEngine.from_args(
+                 index,
++                retriever=retriever,
+                 embed_model=self._model_manager.embed_model,
+                 chat_mode="context",
+                 citation_chunk_size=self._config("RAG_CITATION_CHUNK_SIZE"),
+@@ -325,30 +287,32 @@ def generate_answer(self) -> Generator[str, None, None]:
+                 yield from self._handle_greeting()
+                 return
+ 
+-            elif self._is_compound_query(self._refined_query):
+-                updated_subq_answers, sources_text,ordered_docs, ordered_nodes = self._handle_compound_query_v2()
+-                response = self._chat_synthesize_subanswers_v2(self._refined_query, updated_subq_answers, sources_text)
+-                answer = ""
+-                if response:
+-                    for chunk_json in self.response_generator(response.text):
+-                            chunk = json.loads(chunk_json)["text"]
+-                            if chunk != "Empty Response":
+-                                answer += chunk
+-                            yield chunk_json
+-                else:
+-                    logger.warning("No sub queries/response found")
+-                    if self._is_web_search != "True":
+-                        yield json.dumps({
+-                            "response_id": str(uuid.uuid4()),
+-                            "type": "answer",
+-                            "text": "No relevant contexts retrieved",
+-                        })
+-                contexts, answer = self._process_contexts(answer, ordered_nodes, ordered_docs)
+-                yield from self._yield_context_answer(contexts,answer)
++            # elif self._is_compound_query(self._refined_query):
++            #     updated_subq_answers, sources_text,ordered_docs, ordered_nodes = self._handle_compound_query_v2()
++            #     response = self._chat_synthesize_subanswers_v2(self._refined_query, updated_subq_answers, sources_text)
++            #     answer = ""
++            #     if response:
++            #         for chunk_json in self.response_generator(response.text):
++            #                 chunk = json.loads(chunk_json)["text"]
++            #                 if chunk != "Empty Response":
++            #                     answer += chunk
++            #                 yield chunk_json
++            #     else:
++            #         logger.warning("No sub queries/response found")
++            #         if self._is_web_search != "True":
++            #             yield json.dumps({
++            #                 "response_id": str(uuid.uuid4()),
++            #                 "type": "answer",
++            #                 "text": "No relevant contexts retrieved",
++            #             })
++            #     contexts, answer = self._process_contexts(answer, ordered_nodes, ordered_docs)
++            #     yield from self._yield_context_answer(contexts,answer)
+                 
+             else:
+                 # Retrieving docs
++                start_time = time.perf_counter()
+                 retrieved_docs = self._retrieve_documents()
++                logger.info(f"Time taken for document retrieval: {time.perf_counter() - start_time}")
+                 #logger.info(f"has_valid_docs, {self._has_valid_docs(retrieved_docs)}")
+                 if not self._has_valid_docs(retrieved_docs):
+                     if self._is_web_search:
+@@ -360,14 +324,15 @@ def generate_answer(self) -> Generator[str, None, None]:
+ 
+                 # Generate response
+                 logger.info("Generating response...")
+-                response = self.query_engine.query(self._refined_query)
++                # response = self.query_engine.query(self._refined_query)
++                response = self.query_engine.synthesize(
++                    query_bundle = QueryBundle(query_str=self._refined_query),
++                    nodes = retrieved_docs,
++                )
+ 
+                 # yield generated response
+                 answer = ""
+                 if response:
+-                    # logger.info("XXXXX yielding from response gen")
+-                    # answer = self._get_answer_from_response(response)
+-                    # yield from self._yield_response_gen(response)
+                     for text in response.response_gen:
+                         if text != "Empty Response":
+                             answer += text
+@@ -1017,23 +982,7 @@ def response_generator(self, response_str, chunk_size=50):
+             })
+ 
+     def _is_compound_query(self, query: str) -> bool:
+-        # prompt = (
+-        #     "Does the following query contain multiple questions or sub-intents? "
+-        #     "Answer with a single word: 'Yes' or 'No'.\\n\\nQuery: "
+-        #     + query
+-        # )
+-        prompt = (
+-            "You are an expert at understanding natural language queries.\\n"
+-            "Your task is to determine whether the following query is **compound**"
+-            "if it Asks for more than one distinct piece of information.\\n"
+-            "Contains multiple sub-intents or investigative directions\\n"
+-            "Requires multiple reasoning or action steps to answer\\n"
+-            "if asks about multiple time frames or entities\\n"
+-            "Respond with a **single word** only: \`'Yes'\` if the query contains multiple questions or sub-intents, "
+-            "or \`'No'\` if it is a single, focused question.\\n\\n"
+-            f"Query: {query}\\n\\nAnswer:"
+-        )
+-        is_compound_prompt = self._prompts.is_compound_prompt.format(query =query)
++        is_compound_prompt = self._prompts.is_compound_prompt.format(query=query)
+         resp = self._model_manager.llm.complete(is_compound_prompt)
+         return "yes" in resp.text.lower()
+     
+diff --git a/core/retrieval_api/prompts/qa_template.prompt b/core/retrieval_api/prompts/qa_template.prompt
+index 2f8ba96..f228e6b 100644
+--- a/core/retrieval_api/prompts/qa_template.prompt
++++ b/core/retrieval_api/prompts/qa_template.prompt
+@@ -9,6 +9,7 @@ Follow these guidelines to incorporate markdown formatting wherever applicable:
+ 7. Convert any table into markdown table format using | for columns and - for the header row separator
+ 8. Add horizontal rules where appropriate. Preserve line breaks and paragraphs
+ 9. Do not convert citations or references such as [1] into footnotes in markdown format i.e. [^1]
++10. Do not mention Document Title information in the answer
+ 
+ Ensure that the answer is generated in MLA 9th edition style format.
+ Now it's your turn. Below are several numbered sources of information:
+diff --git a/core/retrieval_api/retrievers/__init__.py b/core/retrieval_api/retrievers/__init__.py
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/retrieval_api/retrievers/compound_retriever.py b/core/retrieval_api/retrievers/compound_retriever.py
+new file mode 100644
+index 0000000..cb37678
+--- /dev/null
++++ b/core/retrieval_api/retrievers/compound_retriever.py
+@@ -0,0 +1,78 @@
++import logging
++from enum import Enum
++import json
++from typing import Dict, List, Optional, Tuple, cast
++from llama_index.core.retrievers import QueryFusionRetriever
++from llama_index.core.schema import QueryBundle, NodeWithScore
++
++logger = logging.getLogger(__name__)
++
++
++# class FUSION_MODES(str, Enum):
++#     """Enum for different fusion modes."""
++
++#     RECIPROCAL_RANK = "reciprocal_rerank"  # apply reciprocal rank fusion
++#     RELATIVE_SCORE = "relative_score"  # apply relative score fusion
++#     DIST_BASED_SCORE = "dist_based_score"  # apply distance-based score fusion
++#     SIMPLE = "simple"  # simple re-ordering of results based on original scores
++
++
++class CompoundQueryRetriever(QueryFusionRetriever):
++    def __init__(self, compound_query_classify_prompt: str, *args, **kwargs):
++        super().__init__(*args, **kwargs)
++        self.compound_query_classify_prompt = compound_query_classify_prompt
++
++    def _is_compound_query(self, query: str) -> bool:
++        is_compound_prompt = self.compound_query_classify_prompt.format(query=query)
++        resp = self._llm.complete(is_compound_prompt)
++        return "yes" in resp.text.lower()
++
++    def _parse_subqueries(self, llm_output: str) -> list[str]:
++        try:
++            return json.loads(llm_output)
++        except json.JSONDecodeError:
++            raise ValueError(f"Subquery output is not valid JSON:\\n{llm_output}")
++
++    def _decompose_query(self, query: str) -> List[str]:
++        try:
++            sub_query_gen_prompt = self.query_gen_prompt.format(query =query)
++            response = self._llm.complete(sub_query_gen_prompt)
++            subqueries = self._parse_subqueries(response.text)
++            if isinstance(subqueries, list) and all(isinstance(q, str) for q in subqueries):
++                return subqueries
++            else:
++                raise ValueError("Invalid format: not a list of strings")
++        except json.JSONDecodeError as e:
++            raise ValueError(f"Subquery response not valid JSON: {e}")
++
++    def _get_queries(self, original_query: str) -> List[QueryBundle]:
++        # Check if the query is compound
++        subqueries = []
++        if self._is_compound_query(original_query):
++            subqueries = self._decompose_query(original_query)
++        # The LLM often returns more queries than we asked for, so trim the list.
++        logger.info(f"Subqueries: {subqueries}")
++        return [QueryBundle(q) for q in subqueries[: self.num_queries - 1]]
++
++    # def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
++    #     queries: List[QueryBundle] = [query_bundle]
++    #     if self.num_queries > 1:
++    #         queries.extend(self._get_queries(query_bundle.query_str))
++
++    #     if self.use_async:
++    #         results = self._run_nested_async_queries(queries)
++    #     else:
++    #         results = self._run_sync_queries(queries)
++
++    #     if self.mode == FUSION_MODES.RECIPROCAL_RANK:
++    #         return self._reciprocal_rerank_fusion(results)[: self.similarity_top_k]
++    #     elif self.mode == FUSION_MODES.RELATIVE_SCORE:
++    #         return self._relative_score_fusion(results)[: self.similarity_top_k]
++    #     elif self.mode == FUSION_MODES.DIST_BASED_SCORE:
++    #         return self._relative_score_fusion(results, dist_based=True)[
++    #             : self.similarity_top_k
++    #         ]
++    #     elif self.mode == FUSION_MODES.SIMPLE:
++    #         return self._simple_fusion(results)[: self.similarity_top_k]
++    #     else:
++    #         raise ValueError(f"Invalid fusion mode: {self.mode}")
++\ No newline at end of file
+diff --git a/core/retrieval_api/services/chat_service.py b/core/retrieval_api/services/chat_service.py
+index 9f5ccc7..dad918c 100644
+--- a/core/retrieval_api/services/chat_service.py
++++ b/core/retrieval_api/services/chat_service.py
+@@ -50,10 +50,6 @@ async def process_rag_chat(self, request: ChatRequest) -> StreamingResponse:
+             start_time = time.perf_counter()
+             logger.info(f"Processing RAG chat request for chat_id: {request.chat_id}")
+             
+-            # Load chat history
+-            self._storage.load_chat_history(request.chat_id)
+-
+-            
+             # Create Generate instance
+             generate = Generate(
+                 config=self._settings.get_setting,
+@@ -91,6 +87,7 @@ async def process_rag_chat(self, request: ChatRequest) -> StreamingResponse:
+                 }
+                 yield json.dumps(chunk_data)  # Yield the modified JSON chunk
+                 # yield chunk
++            logger.info(f"Time taken for response generation: {time.perf_counter() - start_time}")
+             
+         except Exception as e:
+             logger.error(f"Error processing RAG chat request: {e}")`;
+
+        window.WALKTHROUGH_JSON = [
+            {
+                "id": 1,
+                "title": "Removal of Query Refinement Step",
+                "description": "Removes the _refine_query method and its invocation in _prepare_query. Previously, every query triggered an LLM call to rewrite/refine the text before retrieval. Removing this significantly reduces latency, directly addressing the 'Fast inference' objective by cutting out an expensive synchronous LLM round-trip.",
+                "file_path": "core/retrieval_api/generate.py",
+                "related_component": "Generate.init / _refine_query",
+                "change_type": "Logic Fix (Performance Optimization)"
+            },
+            {
+                "id": 2,
+                "title": "Integration of CompoundQueryRetriever",
+                "description": "Initializes the new CompoundQueryRetriever and injects it into the CitationQueryEngine. Instead of using a standard retriever, this custom retriever (configured with reciprocal_rerank) encapsulates the logic for decomposing complex queries into sub-queries and fusing results. This enables the system to handle both simple and complex queries via a single engine configuration.",
+                "file_path": "core/retrieval_api/generate.py",
+                "related_component": "Generate._init_query_engine",
+                "change_type": "Refactor (Architecture)"
+            },
+            {
+                "id": 3,
+                "title": "Unified Execution Path",
+                "description": "Comments out the explicit branching logic that previously separated _handle_compound_query from standard retrieval. By relying on the CompoundQueryRetriever injected earlier, the pipeline now uses a single, unified execution flow (generate_answer) for all query types, simplifying the control flow and reducing code duplication.",
+                "file_path": "core/retrieval_api/generate.py",
+                "related_component": "Generate.generate_answer",
+                "change_type": "Logic Fix (Unification)"
+            },
+            {
+                "id": 4,
+                "title": "Simplified Compound Query Detection",
+                "description": "Refactors _is_compound_query to use a stored prompt string (self._prompts.is_compound_prompt) rather than defining a large string literal inline. This improves maintainability and separation of concerns regarding prompt management.",
+                "file_path": "core/retrieval_api/generate.py",
+                "related_component": "Generate._is_compound_query",
+                "change_type": "Refactor"
+            },
+            {
+                "id": 5,
+                "title": "New Compound Query Retriever Implementation",
+                "description": "Introduces a new class inheriting from LlamaIndex's QueryFusionRetriever. This class encapsulates the logic for detecting compound queries, decomposing them using an LLM, executing sub-queries, and fusing the results. This moves complexity out of the main Generate class and into a specialized component.",
+                "file_path": "core/retrieval_api/retrievers/compound_retriever.py",
+                "related_component": "CompoundQueryRetriever (New Class)",
+                "change_type": "New Feature"
+            },
+            {
+                "id": 6,
+                "title": "Optimization of Chat Service",
+                "description": "Removes the explicit self._storage.load_chat_history(request.chat_id) call from the request processing loop. This reduces database I/O overhead per request, contributing to the 'Fast inference' objective.",
+                "file_path": "core/retrieval_api/services/chat_service.py",
+                "related_component": "ChatService.process_rag_chat",
+                "change_type": "Performance Optimization"
+            },
+            {
+                "id": 7,
+                "title": "Output Formatting Constraint",
+                "description": "Adds a specific instruction to the QA prompt to prevent Document Titles from appearing in the generated answer. This ensures cleaner, more professional output during the inference phase.",
+                "file_path": "core/retrieval_api/prompts/qa_template.prompt",
+                "related_component": "Prompt Template",
+                "change_type": "Prompt Engineering"
+            }
+        ];
+
+        /* =========================================
+           1. DIFF PARSER LOGIC
+           ========================================= */
+        function parseDiffToHTML(rawDiff) {
+            const lines = rawDiff.split('\n');
+            let html = '';
+            let currentFile = null;
+            let fileContainerOpen = false;
+
+            lines.forEach((line, index) => {
+                // Escape HTML for safety
+                const encodedLine = line.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                
+                // Detect File Header
+                if (line.startsWith('diff --git')) {
+                    if (fileContainerOpen) {
+                        html += '</div></div>'; // Close previous file container
+                    }
+                    
+                    // Extract filename: diff --git a/core/retrieval_api/generate.py b/core/retrieval_api/generate.py
+                    const parts = line.split(' ');
+                    const bPath = parts[parts.length - 1]; 
+                    const cleanPath = bPath.substring(2); // Remove b/
+
+                    // Create ID based on path for scrolling
+                    // NOTE: data-filepath should match JSON exactly
+                    currentFile = cleanPath;
+
+                    html += `<div data-filepath="${cleanPath}" class="diff-file-section rounded-3xl border border-[#30363d] overflow-hidden mb-12 bg-[#0d1117]">`;
+                    
+                    // Mac-style Window Header
+                    html += `
+                        <div class="diff-header">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-[#fa7970]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#faa356]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#7ce38b]"></div>
+                            </div>
+                            <span class="font-mono text-xs opacity-70 tracking-tight text-gray-400">${cleanPath}</span>
+                        </div>
+                        <div class="code-body font-mono text-sm py-2">
+                    `;
+                    fileContainerOpen = true;
+                }
+
+                // Determine CSS class based on Diff Char
+                let lineClass = "diff-line";
+                let isMeta = false;
+
+                if (line.startsWith('diff --git')) {
+                   // Header line, skip adding to code body
+                   return; 
+                } 
+                else if (line.startsWith('index') || line.startsWith('---') || line.startsWith('+++')) {
+                    lineClass += " diff-line-meta";
+                    isMeta = true;
+                }
+                else if (line.startsWith('@@')) {
+                    lineClass += " diff-line-meta text-[#8b949e]";
+                    isMeta = true;
+                }
+                else if (line.startsWith('+')) {
+                    lineClass += " diff-line-add";
+                }
+                else if (line.startsWith('-')) {
+                    lineClass += " diff-line-del";
+                }
+                else {
+                    lineClass += " text-[#c9d1d9]"; // Default dimmed white
+                }
+
+                if (fileContainerOpen) {
+                    html += `<span class="${lineClass}">${encodedLine}</span>`;
+                }
+            });
+
+            if (fileContainerOpen) {
+                html += '</div></div>';
+            }
+            return html;
+        }
+
+        /* =========================================
+           2. RENDER INITIAL STATE
+           ========================================= */
+        function init() {
+            // Render Diff
+            const diffPanel = document.getElementById('diff-content');
+            diffPanel.innerHTML = parseDiffToHTML(PR_RAW_DIFF);
+
+            // Render Context Cards
+            const contextPanel = document.getElementById('context-panel');
+            const cardsHTML = WALKTHROUGH_JSON.map((step, index) => {
+                // Determine icon style
+                let badgeClass = 'text-gray-500 bg-gray-50';
+                if (step.change_type.includes('Fix') || step.change_type.includes('Performance')) badgeClass = 'text-green-600 bg-green-50';
+                else if (step.change_type.includes('Refactor')) badgeClass = 'text-blue-600 bg-blue-50';
+                else if (step.change_type.includes('New')) badgeClass = 'text-purple-600 bg-purple-50';
+                else if (step.change_type.includes('Prompt')) badgeClass = 'text-amber-600 bg-amber-50';
+
+                return `
+                <div id="step-${index}" class="step-card bg-white p-5 rounded-xl cursor-pointer shadow-sm border border-gray-100" onclick="activateStep(${index})">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="step-number text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Step ${index + 1}</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-full ${badgeClass}">${step.change_type}</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-2 leading-snug">${step.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">${step.description}</p>
+                    <div class="flex items-center text-[11px] text-gray-400 font-mono bg-gray-50 p-2 rounded border border-gray-100 truncate">
+                        <span class="mr-2 opacity-50">#</span>
+                        <span class="truncate">${step.related_component}</span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            
+            contextPanel.innerHTML += cardsHTML;
+            document.getElementById('total-steps-display').innerText = WALKTHROUGH_JSON.length;
+
+            // Start at first step
+            activateStep(0);
+        }
+
+        /* =========================================
+           3. INTERACTION LOGIC
+           ========================================= */
+        window.activateStep = function activateStep(index) {
+            // Update Active Index
+            const previousStep = document.querySelector('.step-card.active-card');
+            if (previousStep) previousStep.classList.remove('active-card');
+
+            const currentCard = document.getElementById(`step-${index}`);
+            if (currentCard) {
+                currentCard.classList.add('active-card');
+                currentCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Update Header Stats
+            document.getElementById('current-step-display').innerText = index + 1;
+            const progressPct = ((index + 1) / WALKTHROUGH_JSON.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPct}%`;
+
+            // Handle Diff Lens (Right Panel)
+            const stepData = WALKTHROUGH_JSON[index];
+            const targetPath = stepData.file_path;
+
+            // 1. Find matching file blocks
+            const fileBlocks = document.querySelectorAll('.diff-file-section');
+            let foundBlock = null;
+
+            fileBlocks.forEach(block => {
+                const blockPath = block.getAttribute('data-filepath');
+                
+                // Reset state
+                block.classList.remove('active-focus');
+                block.querySelectorAll('.line-highlight').forEach(el => el.classList.remove('line-highlight'));
+
+                // Check match (Exact or partial path match to handle inconsistencies)
+                if (blockPath === targetPath || blockPath.endsWith(targetPath) || targetPath.endsWith(blockPath)) {
+                    foundBlock = block;
+                }
+            });
+
+            if (foundBlock) {
+                foundBlock.classList.add('active-focus');
+                
+                // 2. DEEP LINKING: Find specific line based on Related Component
+                let targetElement = foundBlock;
+                
+                // Simple heuristic: Look for the function/method name in the diff content
+                if (stepData.related_component) {
+                    // Extract potential keywords (e.g. "_refine_query" from "Generate._refine_query")
+                    // Split by non-word chars, take segments > 3 chars
+                    const parts = stepData.related_component.split(/[^a-zA-Z0-9_]/).filter(p => p.length > 3);
+                    
+                    // We prioritize the *last* part (usually the function name)
+                    // e.g. "Generate.init" -> init is generic, but "Generate" is the class.
+                    // e.g. "_refine_query" is specific.
+                    
+                    const lines = foundBlock.querySelectorAll('.diff-line');
+                    let bestLine = null;
+
+                    // Try searching for the last specific identifier first
+                    for (let i = parts.length - 1; i >= 0; i--) {
+                        const keyword = parts[i];
+                        if (['Generate', 'Class', 'System', 'Prompt'].includes(keyword)) continue; // Skip generic
+
+                        for (const line of lines) {
+                            if (line.textContent.includes(keyword)) {
+                                bestLine = line;
+                                break;
+                            }
+                        }
+                        if (bestLine) break; 
+                    }
+                    
+                    if (bestLine) {
+                        targetElement = bestLine;
+                        targetElement.classList.add('line-highlight');
+                    }
+                }
+
+                // Scroll into view with a slight delay
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 50);
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+
+    <!-- Audio-guided walkthrough controller -->
+    <script>
+        (function () {
+            if (!window.WALKTHROUGH_JSON || !window.activateStep) return;
+
+            const steps = window.WALKTHROUGH_JSON;
+            const audio = new Audio();
+            audio.preload = 'auto';
+
+            let currentIndex = 0;
+            let isUserPaused = true;
+
+            function audioSrcFor(index) {
+                // step-0.mp3 … step-N.mp3 (matches step IDs)
+                return `step-${index}.mp3`;
+            }
+
+            function loadTrack(index, play = false) {
+                currentIndex = Math.max(0, Math.min(steps.length - 1, index));
+                audio.src = audioSrcFor(currentIndex);
+                try {
+                    window.activateStep(currentIndex);
+                    // Scroll the active step card into view, centered in viewport
+                    const activeCard = document.getElementById(`step-${currentIndex}`);
+                    if (activeCard) {
+                        activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } catch (e) {
+                    // ignore if activateStep not ready yet
+                }
+                if (play) {
+                    playCurrent();
+                } else {
+                    isUserPaused = true;
+                    updatePlayIcon();
+                }
+            }
+
+            function playCurrent() {
+                isUserPaused = false;
+                audio.play().catch(function () {
+                    isUserPaused = true;
+                    updatePlayIcon();
+                });
+                updatePlayIcon();
+            }
+
+            function pauseCurrent() {
+                isUserPaused = true;
+                audio.pause();
+                updatePlayIcon();
+            }
+
+            function nextTrack() {
+                if (currentIndex < steps.length - 1) {
+                    loadTrack(currentIndex + 1, !isUserPaused);
+                } else {
+                    pauseCurrent();
+                }
+            }
+
+            function prevTrack() {
+                if (currentIndex > 0) {
+                    loadTrack(currentIndex - 1, !isUserPaused);
+                } else {
+                    loadTrack(0, !isUserPaused);
+                }
+            }
+
+            // UI
+            const bar = document.createElement('div');
+            bar.id = 'pr-audio-controller';
+            bar.style.position = 'fixed';
+            bar.style.left = '50%';
+            bar.style.transform = 'translateX(-50%)';
+            bar.style.bottom = '18px';
+            bar.style.zIndex = '40';
+            bar.style.background = '#0f172a';
+            bar.style.color = '#e5e7eb';
+            bar.style.borderRadius = '999px';
+            bar.style.padding = '8px 18px';
+            bar.style.display = 'flex';
+            bar.style.alignItems = 'center';
+            bar.style.gap = '10px';
+            bar.style.boxShadow = '0 12px 30px rgba(15,23,42,0.55)';
+            bar.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+            bar.innerHTML = `
+                <button id="pr-audio-prev" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏮</button>
+                <button id="pr-audio-play" style="width:32px;height:32px;border-radius:999px;border:none;background:#22c55e;color:#022c22;font-weight:900;cursor:pointer;">▶</button>
+                <button id="pr-audio-next" style="background:none;border:none;color:#e5e7eb;cursor:pointer;font-size:14px;">⏭</button>
+                <div style="min-width:180px;">
+                    <div id="pr-audio-label" style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:#a5b4fc;">Step 1</div>
+                    <div style="width:100%;height:4px;border-radius:999px;background:#1e293b;overflow:hidden;margin-top:4px;">
+                        <div id="pr-audio-progress" style="height:100%;width:0%;background:#22c55e;"></div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(bar);
+
+            const playBtn = document.getElementById('pr-audio-play');
+            const prevBtn = document.getElementById('pr-audio-prev');
+            const nextBtn = document.getElementById('pr-audio-next');
+            const label = document.getElementById('pr-audio-label');
+            const progress = document.getElementById('pr-audio-progress');
+
+            function updatePlayIcon() {
+                playBtn.textContent = isUserPaused ? '▶' : '⏸';
+            }
+
+            function updateLabel() {
+                const step = steps[currentIndex];
+                label.textContent = `${step.title || 'Step'} • ${currentIndex + 1}/${steps.length}`;
+            }
+
+            playBtn.addEventListener('click', function () {
+                if (isUserPaused) {
+                    playCurrent();
+                } else {
+                    pauseCurrent();
+                }
+            });
+            prevBtn.addEventListener('click', prevTrack);
+            nextBtn.addEventListener('click', nextTrack);
+
+            audio.addEventListener('timeupdate', function () {
+                if (!audio.duration) return;
+                const pct = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = pct + '%';
+            });
+
+            audio.addEventListener('ended', function () {
+                nextTrack();
+            });
+
+            // Initialize first step without autoplay
+            loadTrack(0, false);
+            updateLabel();
+        })();
+    </script>
+
+</body></html>
