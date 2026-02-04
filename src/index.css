@@ -16,10 +16,20 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  min-height: 100vh;
+  height: 100%;
   background: #f8fafc;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#root {
+  height: 100%;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 a {
