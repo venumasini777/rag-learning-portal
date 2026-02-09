@@ -183,10 +183,20 @@ const courseData = {
   ],
 }
 
+// Core concepts IDs
+const coreConceptIds = [
+  'llm_based_re_ranking',
+  'rule_based_re_ranking',
+  'cross_encoder_re_rankers',
+  'latency_optimization_module',
+]
+
 function App() {
   const [activeCourse, setActiveCourse] = useState(null)
   const [activeTopic, setActiveTopic] = useState(null)
+  const [activeSection, setActiveSection] = useState(null)
   const [activeLesson, setActiveLesson] = useState(null)
+  const [isIframeLoading, setIsIframeLoading] = useState(false)
 
   const isHome = !activeCourse
   const isTopicsPage = activeCourse && !activeTopic
@@ -194,18 +204,55 @@ function App() {
   const isTopicDetail = activeTopic && activeTopic !== 're-ranking'
   const currentTopic = courseData.topics.find((topic) => topic.id === activeTopic)
   const reRankingTopic = courseData.topics.find((topic) => topic.id === 're-ranking')
-  const reRankingConcepts = reRankingTopic?.subtopics.filter((s) => s.group === 'concept') ?? []
+
+  // Categorize subtopics into sections
+  const allConcepts = reRankingTopic?.subtopics.filter((s) => s.group === 'concept') ?? []
+  const coreConcepts = allConcepts.filter((s) => coreConceptIds.includes(s.id))
+  const additionalTheory = allConcepts.filter((s) => !coreConceptIds.includes(s.id))
   const reRankingCode = reRankingTopic?.subtopics.filter((s) => s.group === 'code') ?? []
   const reRankingPR = reRankingTopic?.subtopics.filter((s) => s.group === 'pr') ?? []
-  const isLessonView = Boolean(activeLesson?.path)
+
+  const isSectionView = isReRanking && activeSection
+  const isSectionPicker = isReRanking && !activeSection
+
+  // Get current section items
+  const getCurrentSectionItems = () => {
+    switch (activeSection) {
+      case 'core-concepts':
+        return coreConcepts
+      case 'code-walkthrough':
+        return reRankingCode
+      case 'pull-requests':
+        return reRankingPR
+      case 'additional-theory':
+        return additionalTheory
+      default:
+        return []
+    }
+  }
+
+  const getSectionTitle = () => {
+    switch (activeSection) {
+      case 'core-concepts':
+        return 'Core Concepts'
+      case 'code-walkthrough':
+        return 'Code Walkthrough'
+      case 'pull-requests':
+        return 'Pull Requests'
+      case 'additional-theory':
+        return 'Additional Theory'
+      default:
+        return ''
+    }
+  }
 
   useEffect(() => {
-    if (isReRanking && isLessonView) {
+    if (isSectionView) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }, [isReRanking, isLessonView])
+  }, [isSectionView])
 
   const onSelectCourse = () => {
     setActiveCourse(courseData.id)
@@ -215,21 +262,59 @@ function App() {
 
   const onSelectTopic = (topicId) => {
     setActiveTopic(topicId)
+    setActiveSection(null)
     setActiveLesson(null)
   }
 
-  const onSelectSubtopic = (topicId, subtopic) => {
-    setActiveTopic(topicId)
+  const onSelectSection = (sectionId) => {
+    setActiveSection(sectionId)
+    // Auto-select first available lesson in the section
+    let items = []
+    switch (sectionId) {
+      case 'core-concepts':
+        items = coreConcepts
+        break
+      case 'code-walkthrough':
+        items = reRankingCode
+        break
+      case 'pull-requests':
+        items = reRankingPR
+        break
+      case 'additional-theory':
+        items = additionalTheory
+        break
+      default:
+        items = []
+    }
+    const firstAvailable = items.find((item) => item.path)
+    if (firstAvailable) {
+      setIsIframeLoading(true)
+    }
+    setActiveLesson(firstAvailable || null)
+  }
+
+  const onSelectSubtopic = (subtopic) => {
     if (subtopic.path) {
+      setIsIframeLoading(true)
       setActiveLesson(subtopic)
     } else {
       setActiveLesson(null)
     }
   }
 
+  const onIframeLoad = () => {
+    setIsIframeLoading(false)
+  }
+
+  const onBackToSections = () => {
+    setActiveSection(null)
+    setActiveLesson(null)
+  }
+
   const onBackToCourses = () => {
     setActiveCourse(null)
     setActiveTopic(null)
+    setActiveSection(null)
     setActiveLesson(null)
   }
 
@@ -249,7 +334,7 @@ function App() {
         </div>
       </header>
 
-      <main className={`app-main ${isReRanking ? 'wide' : ''}`}>
+      <main className={`app-main ${isSectionView ? 'wide' : ''}`}>
         {isHome && (
           <section className="home-hero">
             <div className="home-copy">
@@ -342,106 +427,129 @@ function App() {
           </section>
         )}
 
-        {isReRanking && (
+        {isSectionPicker && (
+          <section className="section-picker">
+            <div className="section-picker-header">
+              <div>
+                <h2>{reRankingTopic?.title}</h2>
+                <p>Select a section to explore.</p>
+              </div>
+              <button className="ghost-button" onClick={() => setActiveTopic(null)}>
+                Back to Topics
+              </button>
+            </div>
+            <div className="section-grid">
+              <button
+                className="section-card"
+                onClick={() => onSelectSection('core-concepts')}
+              >
+                <div className="section-card-header">
+                  <span className="section-pill">Section</span>
+                  <span className="section-count">{coreConcepts.length} lessons</span>
+                </div>
+                <h3>Core Concepts</h3>
+                <p>Essential re-ranking techniques and algorithms you need to master.</p>
+                <div className="section-footer">
+                  <span className="section-action">Open section</span>
+                </div>
+              </button>
+
+              <button
+                className="section-card"
+                onClick={() => onSelectSection('code-walkthrough')}
+              >
+                <div className="section-card-header">
+                  <span className="section-pill">Section</span>
+                  <span className="section-count">{reRankingCode.length} files</span>
+                </div>
+                <h3>Code Walkthrough</h3>
+                <p>Line-by-line breakdown of production re-ranking implementations.</p>
+                <div className="section-footer">
+                  <span className="section-action">Open section</span>
+                </div>
+              </button>
+
+              <button
+                className="section-card"
+                onClick={() => onSelectSection('pull-requests')}
+              >
+                <div className="section-card-header">
+                  <span className="section-pill">Section</span>
+                  <span className="section-count">{reRankingPR.length} PRs</span>
+                </div>
+                <h3>Pull Requests</h3>
+                <p>Real-world code reviews and feature implementations.</p>
+                <div className="section-footer">
+                  <span className="section-action">Open section</span>
+                </div>
+              </button>
+
+              <button
+                className="section-card"
+                onClick={() => onSelectSection('additional-theory')}
+              >
+                <div className="section-card-header">
+                  <span className="section-pill">Section</span>
+                  <span className="section-count">{additionalTheory.length} lessons</span>
+                </div>
+                <h3>Additional Theory</h3>
+                <p>Deep dives into evaluation, optimization, and advanced topics.</p>
+                <div className="section-footer">
+                  <span className="section-action">Open section</span>
+                </div>
+              </button>
+            </div>
+          </section>
+        )}
+
+        {isSectionView && (
           <section className="learning-layout">
             <aside className="sidebar">
-              <button className="link-button" onClick={onBackToCourses}>
-                ← Back to My Learning
+              <button className="link-button" onClick={onBackToSections}>
+                ← Back to Sections
               </button>
-              <h2>{reRankingTopic?.title}</h2>
+              <h2>{getSectionTitle()}</h2>
               <p className="sidebar-meta">Re-ranking Track</p>
               <nav className="topic-list">
-                {reRankingConcepts.length > 0 && (
-                  <div className="topic-block">
-                    <h3>Concepts</h3>
-                    <ul>
-                      {reRankingConcepts.map((subtopic) => {
-                        const isActive = activeLesson?.id === subtopic.id
-                        return (
-                          <li key={subtopic.id}>
-                            <button
-                              className={`subtopic-link ${
-                                subtopic.path ? '' : 'disabled'
-                              } ${isActive ? 'active' : ''}`}
-                              onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
-                            >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
-                              </span>
-                              <span>{subtopic.title}</span>
-                            </button>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </div>
-                )}
-                {reRankingCode.length > 0 && (
-                  <div className="topic-block" style={{ marginTop: '1.75rem' }}>
-                    <h3>Code Run Down</h3>
-                    <ul>
-                      {reRankingCode.map((subtopic) => {
-                        const isActive = activeLesson?.id === subtopic.id
-                        return (
-                          <li key={subtopic.id}>
-                            <button
-                              className={`subtopic-link ${
-                                subtopic.path ? '' : 'disabled'
-                              } ${isActive ? 'active' : ''}`}
-                              onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
-                            >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
-                              </span>
-                              <span>{subtopic.title}</span>
-                            </button>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </div>
-                )}
-                {reRankingPR.length > 0 && (
-                  <div className="topic-block" style={{ marginTop: '1.75rem' }}>
-                    <h3>Pull Requests</h3>
-                    <ul>
-                      {reRankingPR.map((subtopic) => {
-                        const isActive = activeLesson?.id === subtopic.id
-                        return (
-                          <li key={subtopic.id}>
-                            <button
-                              className={`subtopic-link ${
-                                subtopic.path ? '' : 'disabled'
-                              } ${isActive ? 'active' : ''}`}
-                              onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
-                            >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
-                              </span>
-                              <span>{subtopic.title}</span>
-                            </button>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </div>
-                )}
+                <div className="topic-block">
+                  <ul>
+                    {getCurrentSectionItems().map((subtopic) => {
+                      const isActive = activeLesson?.id === subtopic.id
+                      return (
+                        <li key={subtopic.id}>
+                          <button
+                            className={`subtopic-link ${
+                              subtopic.path ? '' : 'disabled'
+                            } ${isActive ? 'active' : ''}`}
+                            onClick={() => onSelectSubtopic(subtopic)}
+                          >
+                            <span className="subtopic-icon">
+                              {subtopic.path ? '▶' : '🔒'}
+                            </span>
+                            <span>{subtopic.title}</span>
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               </nav>
             </aside>
             <div className="learning-main">
               {activeLesson?.path ? (
                 <div className="lesson-wrapper">
-                  {/* <div className="lesson-toolbar">
-                    <div>
-                      <h1>{activeLesson.title}</h1>
-                      <p>Audio narration is available inside the lesson.</p>
-                    </div>
-                  </div> */}
                   <div className="lesson-frame">
+                    {isIframeLoading && (
+                      <div className="loading-overlay">
+                        <div className="spinner" />
+                        <p>Loading content...</p>
+                      </div>
+                    )}
                     <iframe
                       title={activeLesson.title}
                       src={activeLesson.path}
                       loading="lazy"
+                      onLoad={onIframeLoad}
                     />
                   </div>
                 </div>
