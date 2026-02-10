@@ -330,10 +330,25 @@
   margin-bottom: 1rem;
 }
 
+/* Remove bullets + indentation */
 .topic-list {
-  overflow-y: auto;
-  padding-right: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.topic-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topic-list li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 
 .topic-block + .topic-block {
   margin-top: 1.5rem;
@@ -346,27 +361,40 @@
   margin-bottom: 0.75rem;
 }
 
-.topic-block ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 0.4rem;
-  border-left: 2px solid rgba(226, 232, 240, 0.9);
-}
-
 .subtopic-link {
-  width: 100%;
+  all: unset;
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.7rem;
-  border-radius: 0.75rem;
+  justify-content: space-between; /* 👈 key change */
+
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+
   font-size: 0.95rem;
   font-weight: 600;
   color: #334155;
+
+  cursor: pointer;
+  border-radius: 0.75rem;
   background: transparent;
+
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
+
+.subtopic-title {
+  text-align: left;
+  flex: 1; /* 👈 allows icon to stay right */
+}
+
+
+.subtopic-icon {
+  margin-left: 1rem;
+  font-size: 0.85rem;
+  flex-shrink: 0; /* 👈 prevents collapsing */
+}
 .subtopic-link:hover {
   background: #f1f5ff;
   color: #1d4ed8;
@@ -382,9 +410,11 @@
   cursor: not-allowed;
 }
 
+
 .subtopic-icon {
   font-size: 0.85rem;
   color: inherit;
+
 }
 
 .learning-main {

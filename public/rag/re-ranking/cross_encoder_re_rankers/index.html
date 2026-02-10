@@ -1134,9 +1134,9 @@ window.parent.postMessage({
     }
 
     function playCurrent() {
-        audio.play().catch(() => {
-            playBtn.textContent = '▶';
-        });
+    audio.play().catch(() => {
+        playBtn.innerHTML = PLAY_ICON_SVG;
+    });
         playBtn.textContent = '⏸';
     }
 

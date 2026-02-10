@@ -349,7 +349,6 @@ function App() {
                 ← Back to My Learning
               </button>
               <h2>{reRankingTopic?.title}</h2>
-              <p className="sidebar-meta">Re-ranking Track</p>
               <nav className="topic-list">
                 {reRankingConcepts.length > 0 && (
                   <div className="topic-block">
@@ -365,10 +364,14 @@ function App() {
                               } ${isActive ? 'active' : ''}`}
                               onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
                             >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
+                              <span className="subtopic-title">
+                                {subtopic.title}
                               </span>
-                              <span>{subtopic.title}</span>
+                              {subtopic.path && (
+                              <span className="subtopic-audio" title="Audio available">
+                                🔊
+                              </span>
+                              )}
                             </button>
                           </li>
                         )
@@ -390,10 +393,16 @@ function App() {
                               } ${isActive ? 'active' : ''}`}
                               onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
                             >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
+                              <span className="subtopic-title">
+                                {subtopic.title}
                               </span>
-                              <span>{subtopic.title}</span>
+
+                              {subtopic.path && (
+                                <span className="subtopic-icon" title="Audio available">
+                                  🔊
+                                </span>
+                              )}
+                            
                             </button>
                           </li>
                         )
@@ -415,10 +424,15 @@ function App() {
                               } ${isActive ? 'active' : ''}`}
                               onClick={() => onSelectSubtopic(reRankingTopic.id, subtopic)}
                             >
-                              <span className="subtopic-icon">
-                                {subtopic.path ? '▶' : '🔒'}
+                              <span className="subtopic-title">
+                                {subtopic.title}
                               </span>
-                              <span>{subtopic.title}</span>
+                              {subtopic.path && (
+                                <span className="subtopic-icon" title="Audio available">
+                                  🔊
+                                </span>
+                              )}
+                          
                             </button>
                           </li>
                         )
