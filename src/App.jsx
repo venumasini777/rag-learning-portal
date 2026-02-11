@@ -302,7 +302,21 @@ function App() {
                 >
                   <div className="topic-card-header">
                     <span className="topic-pill">Topic</span>
-                    <span className="topic-count">{topic.subtopics.length} lessons</span>
+                    <div className="topic-stats-breakdown">
+                      {(() => {
+                        const concepts = topic.subtopics.filter(s => !s.group || s.group === 'concept').length;
+                        const code = topic.subtopics.filter(s => s.group === 'code').length;
+                        const prs = topic.subtopics.filter(s => s.group === 'pr').length;
+
+                        return (
+                          <>
+                            <span className="stat-badge concept">{concepts} Concepts</span>
+                            {code > 0 && <span className="stat-badge code">{code} Code</span>}
+                            {prs > 0 && <span className="stat-badge pr">{prs} PRs</span>}
+                          </>
+                        );
+                      })()}
+                    </div>
                   </div>
                   <h3>{topic.title}</h3>
                   <p>{topic.description}</p>
