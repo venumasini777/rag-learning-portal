@@ -238,7 +238,7 @@ function App() {
       case 'code-walkthrough':
         return 'Code Walkthrough'
       case 'pull-requests':
-        return 'Pull Requests'
+        return 'Pull Request Breakdown'
       case 'additional-theory':
         return 'Additional Theory'
       default:
@@ -478,7 +478,7 @@ function App() {
                   <span className="section-count">{reRankingPR.length} PRs</span>
                 </div>
                 <h3>Pull Requests</h3>
-                <p>Real-world code reviews and feature implementations.</p>
+                <p>Step-by-step explanation of the changes and engineering decisions behind them.</p>
                 <div className="section-footer">
                   <span className="section-action">Open section</span>
                 </div>
