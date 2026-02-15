@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .topbar {
@@ -170,6 +170,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.75rem;
+  padding-bottom: 3rem;
 }
 
 .topic-card {
@@ -211,6 +212,43 @@
   color: #64748b;
   font-weight: 700;
   font-size: 0.85rem;
+}
+
+/* Stats breakdown badges from abhi_ui_2 */
+.topic-stats-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.stat-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.stat-badge.concept {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.stat-badge.code {
+  background: rgba(139, 92, 246, 0.12);
+  color: #7c3aed;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.stat-badge.pr {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .topic-card h3 {
@@ -330,9 +368,25 @@
   margin-bottom: 1rem;
 }
 
+/* Remove bullets + indentation */
 .topic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   overflow-y: auto;
   padding-right: 0.25rem;
+}
+
+.topic-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topic-list li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .topic-block + .topic-block {
@@ -346,25 +400,32 @@
   margin-bottom: 0.75rem;
 }
 
-.topic-block ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 0.4rem;
-  border-left: 2px solid rgba(226, 232, 240, 0.9);
-}
-
 .subtopic-link {
-  width: 100%;
+  all: unset;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.7rem;
-  border-radius: 0.75rem;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: #334155;
+  cursor: pointer;
+  border-radius: 0.75rem;
   background: transparent;
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.subtopic-title {
+  text-align: left;
+  flex: 1;
+}
+
+.subtopic-audio {
+  margin-left: 1rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .subtopic-link:hover {
@@ -383,7 +444,9 @@
 }
 
 .subtopic-icon {
+  margin-left: 1rem;
   font-size: 0.85rem;
+  flex-shrink: 0;
   color: inherit;
 }
 
