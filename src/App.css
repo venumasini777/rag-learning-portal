@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .topbar {
@@ -170,6 +170,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.75rem;
+  padding-bottom: 3rem;
 }
 
 .topic-card {
@@ -213,6 +214,7 @@
   font-size: 0.85rem;
 }
 
+/* Stats breakdown badges from abhi_ui_2 */
 .topic-stats-breakdown {
   display: flex;
   flex-wrap: wrap;
@@ -371,6 +373,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
+  padding-right: 0.25rem;
 }
 
 .topic-list ul {
@@ -384,7 +388,6 @@
   padding: 0;
   margin: 0;
 }
-
 
 .topic-block + .topic-block {
   margin-top: 1.5rem;
@@ -400,37 +403,31 @@
 .subtopic-link {
   all: unset;
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 👈 key change */
-
+  justify-content: space-between;
   width: 100%;
   padding: 0.5rem 0.75rem;
-
   font-size: 0.95rem;
   font-weight: 600;
   color: #334155;
-
   cursor: pointer;
   border-radius: 0.75rem;
   background: transparent;
-
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-
 .subtopic-title {
   text-align: left;
-  flex: 1; /* 👈 allows icon to stay right */
+  flex: 1;
 }
 
-
-.subtopic-icon {
+.subtopic-audio {
   margin-left: 1rem;
   font-size: 0.85rem;
-  flex-shrink: 0; /* 👈 prevents collapsing */
+  flex-shrink: 0;
 }
+
 .subtopic-link:hover {
   background: #f1f5ff;
   color: #1d4ed8;
@@ -446,11 +443,11 @@
   cursor: not-allowed;
 }
 
-
 .subtopic-icon {
+  margin-left: 1rem;
   font-size: 0.85rem;
+  flex-shrink: 0;
   color: inherit;
-
 }
 
 .learning-main {
@@ -497,6 +494,7 @@
   overflow: hidden;
   height: 100%;
   box-shadow: 0 24px 50px rgba(18, 153, 41, 0.55);
+  position: relative;
 }
 
 .lesson-frame iframe {
@@ -504,6 +502,42 @@
   height: 100%;
   border: none;
   background: #ffffff;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.loading-overlay p {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(37, 99, 235, 0.15);
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .lesson-placeholder {
@@ -514,7 +548,104 @@
   border: 2px dashed rgba(191, 219, 254, 0.7);
 }
 
+/* Section Picker */
+.section-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
+.section-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-picker-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.section-picker-header p {
+  color: #64748b;
+  font-size: 1.05rem;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.section-card {
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.section-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(37, 99, 235, 0.18);
+}
+
+.section-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-count {
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.section-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.6rem;
+}
+
+.section-card p {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.section-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.section-action {
+  color: #1d4ed8;
+  font-weight: 700;
+}
 
 .primary-button,
 .ghost-button,
@@ -572,5 +703,14 @@
   .lesson-toolbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .section-picker-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
   }
 }
